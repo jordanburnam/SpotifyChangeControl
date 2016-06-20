@@ -1,3 +1,15 @@
+/*
+	CreatedDate: 06/19/2016
+	CreatedBy: JorDANG
+
+	Purpose:
+		These are the work tables used for BulkInserts of data
+		so that a procedure can then process them
+
+		These tables all have nonclustered indexes on the SpotifyID 
+		which will be disabled upon insert and rebuilt once all rows have been added 
+		to avoid fragmentation of the index 
+*/
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES  T
            WHERE T.TABLE_NAME = N'Spotify_WK_State' AND T.TABLE_SCHEMA = 'dbo' )
 BEGIN
@@ -13,7 +25,7 @@ BEGIN
 	,ArtistID INT NOT NULL
 	,CreatedDate DATETIME NOT NULL DEFAULT(GETDATE())
   )
-  CREATE CLUSTERED INDEX IX_WK_State_SpotifyID ON dbo.Spotify_WK_State(TrackID, ArtistID, PlaylistID, UserID);
+  CREATE CLUSTERED INDEX IX_WK_State_SpotifyID ON dbo.Spotify_WK_State(UserID, PlaylistID, ArtistID, TrackID);
 END
 GO
 
