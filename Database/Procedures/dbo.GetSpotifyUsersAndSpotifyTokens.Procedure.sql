@@ -1,15 +1,15 @@
-IF EXISTS (SELECT 1 FROM sys.objects WHERE type = 'P' AND name = 'GetUsersAndTokens')
+IF EXISTS (SELECT 1 FROM sys.objects WHERE type = 'P' AND name = 'GetSpotifyUsersAndSpotifyTokens')
 BEGIN
-	DROP PROCEDURE GetUsersAndTokens
+	DROP PROCEDURE GetSpotifyUsersAndSpotifyTokens
 END
 GO
-CREATE PROCEDURE dbo.GetUsersAndTokens
+CREATE PROCEDURE dbo.GetSpotifyUsersAndSpotifyTokens
 AS
 BEGIN
 
 	SELECT 
 		SU.UserID
-		,Token.MTokenID
+		,Token.MUpdatedDate AS TokenUpdatedDate
 		,Token.AccessToken
 		,Token.RefreshToken
 		,Token.AccessExpired
@@ -18,7 +18,7 @@ BEGIN
 	INNER JOIN (
 				SELECT 
 						SUT.UserID
-					,MTokenID
+					,MUpdatedDate
 					,SUT.AccessToken
 					,SUT.RefreshToken
 					,SUT.AccessExpired
@@ -26,11 +26,11 @@ BEGIN
 				FROM dbo.Spotify_User_Token SUT
 				INNER JOIN (
 							SELECT 
-								MAX(TokenID) AS MTokenID
+								MAX(UpdatedDate) AS MUpdatedDate
 								,UserID
 							FROM dbo.Spotify_User_Token SUT
 							GROUP BY UserID
-							) AS MToken ON MToken.MTokenID = SUT.TokenID AND MToken.UserID = SUT.UserID
+							) AS MToken ON MToken.MUpdatedDate = SUT.UpdatedDate AND MToken.UserID = SUT.UserID
 				) Token ON Token.UserID = SU.UserID
 					
 				

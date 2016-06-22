@@ -1,9 +1,9 @@
-IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'PrepareWorkTables')
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'TruncateSpotifyWorkTablesAndDisableIndexies')
 BEGIN
-	DROP PROCEDURE PrepareWorkTables
+	DROP PROCEDURE TruncateSpotifyWorkTablesAndDisableIndexies
 END
 GO
-CREATE PROCEDURE dbo.PrepareWorkTables
+CREATE PROCEDURE dbo.TruncateSpotifyWorkTablesAndDisableIndexies
 AS
 BEGIN
 	
