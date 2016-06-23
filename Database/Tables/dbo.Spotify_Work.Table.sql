@@ -21,7 +21,9 @@ BEGIN
 	,PlaylistID INT NOT NULL
   --Track
 	,TrackID INT NOT NULL
-	--Artist
+  --Position 
+	,Position INT NOT NULL
+  --Artist
 	,ArtistID INT NOT NULL
 	,CreatedDate DATETIME NOT NULL DEFAULT(GETDATE())
   )
