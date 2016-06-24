@@ -1,0 +1,9 @@
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\bin\Debug\SpotifyWebAPIExample.exe.config
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\bin\Debug\SpotifyWebAPIExample.exe
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\bin\Debug\SpotifyWebAPIExample.pdb
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\bin\Debug\SpotifyAPI.dll
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\bin\Debug\SpotifyAPI.pdb
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\obj\Debug\SpotifyWebAPIExample.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\obj\Debug\SpotifyWebAPIExample.exe
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\obj\Debug\SpotifyWebAPIExample.pdb

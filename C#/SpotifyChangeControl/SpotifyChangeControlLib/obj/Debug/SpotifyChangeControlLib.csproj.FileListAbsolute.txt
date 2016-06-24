@@ -1,0 +1,5 @@
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyChangeControlLib.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyChangeControlLib.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.pdb

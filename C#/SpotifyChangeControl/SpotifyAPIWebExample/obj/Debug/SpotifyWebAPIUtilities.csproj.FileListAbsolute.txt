@@ -1,0 +1,3 @@
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\obj\Debug\SpotifyWebAPIUtilities.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\obj\Debug\SpotifyWebAPIExample.exe
+C:\Users\Admin\Documents\GitHub\Spotify\SpotifyWebAPIExample\obj\Debug\SpotifyWebAPIExample.pdb
