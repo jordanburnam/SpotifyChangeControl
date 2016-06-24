@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataObjects\DatabaseTableInfo.cs" />
+    <Compile Include="DatabaseObjects\TableState.cs" />
     <Compile Include="DataObjects\SpotifyUser.cs" />
-    <Compile Include="SpotifyDatabase.cs" />
+    <Compile Include="DatabaseObjects\SpotifyDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Enums.cs" />
+    <Compile Include="Utilities\HashSlingingSlasher.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

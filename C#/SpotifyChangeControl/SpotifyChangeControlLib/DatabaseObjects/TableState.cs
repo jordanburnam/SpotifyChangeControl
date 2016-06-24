@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SpotifyChangeControlLib.Types;
+using SpotifyChangeControlLib.DatabaseObjects;
 
 namespace SpotifyChangeControlLib.DataObjects
 {
-    internal class DatabaseTableInfo
+    internal class TableState
     {
         //Declare some static things for everyone to share
         private static readonly string _TruncateCommandTemplate = "TRUNCATE TABLE [{SchemaName}].[{TableName}];";
@@ -20,15 +21,15 @@ namespace SpotifyChangeControlLib.DataObjects
 
         private string _TruncateCommand
         {
-            get { return DatabaseTableInfo._TruncateCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
+            get { return TableState._TruncateCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
         }
         private string _HeapCommand
         {
-            get { return DatabaseTableInfo._HeapCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
+            get { return TableState._HeapCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
         }
         private string _IndexCommand
         {
-            get { return DatabaseTableInfo._IndexCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
+            get { return TableState._IndexCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
         }
         public string TableName
         {
@@ -36,7 +37,7 @@ namespace SpotifyChangeControlLib.DataObjects
         }
 
         //Constructor :)
-        public DatabaseTableInfo(string sTableName, string sSchemaName = "dbo")
+        public TableState(string sTableName, string sSchemaName = "dbo")
         {
             this._TableName = sTableName;
             this._SchemaName = sSchemaName;
@@ -47,7 +48,7 @@ namespace SpotifyChangeControlLib.DataObjects
         {
             if ( (this._TableState & Enums.DatabaseTableState.Truncated) != Enums.DatabaseTableState.Truncated) //Check our bitwise flag of enums to make sure the table has not already been truncated
             {
-                SpotifyChangeControlLib.SpotifyDatabase.ExecuteNonQuery(this._TruncateCommand);
+                SpotifyDatabase.ExecuteNonQuery(this._TruncateCommand);
             }
             
         }
@@ -56,7 +57,7 @@ namespace SpotifyChangeControlLib.DataObjects
         {
             if ((this._TableState & Enums.DatabaseTableState.Heaped) != Enums.DatabaseTableState.Heaped) //Check our bitwise flag of enums to make sure the table has not already been heaped
             {
-                SpotifyChangeControlLib.SpotifyDatabase.ExecuteNonQuery(this._HeapCommand);
+                SpotifyDatabase.ExecuteNonQuery(this._HeapCommand);
             }
         }
 
@@ -64,7 +65,7 @@ namespace SpotifyChangeControlLib.DataObjects
         {
             if ((this._TableState & Enums.DatabaseTableState.Querable) != Enums.DatabaseTableState.Querable) //Check our bitwise flag of enums to make sure the table has not already been indexed
             {
-                SpotifyChangeControlLib.SpotifyDatabase.ExecuteNonQuery(this._IndexCommand);
+                SpotifyDatabase.ExecuteNonQuery(this._IndexCommand);
             }
         }
 

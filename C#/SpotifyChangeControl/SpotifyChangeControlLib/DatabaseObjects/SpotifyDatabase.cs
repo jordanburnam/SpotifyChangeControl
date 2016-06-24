@@ -8,7 +8,7 @@ using SpotifyChangeControlLib.Types;
 using System.Data;
 using SpotifyChangeControlLib.DataObjects;
 
-namespace SpotifyChangeControlLib
+namespace SpotifyChangeControlLib.DatabaseObjects
 {
     internal static class SpotifyDatabase
     {
@@ -70,7 +70,7 @@ namespace SpotifyChangeControlLib
             }
         }
 
-        internal static void BulkInsert(DataTable oDataTable, DatabaseTableInfo oDatabaseTableInfo)
+        internal static void BulkInsert(DataTable oDataTable, TableState oDatabaseTableInfo)
         {
             try
             {
