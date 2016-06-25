@@ -5,3 +5,9 @@ C:\Users\Admin\Documents\GitHub\Spotify\SpotifyAPI\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Admin\Documents\GitHub\Spotify\SpotifyAPI\obj\Debug\SpotifyAPI.dll
 C:\Users\Admin\Documents\GitHub\Spotify\SpotifyAPI\obj\Debug\SpotifyAPI.pdb
 C:\Users\Admin\Documents\GitHub\Spotify\SpotifyAPI\obj\Debug\SpotifyAPI.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPI\bin\Debug\SpotifyAPI.dll.config
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPI\bin\Debug\SpotifyAPI.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPI\bin\Debug\SpotifyAPI.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPI\obj\Debug\SpotifyAPI.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPI\obj\Debug\SpotifyAPI.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPI\obj\Debug\SpotifyAPI.pdb

@@ -18,31 +18,33 @@ namespace SpotifyWebAPIExample
         static SpotifyWebAPIClient _oSpotifyWebApi;
         static PrivateProfile _oPrivateProfile;
         static AutorizationCodeAuth oAutorizationCodeAuth;
-
-
+        static string sSpotifyPrivateID;
+        static string sSpotifyPublicID;
         static void Main(string[] args)
         {
-            
 
+            sSpotifyPrivateID = Utilities.Properties.Settings.Default.SpotifyPrivateID;
+            sSpotifyPublicID = Utilities.Properties.Settings.Default.SpotifyPublicID;
+           
             Console.WriteLine("### SpotifyWebAPI .NET Test App");
             Console.WriteLine("Starting auth process...");
             //Create the auth object
-
+            
             oAutorizationCodeAuth = new AutorizationCodeAuth()
             {
                 //Your client Id
-                ClientId = "d2036a1624b343e5a0dbe93824758bc0",
+                ClientId = sSpotifyPublicID,
                 //Set this to localhost if you want to use the built-in HTTP Server
                 RedirectUri = "http://localhost",
                 //How many permissions we need?
                 Scope = Scope.USER_READ_PRIVATE | Scope.USER_READ_EMAIL | Scope.PLAYLIST_READ_PRIVATE | Scope.USER_LIBRARAY_READ | Scope.USER_LIBRARY_MODIFY | Scope.USER_READ_PRIVATE
                     | Scope.USER_FOLLOW_MODIFY | Scope.USER_FOLLOW_READ | Scope.PLAYLIST_MODIFY_PRIVATE | Scope.USER_READ_BIRTHDATE | Scope.PLAYLIST_MODIFY_PUBLIC
             };
-            
+
             //auth = new ImplicitGrantAuth()
             //{
             //    //Your client Id
-            //    ClientId = "d2036a1624b343e5a0dbe93824758bc0",
+            //    ClientId = sSpotifyPublicID,
             //    //Set this to localhost if you want to use the built-in HTTP Server
             //    RedirectUri = "http://localhost",
             //    //How many permissions we need?
@@ -50,8 +52,8 @@ namespace SpotifyWebAPIExample
             //        | Scope.USER_FOLLOW_MODIFY | Scope.USER_FOLLOW_READ | Scope.PLAYLIST_MODIFY_PRIVATE | Scope.USER_READ_BIRTHDATE |Scope.PLAYLIST_MODIFY_PUBLIC 
             //};
             //Start the internal http server
-           //auth.ShowDialog = false;
-           //auth.StartHttpServer();
+            //auth.ShowDialog = false;
+            //auth.StartHttpServer();
             oAutorizationCodeAuth.ShowDialog = false;
             oAutorizationCodeAuth.StartHttpServer();
             //When we got our response
@@ -76,8 +78,8 @@ namespace SpotifyWebAPIExample
                 Console.WriteLine("Error: " + response.Error);
                 return;
             }
-            Token oToken = oAutorizationCodeAuth.ExchangeAuthCode(response.Code, "14ff6ba40acb4f2e849f2adb9a8b42a0");
-            //oToken = oAutorizationCodeAuth.RefreshToken("AQDdjOWvlLXe0kNnKtS5FH_GFWTjuui4YXd0I510TpA1sYw-fDGZuCrSAUcgvi6wYJZR8NUKth-dmalOT8p6TNMA1MhmF0JAmH45yZLFaD19LGhetnDocjaAaDgE4flZnec", "14ff6ba40acb4f2e849f2adb9a8b42a0");
+            Token oToken = oAutorizationCodeAuth.ExchangeAuthCode(response.Code, sSpotifyPrivateID);
+            //oToken = oAutorizationCodeAuth.RefreshToken("AQDdjOWvlLXe0kNnKtS5FH_GFWTjuui4YXd0I510TpA1sYw-fDGZuCrSAUcgvi6wYJZR8NUKth-dmalOT8p6TNMA1MhmF0JAmH45yZLFaD19LGhetnDocjaAaDgE4flZnec", sSpotifyClientSecret);
             _oSpotifyWebApi = new SpotifyWebAPIClient()
             {
                 AccessToken = oToken.AccessToken,
