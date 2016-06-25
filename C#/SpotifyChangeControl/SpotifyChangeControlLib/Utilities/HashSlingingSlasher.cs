@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace SpotifyChangeControlLib.Utilities
 {
+    /// <summary>
+    /// SponeBob refrence! Which I think is better
+    /// than a hashbrown joke so....yeah there is that
+    /// </summary>
     static class HashSlingingSlasher
     {
+
         internal static string HashStrings(params string[] strings)
         {
             StringBuilder sBuilder = new StringBuilder();

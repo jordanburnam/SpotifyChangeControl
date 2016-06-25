@@ -10,6 +10,10 @@ using SpotifyChangeControlLib.DataObjects;
 
 namespace SpotifyChangeControlLib.DatabaseObjects
 {
+    /// <summary>
+    /// This class will be used to access the database layer 
+    /// directly by using its functions. 
+    /// </summary>
     internal static class SpotifyDatabase
     {
         private static string _ConnectionString;

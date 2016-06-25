@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 using SpotifyChangeControlLib.Utilities;
 
 namespace SpotifyChangeControlLib.DataObjects
-{
+{/// <summary>
+/// This class will represent the Spotify User and will be populated with
+/// data from the database tables of Spotify_User and Spotify_User_Token
+/// </summary>
     public class SpotifyUser
     {
         private int _UserID;
