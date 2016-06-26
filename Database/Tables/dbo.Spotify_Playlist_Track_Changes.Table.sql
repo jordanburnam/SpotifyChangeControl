@@ -4,19 +4,17 @@ BEGIN
   CREATE TABLE dbo.Spotify_Playlist_Change
   (
   --Playlist
-	PlaylistID INT NOT NULL
+	PlaylistID BIGINT NOT NULL
   --Track
-	,TrackID INT NOT NULL
+	,TrackID BIGINT NOT NULL
   --Position old and new :)
-    ,oldPosition INT NOT NULL
-    ,newPosition INT NOT NULL
+    ,Position BIGINT NOT NULL
     ,ChangeTypeID INT NOT NULL
     ,FOREIGN KEY(TrackID) REFERENCES dbo.Spotify_Track(TrackID)
 	,FOREIGN KEY(PlaylistID) REFERENCES dbo.Spotify_Playlist(PlaylistID)
 	,FOREIGN KEY(ChangeTypeID) REFERENCES dbo.Spotify_Playlist_Change_Type(ID)
 	,CreatedDate DATETIME NOT NULL DEFAULT(GETDATE())
   )
-  CREATE UNIQUE CLUSTERED INDEX IX_UNIQUE_Changes ON dbo.Spotify_Playlist_Change(PlaylistID, TrackID, ChangeTypeID);
-  CREATE NONCLUSTERED INDEX IX_NC_CreatedDate ON dbo.Spotify_Playlist_Change(CreatedDate);
+  CREATE UNIQUE CLUSTERED INDEX UCI_PLaylist_Change_Playlist_Track_ChangeType ON dbo.Spotify_Playlist_Change(CreatedDate, PlaylistID, TrackID, ChangeTypeID);
 END
 GO

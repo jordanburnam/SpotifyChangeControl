@@ -3,13 +3,13 @@ IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES  T
 BEGIN
   CREATE TABLE dbo.Spotify_Playlist_Track
   (
-	PlaylistID INT NOT NULL 
-	,TrackID INT NOT NULL
-	,Position INT NOT NULL
+	PlaylistID BIGINT NOT NULL 
+	,TrackID BIGINT NOT NULL
+	,Position BIGINT NOT NULL
 	,CreatedDate DATETIME NOT NULL DEFAULT(GETDATE())
 	,FOREIGN KEY(TrackID) REFERENCES dbo.Spotify_Track(TrackID)
 	,FOREIGN KEY(PlaylistID) REFERENCES dbo.Spotify_Playlist(PlaylistID)
   )
-  CREATE UNIQUE CLUSTERED INDEX IX_UQ_NC_PlaylistID_TrackID ON dbo.Spotify_Playlist_Track(PlaylistID, TrackID, Position);
+  CREATE UNIQUE CLUSTERED INDEX UCI_Playlist_Track_PlaylistID_TrackID_Position ON dbo.Spotify_Playlist_Track(PlaylistID, TrackID, Position);
 END
 GO

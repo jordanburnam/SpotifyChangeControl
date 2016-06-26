@@ -31,7 +31,7 @@ BEGIN
 		by a user. 
 	*/
 	BEGIN TRANSACTION; 
-		INSERT INTO dbo.Spotify_User_Playlist_Following
+		INSERT INTO dbo.Spotify_User_Playlist
 		(
 			UserID
 			,PlaylistID
@@ -40,12 +40,12 @@ BEGIN
 			SWS.UserID,
 			SWS.PlaylistID 
 		FROM dbo.Spotify_WK_State SWS
-		LEFT JOIN dbo.Spotify_User_Playlist_Following SUPF ON SUPF.UserID = SWS.UserID AND SUPF.PlaylistID = SWS.PlaylistID
+		LEFT JOIN dbo.Spotify_User_Playlist SUP ON SUP.UserID = SWS.UserID AND SUP.PlaylistID = SWS.PlaylistID
 		GROUP BY SWS.UserID, SWS.PlaylistID
 
-		DELETE SUPF
-		FROM dbo.Spotify_User_Playlist_Following SUPF 
-		LEFT JOIN dbo.Spotify_WK_State SWS ON SWS.PlaylistID = SUPF.PlaylistID AND SWS.UserID = SUPF.UserID
+		DELETE SUP
+		FROM dbo.Spotify_User_Playlist SUP
+		LEFT JOIN dbo.Spotify_WK_State SWS ON SWS.PlaylistID = SUP.PlaylistID AND SWS.UserID = SUP.UserID
 		WHERE (1=1)
 			AND SWS.PlaylistID IS NULL --The user stopped following a playlist
 
@@ -115,14 +115,12 @@ BEGIN
 		(
 			PlaylistID
 			,TrackID
-			,oldPosition
-			,newPosition
+			,Position
 			,ChangeTypeID
 		)
 		SELECT 
 			SPU.newPlaylistID
 			,SPU.newTrackID
-			,SPU.oldPosition
 			,SPU.newPosition
 			,CASE 
 				WHEN SPU.oldPosition IS NOT NULL AND SPU.newPosition IS NOT NULL AND SPU.oldPosition <> SPU.newPosition THEN 2 --The track was moved in the playlist
