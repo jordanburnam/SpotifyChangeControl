@@ -10,7 +10,7 @@ namespace SpotifyChangeControlLib.DataObjects
     {
         private string _Code;
         private DateTime _AuthDate;
-        private bool _HasBeenTokenized;
+
 
         public string Code
         {
@@ -22,18 +22,13 @@ namespace SpotifyChangeControlLib.DataObjects
             get { return this._AuthDate; }
         }
 
-        public bool HasBeenTokenized
-        {
-            get { return this._HasBeenTokenized; }
-        }
+        
 
-        public SpotifyUserAuth(string sAuthCode, bool bHasBeenTokenized, DateTime dtAuth)
+        public SpotifyUserAuth(string sAuthCode, DateTime dtAuth)
         {
             this._Code = sAuthCode;
 
-            this._AuthDate = AuthDate;
-
-            this._HasBeenTokenized = bHasBeenTokenized;
+            this._AuthDate = dtAuth;
         }
       
 

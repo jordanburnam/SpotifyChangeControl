@@ -64,18 +64,7 @@ namespace SpotifyChangeControlLib.AccessLayer
             };
 
             oAuth.StartHttpServer();//Not sure if this is needed or not but what the hell why not!
-            if (!oSpotifyUser.UserAuth.HasBeenTokenized)//The user has authorized the app but no token has been created yet
-            {
-               Token oToken = oAuth.ExchangeAuthCode(oSpotifyUser.UserAuth.Code, _ClientPrivate);
-                if (oToken.Error == null) //There were no errors found 
-                {
-                    oSpotifyUser.UpdateUserWithToken(oToken);
-                }
-                else
-                {
-                    //TODO:Add some error handling....just kinda everywhere
-                }
-            }
+           
             if (oSpotifyUser.AccessToken.AccessExpired)//The user has authorized us and was tokenized but the temp access token has expired
             {
                 Token oToken = oAuth.RefreshToken(oSpotifyUser.RefreshToken.Code, _ClientPrivate);

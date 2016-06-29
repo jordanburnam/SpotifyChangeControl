@@ -14,6 +14,15 @@ namespace SpotifyChangeControlLib.AccessLayer
 {
     public static class SpotifyAccessLayer 
     {
+        public static Int64 GetObjectIDForSpotifyID(string sSpotifyID)
+        {
+            Int64 iObjectID;
+            iObjectID = CacheDatabase.GetObjectIDForSpotifyID(sSpotifyID);
+            return iObjectID;
+
+        }
+
+
         public  static void UpdateObjectIDForSpotifyObject(SpotifyObjectBase oSpotifyObject)
         {
             if (oSpotifyObject.ID == 0)
@@ -45,15 +54,29 @@ namespace SpotifyChangeControlLib.AccessLayer
             return oUsers;
         }
 
+
         public static void SaveAccessTokenForUserToDatabase(Int64 iUserID, SpotifyUserAccessToken oSpotifyAccessToken)
         {
-            
+
             RelationalDatabase.ExecuteNonQuery("UpSertAccessTokenForSpotifyUser", CommandType.StoredProcedure,
                                                     new SqlParameter("iUserID", iUserID),
                                                     new SqlParameter("sCode", oSpotifyAccessToken.Code),
                                                     new SqlParameter("sTokenType", oSpotifyAccessToken.TokenType),
                                                      new SqlParameter("iExpiresIn", oSpotifyAccessToken.ExpiresIn),
                                                       new SqlParameter("dtToken", oSpotifyAccessToken.TokenDate)
+                                               );
+
+        }
+
+
+        public static void SaveUserAndAuthToDatabase(SpotifyUser oSpotifyUser)
+        {
+            
+            RelationalDatabase.ExecuteNonQuery("AddSpotifyUser", CommandType.StoredProcedure,
+                                                    new SqlParameter("iUserID", oSpotifyUser.ID),
+                                                    new SqlParameter("sUserName", oSpotifyUser.Name),
+                                                    new SqlParameter("sAuthCode", oSpotifyUser.UserAuth.Code),
+                                                    new SqlParameter("dtAuth", oSpotifyUser.UserAuth.AuthDate)
                                                );
             
         }

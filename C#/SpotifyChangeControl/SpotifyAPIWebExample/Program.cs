@@ -88,20 +88,20 @@ namespace SpotifyWebAPIExample
             oAutorizationCodeAuth.OnResponseReceivedEvent += oAutorizationCodeAuth_OnResponseReceivedEvent;
             //Start
             //auth.DoAuth();
-           // oAutorizationCodeAuth.DoAuth();
-
+           oAutorizationCodeAuth.DoAuth();
+           
            
             //oRepsonse.Code = "BQAkRvpgMZHn76lNx0rVgKM4iwwb6FmZk7MTKlkgSk_ajr60oHxBCapqOXItvgQqk1rZ6CRNckDQ6UMQWqXSgBmQu4v7-k5j9OR2xYiuRWHdXDxFsK_KW_nMK0ikP8zh_7Wf6PhN_py1KG0Gj9A9cGJ61tE9uewUrFMH4Ye8z0tjdXwZmEoPQPd4cpOs8tCiwZp-sSTUfxCGAN8jJOMBUPFsoiJrsgmBI4q7rLtipjUeobnZxJsiG5SFunxU15-9KpHCaNXHMBEsdVYLT82Ctnmu67tFUF5NYRYr0dQf8OA7bqmQmuE";
             //oRepsonse.Code = "AQBSOdyT5Uu68S954-GRWqZWo0zIuUptLQaBPuf-f9Z8xlUosnEFSGfxqzwQbC7Jv1Y_yQLLgWyhcFkB6qNExRu9LLu590nm7CY1H8L0ZIUTugcu_NmF7N8mKnrjXbXakTc";
             //oAutorizationCodeAuth_OnResponseReceivedEvent(oRepsonse);
-            IEnumerable<SpotifyUser> oUsers = SpotifyChangeControlLib.AccessLayer.SpotifyAccessLayer.GetSpotifyUsersAndTokens();
-            foreach (SpotifyUser oSpotifyUser in oUsers)
-            {
-                CurrentUser = oSpotifyUser;
-                IEnumerable<SpotifyPlaylist> oPs = oSpotifyUser.Playlist;    
+            //IEnumerable<SpotifyUser> oUsers = SpotifyChangeControlLib.AccessLayer.SpotifyAccessLayer.GetSpotifyUsersAndTokens();
+            //foreach (SpotifyUser oSpotifyUser in oUsers)
+            //{
+            //    CurrentUser = oSpotifyUser;
+            //    IEnumerable<SpotifyPlaylist> oPs = oSpotifyUser.Playlist;    
 
-                int i = 0;
-            }
+            //    int i = 0;
+            //}
 
         }
 
@@ -115,6 +115,9 @@ namespace SpotifyWebAPIExample
                 Console.WriteLine("Error: " + response.Error);
                 return;
             }
+
+
+
             Token oToken;
             oToken = oAutorizationCodeAuth.ExchangeAuthCode(response.Code, SCC_PRIVATE_ID);
             //oToken = oAutorizationCodeAuth.RefreshToken(response.Code, SCC_PRIVATE_ID);
@@ -134,8 +137,8 @@ namespace SpotifyWebAPIExample
             //};
 
             _oPrivateProfile = _oSpotifyWebApi.GetPrivateProfile();
-            //SpotifyUser oCurrentUser = new SpotifyUser(_oPrivateProfile, oToken);
-            
+            SpotifyUser oCurrentUser = new SpotifyUser(_oPrivateProfile, response.Code, oToken);
+
 
 
 
