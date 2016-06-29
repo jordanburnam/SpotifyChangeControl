@@ -9,29 +9,21 @@ BEGIN
 
 	SELECT 
 		SU.UserID
-		,Token.MUpdatedDate AS TokenUpdatedDate
-		,Token.AccessToken
-		,Token.RefreshToken
-		,Token.AccessExpired
-		,Token.ExpiresIn 
+		,SU.Name
+		,SUA.Code AS AuthCode
+		,SUA.AuthDate 
+		,SUA.HasBeenTokenized AS AuthCodeTokenized
+		,SUAT.code AS AccessTokenCode
+		,SUAT.TokenType AS AccessTokenTokenType
+		,SUAT.AccessExpired AS AccessExpired
+		,SUAT.ExpiresIn AS AccessTokenExpiresIn
+		,SUAT.TokenDate AS AccessTokenCreatedDate
+		,SURT.code AS RefreshTokenCode
 	FROM dbo.Spotify_User AS SU
-	INNER JOIN (
-				SELECT 
-						SUT.UserID
-					,MUpdatedDate
-					,SUT.AccessToken
-					,SUT.RefreshToken
-					,SUT.AccessExpired
-					,SUT.ExpiresIn 
-				FROM dbo.Spotify_User_Token SUT
-				INNER JOIN (
-							SELECT 
-								MAX(UpdatedDate) AS MUpdatedDate
-								,UserID
-							FROM dbo.Spotify_User_Token SUT
-							GROUP BY UserID
-							) AS MToken ON MToken.MUpdatedDate = SUT.UpdatedDate AND MToken.UserID = SUT.UserID
-				) Token ON Token.UserID = SU.UserID
+	INNER JOIN dbo.Spotify_User_Auth SUA ON SUA.UserID = SU.UserID
+	LEFT JOIN dbo.Spotify_User_RefreshToken SURT ON SURT.UserID = SU.UserID
+	LEFT JOIN dbo.Spotify_User_AccessToken SUAT ON SUAT.UserID = SU.UserID
+	;
 					
 				
 END

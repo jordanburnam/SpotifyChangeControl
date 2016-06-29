@@ -13,10 +13,10 @@ IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES  T
 BEGIN
   CREATE TABLE dbo.Spotify_WK_Track
   (
-	TrackID BIGINT NOT NULL
+	TrackID BIGINT NOT NULL 
 	,Name NVARCHAR(1000) NOT NULL
   )
-  CREATE CLUSTERED INDEX CI_Track_WK_TrackID ON dbo.Spotify_WK_Track(TrackID);
+  CREATE CLUSTERED INDEX UCI_Track_WK_TrackID ON dbo.Spotify_WK_Track(TrackID);
 END
 GO
 
@@ -29,7 +29,7 @@ BEGIN
 	PlaylistID BIGINT NOT NULL
 	,Name NVARCHAR(1000) NOT NULL
   )
-  CREATE CLUSTERED INDEX CI_WK_Playlist_PlaylistID ON dbo.Spotify_WK_Playlist(PlaylistID);
+  CREATE CLUSTERED INDEX UCI_WK_Playlist_PlaylistID ON dbo.Spotify_WK_Playlist(PlaylistID);
 END
 GO
 
@@ -42,6 +42,6 @@ BEGIN
 	ArtistID BIGINT NOT NULL
 	,Name NVARCHAR(1000) NOT NULL
   )
-  CREATE NONCLUSTERED INDEX CI_WK_Artsit_ArtistID ON dbo.Spotify_WK_Artist(ArtistID);
+  CREATE CLUSTERED INDEX UCI_WK_Artsit_ArtistID ON dbo.Spotify_WK_Artist(ArtistID);
 END
 GO

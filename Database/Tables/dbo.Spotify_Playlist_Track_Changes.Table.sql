@@ -8,7 +8,7 @@ BEGIN
   --Track
 	,TrackID BIGINT NOT NULL
   --Position old and new :)
-    ,Position BIGINT NOT NULL
+    ,Position INT NOT NULL
     ,ChangeTypeID INT NOT NULL
     ,FOREIGN KEY(TrackID) REFERENCES dbo.Spotify_Track(TrackID)
 	,FOREIGN KEY(PlaylistID) REFERENCES dbo.Spotify_Playlist(PlaylistID)
