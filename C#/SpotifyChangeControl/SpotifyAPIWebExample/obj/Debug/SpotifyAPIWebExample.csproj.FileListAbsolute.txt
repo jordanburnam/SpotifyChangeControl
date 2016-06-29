@@ -2,7 +2,13 @@ C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\Spo
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\SpotifyWebAPIExample.exe
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\SpotifyWebAPIExample.pdb
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\SpotifyAPI.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\SpotifyChangeControlLib.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\StackExchange.Redis.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\SpotifyAPI.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\SpotifyChangeControlLib.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\StackExchange.Redis.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\bin\Debug\StackExchange.Redis.xml
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\obj\Debug\SpotifyAPIWebExample.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\obj\Debug\SpotifyWebAPIExample.exe
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyAPIWebExample\obj\Debug\SpotifyWebAPIExample.pdb

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlLib", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlWeb", "SpotifyChangeControlWeb\SpotifyChangeControlWeb.csproj", "{FCACE768-788F-4092-B4F8-C43639471A60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlCMD", "SpotifyChangeControlCMD\SpotifyChangeControlCMD.csproj", "{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FCACE768-788F-4092-B4F8-C43639471A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCACE768-788F-4092-B4F8-C43639471A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCACE768-788F-4092-B4F8-C43639471A60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

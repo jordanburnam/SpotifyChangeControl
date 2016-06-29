@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1D284265-21B2-4E01-9EA9-019DC167CF62}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpotifyChangeControlLib</RootNamespace>
-    <AssemblyName>SpotifyChangeControlLib</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>SpotifyChangeControlCMD</RootNamespace>
+    <AssemblyName>SpotifyChangeControlCMD</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="StackExchange.Redis, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StackExchange.Redis.1.1.603\lib\net45\StackExchange.Redis.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,40 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StorageLayer\CacheDatabase.cs" />
-    <Compile Include="StorageLayer\WorkTableState.cs" />
-    <Compile Include="AccessLayer\SpotifyDataLayer.cs" />
-    <Compile Include="StorageLayer\SpotifyDatabase.cs" />
-    <Compile Include="DataManagers\UserManager.cs" />
-    <Compile Include="DataObjects\SpotifyArtist.cs" />
-    <Compile Include="DataObjects\SpotifyPlaylist.cs" />
-    <Compile Include="DataObjects\SpotifyTrack.cs" />
-    <Compile Include="DataObjects\SpotifyUser.cs" />
-    <Compile Include="StorageLayer\RelationalDatabase.cs" />
-    <Compile Include="DataObjects\SpotifyUserAccessToken.cs" />
-    <Compile Include="DataObjects\SpotifyUserAuth.cs" />
-    <Compile Include="DataObjects\SpotifyUserRefreshToken.cs" />
-    <Compile Include="SCCManager.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\Abstract\SpotifyObjectBase.cs" />
-    <Compile Include="Types\Enums.cs" />
-    <Compile Include="Types\Interfaces\ISpotifyObject.cs" />
-    <Compile Include="Utilities\HashSlingingSlasher.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpotifyAPI\SpotifyAPI.csproj">
       <Project>{ebbe35e2-7b91-4d7d-b8fc-3a0472f5119d}</Project>
       <Name>SpotifyAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SpotifyChangeControlLib\SpotifyChangeControlLib.csproj">
+      <Project>{1d284265-21b2-4e01-9ea9-019dc167cf62}</Project>
+      <Name>SpotifyChangeControlLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

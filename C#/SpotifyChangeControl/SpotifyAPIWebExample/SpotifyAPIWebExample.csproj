@@ -63,6 +63,10 @@
       <Project>{ebbe35e2-7b91-4d7d-b8fc-3a0472f5119d}</Project>
       <Name>SpotifyAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SpotifyChangeControlLib\SpotifyChangeControlLib.csproj">
+      <Project>{1d284265-21b2-4e01-9ea9-019dc167cf62}</Project>
+      <Name>SpotifyChangeControlLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

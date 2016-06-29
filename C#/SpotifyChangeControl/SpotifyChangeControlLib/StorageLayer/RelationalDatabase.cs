@@ -8,51 +8,58 @@ using SpotifyChangeControlLib.Types;
 using System.Data;
 using SpotifyChangeControlLib.DataObjects;
 
-namespace SpotifyChangeControlLib.DatabaseObjects
+
+
+namespace SpotifyChangeControlLib.StorageLayer
 {
     /// <summary>
     /// This class will be used to access the database layer 
     /// directly by using its functions. 
     /// </summary>
-    internal static class SpotifyDatabase
+    internal static class RelationalDatabase
     {
         private static string _ConnectionString;
         private static string _Database;
         private static string _DataSource;
         private static SqlConnection _oSqlConnection;
         private static int _BatchThreshold;
-
+   
         //Make sure that certain one time processes have been done
         private static bool _InitCompleted = false;
 
 
          public  static void Init(string sConnectionString, int iBatchThreshold = 1000)
         {
-            SpotifyDatabase._ConnectionString = sConnectionString;
-            SpotifyDatabase._oSqlConnection = new SqlConnection(SpotifyDatabase._ConnectionString);
-            SpotifyDatabase._DataSource = SpotifyDatabase._oSqlConnection.DataSource;
-            SpotifyDatabase._Database = SpotifyDatabase._oSqlConnection.Database;
-            SpotifyDatabase._BatchThreshold = iBatchThreshold;
-            
+            RelationalDatabase._ConnectionString = sConnectionString;
+            RelationalDatabase._oSqlConnection = new SqlConnection(RelationalDatabase._ConnectionString);
+            RelationalDatabase._DataSource = RelationalDatabase._oSqlConnection.DataSource;
+            RelationalDatabase._Database = RelationalDatabase._oSqlConnection.Database;
+            RelationalDatabase._BatchThreshold = iBatchThreshold;
+            RelationalDatabase._InitCompleted = true;
+           
 
         }
 
         private static void CheckInit()
         {
-            if (!SpotifyDatabase._InitCompleted)
+            if (!RelationalDatabase._InitCompleted)
             {
                 throw new Exception("The init function has not been called. This type 'SpotifyDatabase' must have it's init function called before being used!");
             }
         }
 
-        internal static void ExecuteNonQuery(string sCommandText)
+        internal static void ExecuteNonQuery(string sCommandText, CommandType eCommandType = CommandType.Text,  params SqlParameter[] oSqlParameters)
         {
             try
             {
                 CheckInit();
-                using (SqlCommand oSqlCommand = new SqlCommand(sCommandText, SpotifyDatabase._oSqlConnection))
+                using (SqlCommand oSqlCommand = new SqlCommand(sCommandText, RelationalDatabase._oSqlConnection))
                 {
-                    oSqlCommand.CommandType = System.Data.CommandType.Text;
+                    oSqlCommand.CommandType = eCommandType;
+                    if (oSqlParameters.Length > 0)
+                    {
+                        oSqlCommand.Parameters.AddRange(oSqlParameters);
+                    }
                     if (_oSqlConnection.State != System.Data.ConnectionState.Open)
                     {
                         _oSqlConnection.Open();
@@ -74,18 +81,22 @@ namespace SpotifyChangeControlLib.DatabaseObjects
             }
         }
 
-        internal static void BulkInsert(DataTable oDataTable, TableState oDatabaseTableInfo)
+        internal static void BulkInsert(DataTable oDataTable, WorkTableState oDatabaseTableInfo, params SqlBulkCopyColumnMapping[] oMappings)
         {
             try
             {
-                using (SqlBulkCopy oSqlBulkCopy = new SqlBulkCopy(SpotifyDatabase._oSqlConnection, SqlBulkCopyOptions.TableLock, null))
+                using (SqlBulkCopy oSqlBulkCopy = new SqlBulkCopy(RelationalDatabase._oSqlConnection, SqlBulkCopyOptions.TableLock, null))
                 {
                     if (_oSqlConnection.State != System.Data.ConnectionState.Open)
                     {
                         _oSqlConnection.Open();
                     }
-                    oSqlBulkCopy.BatchSize = SpotifyDatabase._BatchThreshold;
+                    oSqlBulkCopy.BatchSize = RelationalDatabase._BatchThreshold;
                     oSqlBulkCopy.DestinationTableName = oDatabaseTableInfo.TableName;
+                    foreach (SqlBulkCopyColumnMapping oMapping in oMappings)
+                    {
+                        oSqlBulkCopy.ColumnMappings.Add(oMapping);
+                    }
                     oSqlBulkCopy.WriteToServer(oDataTable);
                 }
             }
@@ -109,7 +120,7 @@ namespace SpotifyChangeControlLib.DatabaseObjects
             {
                 DataSet oDataSet = new DataSet();
 
-                using (SqlCommand oSqlCommand = new SqlCommand(sProcedure, SpotifyDatabase._oSqlConnection))
+                using (SqlCommand oSqlCommand = new SqlCommand(sProcedure, RelationalDatabase._oSqlConnection))
                 {
 
                     oSqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
@@ -161,5 +172,7 @@ namespace SpotifyChangeControlLib.DatabaseObjects
                 throw ex;
             }
         }
+
+
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SpotifyChangeControlLib.Types;
-using SpotifyChangeControlLib.DatabaseObjects;
+using SpotifyChangeControlLib.StorageLayer;
 
 namespace SpotifyChangeControlLib.DataObjects
 {
@@ -21,7 +21,7 @@ namespace SpotifyChangeControlLib.DataObjects
     /// A procedure will then move from WK to our permanent table and then those indexes will need
     /// to be rebuilt. And then repeat!
     /// </summary>
-    internal class TableState
+    internal class WorkTableState
     {
         //Declare some static things for everyone to share
         private static readonly string _TruncateCommandTemplate = "TRUNCATE TABLE [{SchemaName}].[{TableName}];";
@@ -30,20 +30,19 @@ namespace SpotifyChangeControlLib.DataObjects
         //Instance Variables
         private string _TableName;
         private string _SchemaName;
-        private bool _WorkTable;
         private Enums.DatabaseTableState _TableState;
 
         private string _TruncateCommand
         {
-            get { return TableState._TruncateCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
+            get { return WorkTableState._TruncateCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
         }
         private string _HeapCommand
         {
-            get { return TableState._HeapCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
+            get { return WorkTableState._HeapCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
         }
         private string _IndexCommand
         {
-            get { return TableState._IndexCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
+            get { return WorkTableState._IndexCommandTemplate.Replace("{SchemaName}", this._SchemaName).Replace("{TableName}", this._TableName); }
         }
         public string TableName
         {
@@ -51,29 +50,21 @@ namespace SpotifyChangeControlLib.DataObjects
         }
 
         //Constructor :)
-        public TableState(string sTableName, string sSchemaName = "dbo")
+        public WorkTableState(string sTableName, string sSchemaName = "dbo")
         {
             this._TableName = sTableName;
             this._SchemaName = sSchemaName;
             this._TableState = Enums.DatabaseTableState.Unknown;
-            if (sTableName.Contains("WK"))
-            {
-                this._WorkTable = true;
-            }
-            else
-            {
-                this._WorkTable = false;
-            }
+          
         }
 
         private void TruncateTable()
         {
             if ( (this._TableState & Enums.DatabaseTableState.Truncated) != Enums.DatabaseTableState.Truncated) //Check our bitwise flag of enums to make sure the table has not already been truncated
             {
-                if (this._WorkTable)
-                {
-                    SpotifyDatabase.ExecuteNonQuery(this._TruncateCommand);
-                }
+               
+                RelationalDatabase.ExecuteNonQuery(this._TruncateCommand);
+                
             }
             
         }
@@ -82,10 +73,9 @@ namespace SpotifyChangeControlLib.DataObjects
         {
             if ((this._TableState & Enums.DatabaseTableState.Heaped) != Enums.DatabaseTableState.Heaped) //Check our bitwise flag of enums to make sure the table has not already been heaped
             {
-                if (this._WorkTable)
-                {
-                    SpotifyDatabase.ExecuteNonQuery(this._HeapCommand);
-                }
+                
+               RelationalDatabase.ExecuteNonQuery(this._HeapCommand);
+                
             }
         }
 
@@ -93,7 +83,7 @@ namespace SpotifyChangeControlLib.DataObjects
         {
             if ((this._TableState & Enums.DatabaseTableState.Querable) != Enums.DatabaseTableState.Querable) //Check our bitwise flag of enums to make sure the table has not already been indexed
             {
-                SpotifyDatabase.ExecuteNonQuery(this._IndexCommand);
+                RelationalDatabase.ExecuteNonQuery(this._IndexCommand);
             }
         }
 

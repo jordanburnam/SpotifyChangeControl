@@ -9,6 +9,9 @@ using SpotifyAPI.SpotifyWebAPI.Models;
 using SpotifyAPI.Utilities.Extensions;
 using System.Data;
 using System.Data.SqlClient;
+using SpotifyChangeControlLib;
+using SpotifyChangeControlLib.DataObjects;
+
 
 namespace SpotifyWebAPIExample
 {
@@ -20,9 +23,33 @@ namespace SpotifyWebAPIExample
         static AutorizationCodeAuth oAutorizationCodeAuth;
         static string sSpotifyPrivateID;
         static string sSpotifyPublicID;
+        private static string SCC_PRIVATE_ID;
+        private static string SCC_PUBLIC_ID;
+        private static string SCC_SQL_CON;
+        private static string SCC_REDIS_HOST;
+        private static string SCC_REDIS_PASS;
+        private static int SCC_REDIS_PORT;
+        private static SpotifyUser CurrentUser; 
+
         static void Main(string[] args)
         {
 
+            if (args.Length == 0)
+            {
+                SCC_PRIVATE_ID = System.Environment.GetEnvironmentVariable("SCC_PRIVATE_ID");
+                SCC_PUBLIC_ID = System.Environment.GetEnvironmentVariable("SCC_PUBLIC_ID");
+
+                SCC_SQL_CON = System.Environment.GetEnvironmentVariable("SCC_SQL_CON");
+
+                SCC_REDIS_HOST = System.Environment.GetEnvironmentVariable("SCC_REDIS_HOST");
+                SCC_REDIS_PASS = System.Environment.GetEnvironmentVariable("SCC_REDIS_PASS");
+                string sPort = System.Environment.GetEnvironmentVariable("SCC_REDIS_PORT");
+                if (!int.TryParse(sPort, out SCC_REDIS_PORT))
+                {
+                    SCC_REDIS_PORT = 6379;
+                }
+            }
+            SCCManager oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
             sSpotifyPrivateID = Utilities.Properties.Settings.Default.SpotifyPrivateID;
             sSpotifyPublicID = Utilities.Properties.Settings.Default.SpotifyPublicID;
            
@@ -49,7 +76,7 @@ namespace SpotifyWebAPIExample
             //    RedirectUri = "http://localhost",
             //    //How many permissions we need?
             //    Scope = Scope.USER_READ_PRIVATE | Scope.USER_READ_EMAIL | Scope.PLAYLIST_READ_PRIVATE | Scope.USER_LIBRARAY_READ | Scope.USER_LIBRARY_MODIFY | Scope.USER_READ_PRIVATE
-            //        | Scope.USER_FOLLOW_MODIFY | Scope.USER_FOLLOW_READ | Scope.PLAYLIST_MODIFY_PRIVATE | Scope.USER_READ_BIRTHDATE |Scope.PLAYLIST_MODIFY_PUBLIC 
+            //        | Scope.USER_FOLLOW_MODIFY | Scope.USER_FOLLOW_READ | Scope.PLAYLIST_MODIFY_PRIVATE | Scope.USER_READ_BIRTHDATE | Scope.PLAYLIST_MODIFY_PUBLIC
             //};
             //Start the internal http server
             //auth.ShowDialog = false;
@@ -61,11 +88,21 @@ namespace SpotifyWebAPIExample
             oAutorizationCodeAuth.OnResponseReceivedEvent += oAutorizationCodeAuth_OnResponseReceivedEvent;
             //Start
             //auth.DoAuth();
-            oAutorizationCodeAuth.DoAuth();
-            AutorizationCodeAuthResponse oRepsonse = new AutorizationCodeAuthResponse();
-            //oRepsonse.Code = "AQD_bbhDtWl0r9pXrj0-SFoTMffgMfLdAgoPA1PAJvP-K4UGcd8lhaX9_N9lfgXr_NcAx__1NrMReW6zerjd5zstRFvySqQG6bpIom67YQSXSa9erHKbGeltxkeThIGE4g3J4RJMPIamqveBN9auZSuLLhJJsAlaxnaqWO6uxSGIBvhrCPgFkrXiwVoWsT18GzxRfNwrLm1T-ypdtFwbH6xxohgtNJR6GhYWvFe7IHbbGzbLXuXLmj4OgGLtAxjv_8nlUAtZVbzsXsJH5iWB9qZ9IB3oovsqwzIdfOAunwGx848jrXLcXHfTE7AD4uBrc2ukBMMpcCKF19wy_YHw4k70TIaEP3VBs3AoWRwl1Tw6aa1pUGgfD8yh6_jDG6mS23nDSjTS9eTi--HUyP7zQsU-ih3vnW94Yy9pGaKixZLiij0G4ozlgKAL90BUq24supLxtoE";
+           // oAutorizationCodeAuth.DoAuth();
+
+           
+            //oRepsonse.Code = "BQAkRvpgMZHn76lNx0rVgKM4iwwb6FmZk7MTKlkgSk_ajr60oHxBCapqOXItvgQqk1rZ6CRNckDQ6UMQWqXSgBmQu4v7-k5j9OR2xYiuRWHdXDxFsK_KW_nMK0ikP8zh_7Wf6PhN_py1KG0Gj9A9cGJ61tE9uewUrFMH4Ye8z0tjdXwZmEoPQPd4cpOs8tCiwZp-sSTUfxCGAN8jJOMBUPFsoiJrsgmBI4q7rLtipjUeobnZxJsiG5SFunxU15-9KpHCaNXHMBEsdVYLT82Ctnmu67tFUF5NYRYr0dQf8OA7bqmQmuE";
+            //oRepsonse.Code = "AQBSOdyT5Uu68S954-GRWqZWo0zIuUptLQaBPuf-f9Z8xlUosnEFSGfxqzwQbC7Jv1Y_yQLLgWyhcFkB6qNExRu9LLu590nm7CY1H8L0ZIUTugcu_NmF7N8mKnrjXbXakTc";
             //oAutorizationCodeAuth_OnResponseReceivedEvent(oRepsonse);
-         
+            IEnumerable<SpotifyUser> oUsers = SpotifyChangeControlLib.AccessLayer.SpotifyAccessLayer.GetSpotifyUsersAndTokens();
+            foreach (SpotifyUser oSpotifyUser in oUsers)
+            {
+                CurrentUser = oSpotifyUser;
+                IEnumerable<SpotifyPlaylist> oPs = oSpotifyUser.Playlist;    
+
+                int i = 0;
+            }
+
         }
 
         private static void oAutorizationCodeAuth_OnResponseReceivedEvent(AutorizationCodeAuthResponse response)
@@ -78,16 +115,28 @@ namespace SpotifyWebAPIExample
                 Console.WriteLine("Error: " + response.Error);
                 return;
             }
-            Token oToken = oAutorizationCodeAuth.ExchangeAuthCode(response.Code, sSpotifyPrivateID);
-            //oToken = oAutorizationCodeAuth.RefreshToken("AQDdjOWvlLXe0kNnKtS5FH_GFWTjuui4YXd0I510TpA1sYw-fDGZuCrSAUcgvi6wYJZR8NUKth-dmalOT8p6TNMA1MhmF0JAmH45yZLFaD19LGhetnDocjaAaDgE4flZnec", sSpotifyClientSecret);
+            Token oToken;
+            oToken = oAutorizationCodeAuth.ExchangeAuthCode(response.Code, SCC_PRIVATE_ID);
+            //oToken = oAutorizationCodeAuth.RefreshToken(response.Code, SCC_PRIVATE_ID);
+
             _oSpotifyWebApi = new SpotifyWebAPIClient()
             {
                 AccessToken = oToken.AccessToken,
                 TokenType = oToken.TokenType,
                 UseAuth = true
             };
+
+            //_oSpotifyWebApi = new SpotifyWebAPIClient()
+            //{
+            //    AccessToken = CurrentUser.Token.AccessToken,
+            //    TokenType = CurrentUser.Token.TokenType,
+            //    UseAuth = true
+            //};
+
             _oPrivateProfile = _oSpotifyWebApi.GetPrivateProfile();
-            SqlConnection oSqlConnection = new SqlConnection("");
+            //SpotifyUser oCurrentUser = new SpotifyUser(_oPrivateProfile, oToken);
+            
+
 
 
             DisplayMenu();
@@ -112,6 +161,8 @@ namespace SpotifyWebAPIExample
                     UseAuth = true
                 };
             _oPrivateProfile = _oSpotifyWebApi.GetPrivateProfile();
+             
+           
             DisplayMenu();
         }
 
