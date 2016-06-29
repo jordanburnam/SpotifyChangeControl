@@ -26,7 +26,6 @@ BEGIN
 		UPDATE 
 			SET targetTable.Code = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN sourceTable.Code ELSE targetTable.Code END
 				,targetTable.AuthDate = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN sourceTable.AuthDate ELSE targetTable.AuthDate END
-				,targetTable.HasBeenTokenized = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN 0 ELSE targetTable.HasBeenTokenized END 
 				,targetTable.UpdatedDate = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN GETDATE() ELSE targetTable.UpdatedDate END
 				;
 	COMMIT TRANSACTION;

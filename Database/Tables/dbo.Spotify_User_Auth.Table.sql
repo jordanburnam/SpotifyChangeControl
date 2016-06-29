@@ -5,7 +5,6 @@ BEGIN
   (
 	UserID BIGINT NOT NULL PRIMARY KEY
 	,Code NVARCHAR(2000) NOT NULL
-	,HasBeenTokenized BIT NOT NULL DEFAULT(0)
 	,AuthDate DATETIME NOT NULL
 	,CreatedDate DATETIME NOT NULL DEFAULT(GETDATE()) --Shows when the row was added
 	,UpdatedDate DATETIME NOT NULL DEFAULT(GETDATE()) --Shows when the row was last updated

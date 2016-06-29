@@ -12,7 +12,6 @@ BEGIN
 		,SU.Name
 		,SUA.Code AS AuthCode
 		,SUA.AuthDate 
-		,SUA.HasBeenTokenized AS AuthCodeTokenized
 		,SUAT.code AS AccessTokenCode
 		,SUAT.TokenType AS AccessTokenTokenType
 		,SUAT.AccessExpired AS AccessExpired

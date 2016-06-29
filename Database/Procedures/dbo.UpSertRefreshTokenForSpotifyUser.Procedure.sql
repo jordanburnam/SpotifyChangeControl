@@ -28,12 +28,6 @@ BEGIN
 				,targetTable.TokenDate = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate  AND sourceTable.Code IS NOT NULL  THEN sourceTable.TokenDate ELSE targetTable.TokenDate END
 				,targetTable.UpdatedDate = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate  AND sourceTable.Code IS NOT NULL  THEN GETDATE() ELSE targetTable.UpdatedDate END
 				;
-
-	UPDATE A 
-		SET A.HasBeenTokenized = 1
-	FROM dbo.Spotify_User_Auth A 
-	WHERE (1=1)
-		AND A.UserID = @iUserID;
 	COMMIT TRANSACTION;
 END
 GO

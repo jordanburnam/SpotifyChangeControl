@@ -11,14 +11,17 @@ CREATE PROCEDURE dbo.AddSpotifyUser (
 )
 AS
 BEGIN
-	INSERT INTO dbo.Spotify_User
-	(
-		UserID
-		,Name
-	)
-	SELECT 
-		@iUserID,
-		@sUserName
+	IF NOT EXISTS (SELECT 1 FROM dbo.Spotify_User WHERE UserID = @iUserID)
+	BEGIN
+		INSERT INTO dbo.Spotify_User
+		(
+			UserID
+			,Name
+		)
+		SELECT 
+			@iUserID,
+			@sUserName
+	END
 
 	EXEC dbo.UpSertAuthTokenForSpotifyUser @iUserID = @iUserID, @sCode = @sAuthCode, @dtAuth = @dtAuth;
 END

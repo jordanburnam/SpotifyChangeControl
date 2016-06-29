@@ -6,7 +6,7 @@ GO
 CREATE PROCEDURE dbo.UpSertAccessTokenForSpotifyUser (
 	@iUserID BIGINT
 	,@sCode NVARCHAR(2000)
-	,@sTokenType NVARCHAR(2000)
+	,@sTokenType NVARCHAR(100)
 	,@iExpiresIn INT
 	,@dtToken DATETIME
 )
