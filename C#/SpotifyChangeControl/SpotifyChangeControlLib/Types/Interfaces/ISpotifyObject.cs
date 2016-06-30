@@ -12,7 +12,6 @@ namespace SpotifyChangeControlLib.Types.Interfaces
         Int64 ID { get; set;}
 
         string Name { get; set; }
-        bool LookedUpObjectID { get; }
-
+  
     }
 }

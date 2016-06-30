@@ -23,16 +23,12 @@ namespace SpotifyChangeControlLib.DataObjects
             get { return this._TokenDate; }
         }
 
-       
-
-        public SpotifyUserRefreshToken(string sCode, DateTime dtToken)
+        public SpotifyUserRefreshToken(string sRefreshToken, DateTime dtToken)
         {
-            this._Code = sCode;
-           
+            this._Code = sRefreshToken;
             this._TokenDate = dtToken;
-
-
         }
+
         public SpotifyUserRefreshToken(Token oSpotifyToken)
         {
             this._Code = oSpotifyToken.RefreshToken;

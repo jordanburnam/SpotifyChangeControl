@@ -13,7 +13,6 @@ namespace SpotifyChangeControlLib.Types.Abstract
         private Int64 _ID;
         private string _SpotifyID;
         private string _Name;
-        public bool _LookedUpObjectID = false;
 
         public long ID
         {
@@ -24,15 +23,7 @@ namespace SpotifyChangeControlLib.Types.Abstract
 
             set
             {
-                this._ID = value; this._LookedUpObjectID = true;
-            }
-        }
-
-        public bool LookedUpObjectID
-        {
-            get
-            {
-                return this._LookedUpObjectID;
+                this._ID = value;
             }
         }
 

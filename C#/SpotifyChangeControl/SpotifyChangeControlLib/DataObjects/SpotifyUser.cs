@@ -57,6 +57,7 @@ namespace SpotifyChangeControlLib.DataObjects
             set { this._Playlists = value; }
         }
 
+
         public SpotifyUserAuth UserAuth
         {
             get { return this._UserAuth; }
@@ -90,7 +91,7 @@ namespace SpotifyChangeControlLib.DataObjects
 
         }
 
-        
+
         public SpotifyUser(PrivateProfile oPrivateProfile, string sAuthCode, Token oToken)
         {
             this._SpotifyID = oPrivateProfile.Id;
@@ -110,26 +111,7 @@ namespace SpotifyChangeControlLib.DataObjects
             this._AccessToken = new SpotifyUserAccessToken(sAccessCode, sAccessTokenType, iAccessExpiresIn, dtToken);
             SaveAccessTokenToDatabase();
         }
-        public SpotifyUser(PublicProfile oPublicProfile, string sAuthCode, Token oToken)
-        {
-            this._SpotifyID = oPublicProfile.Id;
-            this._Name = oPublicProfile.Id;
-            this._ID = SpotifyAccessLayer.GetObjectIDForSpotifyID(this._SpotifyID);
-
-            string sAccessCode = oToken.AccessToken;
-            string sRefreshCode = oToken.RefreshToken;
-            string sAccessTokenType = oToken.TokenType;
-            int iAccessExpiresIn = oToken.ExpiresIn;
-            DateTime dtToken = oToken.CreateDate;
-            DateTime dtAuth = oToken.CreateDate;
-            this._UserAuth = new SpotifyUserAuth(sAuthCode, dtAuth);
-            SaveUserAndAuthToDatabase();
-            this._RefreshToken = new SpotifyUserRefreshToken(sRefreshCode, dtToken);
-            SaveRefreshTokenToDatebase();
-            this._AccessToken = new SpotifyUserAccessToken(sAccessCode, sAccessTokenType, iAccessExpiresIn, dtToken);
-            SaveAccessTokenToDatabase();
-        }
-
+        
         private void SaveUserAndAuthToDatabase()
         {
             SpotifyAccessLayer.SaveUserAndAuthToDatabase(this);
@@ -154,6 +136,7 @@ namespace SpotifyChangeControlLib.DataObjects
             this._AccessToken = new SpotifyUserAccessToken(oToken);
             SaveAccessTokenToDatabase();
         }
+
 
 
     }

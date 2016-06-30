@@ -53,6 +53,8 @@ namespace SpotifyChangeControlCMD
                 }
             }
             SCCManager oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
+
+
             Console.WriteLine("DONE!");
             Console.ReadLine();
             //TODO:Do things with stuff

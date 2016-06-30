@@ -11,7 +11,7 @@ using System.Data;
 using System.Data.SqlClient;
 using SpotifyChangeControlLib;
 using SpotifyChangeControlLib.DataObjects;
-
+using SpotifyChangeControlLib.DataManagers;
 
 namespace SpotifyWebAPIExample
 {
@@ -50,8 +50,7 @@ namespace SpotifyWebAPIExample
                 }
             }
             SCCManager oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
-            sSpotifyPrivateID = Utilities.Properties.Settings.Default.SpotifyPrivateID;
-            sSpotifyPublicID = Utilities.Properties.Settings.Default.SpotifyPublicID;
+
            
             Console.WriteLine("### SpotifyWebAPI .NET Test App");
             Console.WriteLine("Starting auth process...");
@@ -60,7 +59,7 @@ namespace SpotifyWebAPIExample
             oAutorizationCodeAuth = new AutorizationCodeAuth()
             {
                 //Your client Id
-                ClientId = sSpotifyPublicID,
+                ClientId = SCC_PUBLIC_ID,
                 //Set this to localhost if you want to use the built-in HTTP Server
                 RedirectUri = "http://localhost",
                 //How many permissions we need?
@@ -81,16 +80,17 @@ namespace SpotifyWebAPIExample
             //Start the internal http server
             //auth.ShowDialog = false;
             //auth.StartHttpServer();
-            oAutorizationCodeAuth.ShowDialog = false;
-            oAutorizationCodeAuth.StartHttpServer();
+           //oAutorizationCodeAuth.ShowDialog = false;
+            //oAutorizationCodeAuth.StartHttpServer();
             //When we got our response
            //auth.OnResponseReceivedEvent += auth_OnResponseReceivedEvent;
             oAutorizationCodeAuth.OnResponseReceivedEvent += oAutorizationCodeAuth_OnResponseReceivedEvent;
             //Start
             //auth.DoAuth();
-           oAutorizationCodeAuth.DoAuth();
-           
-           
+            //oAutorizationCodeAuth.DoAuth();
+
+            UserManager oUserManger = new UserManager();
+            oUserManger.GetPlaylistsFromUsers();
             //oRepsonse.Code = "BQAkRvpgMZHn76lNx0rVgKM4iwwb6FmZk7MTKlkgSk_ajr60oHxBCapqOXItvgQqk1rZ6CRNckDQ6UMQWqXSgBmQu4v7-k5j9OR2xYiuRWHdXDxFsK_KW_nMK0ikP8zh_7Wf6PhN_py1KG0Gj9A9cGJ61tE9uewUrFMH4Ye8z0tjdXwZmEoPQPd4cpOs8tCiwZp-sSTUfxCGAN8jJOMBUPFsoiJrsgmBI4q7rLtipjUeobnZxJsiG5SFunxU15-9KpHCaNXHMBEsdVYLT82Ctnmu67tFUF5NYRYr0dQf8OA7bqmQmuE";
             //oRepsonse.Code = "AQBSOdyT5Uu68S954-GRWqZWo0zIuUptLQaBPuf-f9Z8xlUosnEFSGfxqzwQbC7Jv1Y_yQLLgWyhcFkB6qNExRu9LLu590nm7CY1H8L0ZIUTugcu_NmF7N8mKnrjXbXakTc";
             //oAutorizationCodeAuth_OnResponseReceivedEvent(oRepsonse);
@@ -137,6 +137,7 @@ namespace SpotifyWebAPIExample
             //};
 
             _oPrivateProfile = _oSpotifyWebApi.GetPrivateProfile();
+           
             SpotifyUser oCurrentUser = new SpotifyUser(_oPrivateProfile, response.Code, oToken);
 
 

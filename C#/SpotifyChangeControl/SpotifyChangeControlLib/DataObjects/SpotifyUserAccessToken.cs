@@ -44,16 +44,14 @@ namespace SpotifyChangeControlLib.DataObjects
             get { return this.GetAccessExpired(); }
         }
 
-
-        public SpotifyUserAccessToken(string sCode, string sTokenType, int iExpiresIn, DateTime dtToken)
+        public SpotifyUserAccessToken(string sAccessCode, string sAccessTokenType, int iAccessExpiresIn, DateTime dtToken)
         {
-            this._Code = sCode;
-            this._TokenType = sTokenType;
-            this._ExpiresIn = iExpiresIn;
+            this._Code = sAccessCode;
+            this._TokenType = sAccessTokenType;
+            this._ExpiresIn = iAccessExpiresIn;
             this._TokenDate = dtToken;
-
-
         }
+
         public SpotifyUserAccessToken(Token oSpotifyToken)
         {
             this._Code = oSpotifyToken.AccessToken;

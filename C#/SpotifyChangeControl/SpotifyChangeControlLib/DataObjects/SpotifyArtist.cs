@@ -10,16 +10,7 @@ namespace SpotifyChangeControlLib.DataObjects
 {
     public class SpotifyArtist : SpotifyObjectBase
     {
-        public SpotifyArtist(string sSpotifyID, string sName):base(sSpotifyID, sName)
-        {
-            ErrorResponse err;
-            
-        }
-        public SpotifyArtist(FullArtist oSpotifyFullArtist): base(oSpotifyFullArtist.Id, oSpotifyFullArtist.Name)
-        {
-
-        }
-
+        
         public SpotifyArtist(SimpleArtist oSpotifySimpleArtist) : base(oSpotifySimpleArtist.Id, oSpotifySimpleArtist.Name)
         {
 

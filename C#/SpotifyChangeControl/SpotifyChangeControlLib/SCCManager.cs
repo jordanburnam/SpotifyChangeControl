@@ -23,22 +23,10 @@ namespace SpotifyChangeControlLib
             SpotifyChangeControlLib.StorageLayer.CacheDatabase.Init(sHost, iPort, sPassword);
             SpotifyChangeControlLib.StorageLayer.RelationalDatabase.Init(sSQLConnection);
             SpotifyChangeControlLib.AccessLayer.SpotifyDatabase.Init(_ClientPublic, _ClientPrivate);
-            _oUserManager = new UserManager(this._ClientPrivate, this._ClientPublic);
-
-            //GetUsers();
+            _oUserManager = new UserManager();
+            
         }
 
-        private void  GetUsers()
-        {
-            using (SpotifyWebAPIClient oSpotifyClient = new SpotifyWebAPIClient())
-            { 
-                while (this._oUserManager.NextUser())
-                {
-                    SpotifyUser oSpotifyUser = this._oUserManager.CurrentUser;
-                    
-                   
-                }
-            }          
-        }
+       
     }
 }
