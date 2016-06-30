@@ -9,14 +9,14 @@ BEGIN
 	BEGIN TRANSACTION;
 		INSERT INTO dbo.Spotify_Playlist
 		(
-			SpotifyID,
+			PlaylistID,
 			Name
 		)
 		SELECT 
-			SWP.SpotifyID,
+			SWP.PlaylistID,
 			SWP.Name
 		FROM dbo.Spotify_WK_Playlist SWP 
-		LEFT JOIN dbo.Spotify_Playlist SP ON SP.SpotifyID = SWP.SpotifyID
+		LEFT JOIN dbo.Spotify_Playlist SP ON SP.PlaylistID = SWP.PlaylistID
 		WHERE (1=1)
 			AND SP.PlaylistID IS NULL --Does not already exist
 	COMMIT TRANSACTION;

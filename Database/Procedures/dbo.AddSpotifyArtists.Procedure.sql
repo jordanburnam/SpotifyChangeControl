@@ -9,14 +9,14 @@ BEGIN
 	BEGIN TRANSACTION;
 	INSERT INTO dbo.Spotify_Artist 
 	(
-		SpotifyID,
-		Name
+		ArtistID
+		,Name
 	)
 	SELECT 
-		SWA.SpotifyID,
+		SWA.ArtistID,
 		SWA.Name
 	FROM dbo.Spotify_WK_Artist SWA
-	LEFT JOIN dbo.Spotify_Artist  SA ON SA.SpotifyID = SWA.SpotifyID
+	LEFT JOIN dbo.Spotify_Artist  SA ON SA.ArtistID = SWA.ArtistID
 	WHERE (1=1)
 		AND SA.ArtistID IS NULL --The track does not already exist
 
