@@ -5,10 +5,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using SpotifyChangeControl.Models;
 using SpotifyAPI.SpotifyWebAPI;
 using SpotifyAPI.SpotifyWebAPI.Models;
 using SpotifyChangeControlLib;
@@ -16,7 +12,6 @@ using SpotifyChangeControlLib;
 namespace SpotifyChangeControl.Controllers
 {
     [Authorize]
-    [RequireHttps]
     public class AccountController : Controller
     {
         private string SCC_PRIVATE_ID;
@@ -28,7 +23,7 @@ namespace SpotifyChangeControl.Controllers
         private string RedirectUrl;
         private SCCManager oSCCManager;
 
-        
+
         public AccountController()
         {
             SCC_PRIVATE_ID = System.Environment.GetEnvironmentVariable("SCC_PRIVATE_ID");
@@ -43,16 +38,16 @@ namespace SpotifyChangeControl.Controllers
             {
                 SCC_REDIS_PORT = 6379;
             }
-         
+
             this.RedirectUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" + System.Web.HttpContext.Current.Request.Url.Authority + "/Account/Authorized";
             oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, RedirectUrl, SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
         }
 
-     
-        
-        
 
-        
+
+
+
+
         //
         // GET: /Account/Login
         [HttpGet]
@@ -63,9 +58,9 @@ namespace SpotifyChangeControl.Controllers
             return View();
         }
 
-       [HttpPost]
-       [AllowAnonymous]
-        public ActionResult Authorize(LoginViewModel model)
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Authorize()
         {
             AutorizationCodeAuth oAutorizationCodeAuth = new AutorizationCodeAuth()
             {
@@ -88,7 +83,7 @@ namespace SpotifyChangeControl.Controllers
 
             if (error != null)
             {
-                
+
             }
             AutorizationCodeAuth oAutorizationCodeAuth = new AutorizationCodeAuth()
             {
@@ -115,7 +110,7 @@ namespace SpotifyChangeControl.Controllers
             PrivateProfile oPrivateProfile = oSpotifyWebApi.GetPrivateProfile();
 
             Int64 iUserID = this.oSCCManager.AddSpotifyUser(oPrivateProfile, code, oToken);
-            
+
 
             // If we got this far, something failed, redisplay form
             return new EmptyResult();
@@ -123,18 +118,7 @@ namespace SpotifyChangeControl.Controllers
 
 
 
-        
 
-        #region Helpers
-        
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
-        }
 
-        #endregion
     }
 }
