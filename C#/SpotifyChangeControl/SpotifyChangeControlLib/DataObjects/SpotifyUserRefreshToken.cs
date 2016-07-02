@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyChangeControlLib.DataObjects
 {
-    public class SpotifyUserRefreshToken
+    internal class SpotifyUserRefreshToken
     {
         private string _Code;
         private DateTime _TokenDate;

@@ -17,16 +17,16 @@ namespace SpotifyChangeControlLib.DataObjects
 /// This class will represent the Spotify User and will be populated with
 /// data from the database tables of Spotify_User and Spotify_User_Token
 /// </summary>
-    public class SpotifyUser 
+    internal class SpotifyUser 
     {
-        private Int64 _ID;
-        private string _SpotifyID;
-        private string _Name;
-        private SpotifyUserAuth _UserAuth;
-        private SpotifyUserRefreshToken _RefreshToken;
-        private SpotifyUserAccessToken _AccessToken;
+        protected Int64 _ID;
+        protected string _SpotifyID;
+        protected string _Name;
+        protected SpotifyUserAuth _UserAuth;
+        protected SpotifyUserRefreshToken _RefreshToken;
+        protected SpotifyUserAccessToken _AccessToken;
 
-        private IEnumerable<SpotifyPlaylist> _Playlists;
+        protected IEnumerable<SpotifyPlaylist> _Playlists;
 
         public Int64 ID
         {
@@ -73,6 +73,12 @@ namespace SpotifyChangeControlLib.DataObjects
         {
             get { return this._AccessToken;  }
         }
+
+        protected SpotifyUser()
+        {
+            //THis is only used for the UserManger to not have to create an instance of an object unless it is needed!
+        }
+
 
         public SpotifyUser(DataRow drUser)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyChangeControlLib.Types
 {
-    class Enums
+    internal class Enums
     {
         /*
             I would like to take this oppurtunity to 
@@ -17,6 +17,14 @@ namespace SpotifyChangeControlLib.Types
             picture the cookie monster from sesame street
         */
         [Flags]
-        public enum DatabaseTableState { Truncated, Heaped, Querable, Unknown}
+        internal enum DatabaseTableState
+        {
+            Truncated = 0x01,
+            Whoops2 =   0x02,
+            Heaped =    0x04,
+            Whoops8 =   0x08,
+            Querable =  0x10,
+            Unknown =   0x20
+        }
     }
 }

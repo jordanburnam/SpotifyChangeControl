@@ -83,6 +83,13 @@ C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\Spo
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\obj\Debug\SpotifyChangeControlWeb.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\obj\Debug\SpotifyChangeControl.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\obj\Debug\SpotifyChangeControl.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\obj\Debug\SpotifyChangeControlWeb.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\SpotifyAPI.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\SpotifyChangeControlLib.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\StackExchange.Redis.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\SpotifyAPI.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\SpotifyChangeControlLib.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\StackExchange.Redis.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\StackExchange.Redis.xml

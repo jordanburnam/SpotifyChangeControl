@@ -16,27 +16,32 @@ namespace SpotifyChangeControlLib.DataManagers
     /// if it has expired and to do that it would need to call the 
     /// spotify api and requqest a new token. 
     /// </summary>
-    public class UserManager
+    internal class UserManager: SpotifyUser
     {
         
        
 
         private SpotifyUser[] _Users;
-        private Dictionary<Int64, List<SpotifyPlaylist>> _dicUserPlaylists;
+        private Dictionary<Int64, List<SpotifyPlaylist>> _UserPlaylists;
+
+        
+        private int _iCurrentIndex;
+           
 
 
 
 
 
-
-        public UserManager()
+        public UserManager():base()
         {
             this._Users = SpotifyAccessLayer.GetSpotifyUsersAndTokens().ToArray<SpotifyUser>();
-            this._dicUserPlaylists = new Dictionary<Int64, List<SpotifyPlaylist>>();
+            this._UserPlaylists = new Dictionary<Int64, List<SpotifyPlaylist>>();
+            this._iCurrentIndex = 0; 
+            
             
         }
 
-        public void GetPlaylistsFromUsers()
+        private void GetPlaylistsFromUsers()
         {
             foreach (SpotifyUser oSpotifyUser in this._Users)
             {
@@ -48,7 +53,7 @@ namespace SpotifyChangeControlLib.DataManagers
                     if (Playlists.ToArray().Length > 0)
                     {
                         
-                        this._dicUserPlaylists.Add(oSpotifyUser.ID, Playlists);
+                        this._UserPlaylists.Add(oSpotifyUser.ID, Playlists);
                         
                     }
                 }
@@ -56,12 +61,28 @@ namespace SpotifyChangeControlLib.DataManagers
             }
         }
 
-        public void GetTracksFromPlaylists()
+        public bool Read()
         {
-            foreach (Int64 iUserID in this._dicUserPlaylists.Keys)
+          
+            if (_iCurrentIndex > this._Users.Length - 1)
             {
-
+                this._iCurrentIndex = 0; //All users returned reset this before we return
+                return false;
             }
+            SpotifyUser oSpotifyUser = this._Users[this._iCurrentIndex];
+            this._iCurrentIndex++;
+
+
+            this._ID = oSpotifyUser.ID;
+            this._SpotifyID = oSpotifyUser.SpotifyID;
+            this._Name = oSpotifyUser.Name;
+            this._UserAuth = oSpotifyUser.UserAuth;
+            this._RefreshToken = oSpotifyUser.RefreshToken;
+            this._AccessToken = oSpotifyUser.AccessToken;
+            this._Playlists = oSpotifyUser.Playlist;
+
+
+            return true;
         }
 
     }

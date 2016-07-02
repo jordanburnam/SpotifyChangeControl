@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyChangeControlLib.DataObjects
 {
-    public class SpotifyUserAccessToken
+    internal class SpotifyUserAccessToken
     {
         private string _Code;
 

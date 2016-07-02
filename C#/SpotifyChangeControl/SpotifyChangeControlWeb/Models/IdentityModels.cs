@@ -21,7 +21,7 @@ namespace SpotifyChangeControl.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base(System.Environment.GetEnvironmentVariable("SCC_AUTH_SQL_CON"), throwIfV1Schema: false)
         {
         }
 

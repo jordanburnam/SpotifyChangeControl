@@ -10,18 +10,19 @@ using SpotifyChangeControlLib.Utilities;
 
 namespace SpotifyChangeControlLib.AccessLayer
 {
-    public static class SpotifyDatabase
+    internal static class SpotifyDatabase
     {
         /*
             This will be used to access the spotify database
         */
         private static string _ClientPrivate;
         private static string _ClientPublic;
-
-        public static void Init(string sPublicClient, string sPrivateClient)
+        private static string _RedirectUrl;
+        public static void Init(string sPublicClient, string sPrivateClient, string sRedirectUrl)
         {
             _ClientPublic = sPublicClient;
             _ClientPrivate = sPrivateClient;
+            _RedirectUrl = sRedirectUrl;
         }
 
         public static IEnumerable<SpotifyPlaylist> GetUsersFollowedPlaylists(SpotifyUser oSpotifyUser)
@@ -35,8 +36,7 @@ namespace SpotifyChangeControlLib.AccessLayer
                 {
                     if (!oSimplePlaylist.Owner.Id.Equals(oSpotifyUser.Name))
                     {
-                        List<SpotifyTrack> oTracks = new List<SpotifyTrack>();
-                        oTracks.AddRange(GetTracksForPlaylist(oWebCLient, oSimplePlaylist, oSpotifyUser));
+                        Dictionary<int, SpotifyTrack> oTracks = GetTracksForPlaylist(oWebCLient, oSimplePlaylist, oSpotifyUser);
                         Playlists.Add(new SpotifyPlaylist(oSimplePlaylist, oTracks));
                     }
                 }
@@ -47,8 +47,7 @@ namespace SpotifyChangeControlLib.AccessLayer
                     {
                         if (!oSimplePlaylist.Owner.Id.Equals(oSpotifyUser.Name))
                         {
-                            List<SpotifyTrack> oTracks = new List<SpotifyTrack>();
-                            oTracks.AddRange(GetTracksForPlaylist(oWebCLient, oSimplePlaylist, oSpotifyUser));
+                            Dictionary<int, SpotifyTrack> oTracks = GetTracksForPlaylist(oWebCLient, oSimplePlaylist, oSpotifyUser);
                             Playlists.Add(new SpotifyPlaylist(oSimplePlaylist, oTracks));
                         }
                     }
@@ -60,11 +59,11 @@ namespace SpotifyChangeControlLib.AccessLayer
 
 
 
-        private static IEnumerable<SpotifyTrack> GetTracksForPlaylist(SpotifyWebAPIClient oWebCLient, SimplePlaylist oSimplePlaylist, SpotifyUser oSpotifyUser)
+        private static Dictionary<int, SpotifyTrack> GetTracksForPlaylist(SpotifyWebAPIClient oWebCLient, SimplePlaylist oSimplePlaylist, SpotifyUser oSpotifyUser)
         {
-            List<SpotifyTrack> oTracks = new List<SpotifyTrack>();
+            Dictionary<int, SpotifyTrack> oTracks = new Dictionary<int, SpotifyTrack>();
             Paging<PlaylistTrack> oPagingPlaylistTracks = oWebCLient.GetPlaylistTracks(oSimplePlaylist.Owner.Id, oSimplePlaylist.Id, market:"");
-           
+            int iPos = 0;
             foreach (PlaylistTrack oPlaylistTrack in oPagingPlaylistTracks.Items)
             {
                 List<SpotifyArtist> oArtists = new List<SpotifyArtist>();
@@ -77,8 +76,8 @@ namespace SpotifyChangeControlLib.AccessLayer
                     }
 
                 }
-                oTracks.Add(new SpotifyTrack(oPlaylistTrack, oArtists));
-                
+                oTracks.Add(iPos, new SpotifyTrack(oPlaylistTrack, oArtists));
+                iPos++;
             }
             while (oPagingPlaylistTracks.Next != null)
             {
@@ -95,8 +94,8 @@ namespace SpotifyChangeControlLib.AccessLayer
                         }
                         
                     }
-                    oTracks.Add(new SpotifyTrack(oPlaylistTrack, oArtists));
-
+                    oTracks.Add(iPos, new SpotifyTrack(oPlaylistTrack, oArtists));
+                    iPos++;
                 }
             }
             
@@ -124,7 +123,7 @@ namespace SpotifyChangeControlLib.AccessLayer
             AutorizationCodeAuth oAuth = new AutorizationCodeAuth()
             {
                 ClientId = _ClientPublic,
-                RedirectUri= "http://localhost",
+                RedirectUri= _RedirectUrl,
                 Scope = Scope.USER_READ_PRIVATE | Scope.USER_READ_EMAIL | Scope.PLAYLIST_READ_PRIVATE | Scope.USER_LIBRARAY_READ |  Scope.USER_READ_PRIVATE | Scope.USER_FOLLOW_READ
             };
 

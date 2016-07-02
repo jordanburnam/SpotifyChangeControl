@@ -45,9 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataManagers\StateManager.cs" />
+    <Compile Include="DataObjects\SpotifyState.cs" />
     <Compile Include="StorageLayer\CacheDatabase.cs" />
     <Compile Include="StorageLayer\WorkTableState.cs" />
-    <Compile Include="AccessLayer\SpotifyDataLayer.cs" />
+    <Compile Include="AccessLayer\SpotifyAccessLayer.cs" />
     <Compile Include="StorageLayer\SpotifyDatabase.cs" />
     <Compile Include="DataManagers\UserManager.cs" />
     <Compile Include="DataObjects\SpotifyArtist.cs" />

@@ -21,16 +21,17 @@ namespace SpotifyChangeControlLib.DataObjects
     /// A procedure will then move from WK to our permanent table and then those indexes will need
     /// to be rebuilt. And then repeat!
     /// </summary>
-    internal class WorkTableState
+    internal  class WorkTableState
     {
         //Declare some static things for everyone to share
-        private static readonly string _TruncateCommandTemplate = "TRUNCATE TABLE [{SchemaName}].[{TableName}];";
+        private static readonly string _TruncateCommandTemplate = "DELETE FROM [{SchemaName}].[{TableName}];";
         private static readonly string _HeapCommandTemplate = "ALTER INDEX ALL ON [{SchemaName}].[{TableName}] DISABLE;";
         private static readonly string _IndexCommandTemplate = "ALTER INDEX ALL ON [{SchemaName}].[{TableName}] REBUILD;";
         //Instance Variables
         private string _TableName;
         private string _SchemaName;
         private Enums.DatabaseTableState _TableState;
+       
 
         private string _TruncateCommand
         {
@@ -58,32 +59,33 @@ namespace SpotifyChangeControlLib.DataObjects
           
         }
 
-        private void TruncateTable()
+        internal void TruncateTable()
         {
             if ( (this._TableState & Enums.DatabaseTableState.Truncated) != Enums.DatabaseTableState.Truncated) //Check our bitwise flag of enums to make sure the table has not already been truncated
             {
                
                 RelationalDatabase.ExecuteNonQuery(this._TruncateCommand);
-                
+                this._TableState = this._TableState | Enums.DatabaseTableState.Truncated;
             }
             
         }
 
-        private void HeapTable()
+        internal void HeapTable()
         {
             if ((this._TableState & Enums.DatabaseTableState.Heaped) != Enums.DatabaseTableState.Heaped) //Check our bitwise flag of enums to make sure the table has not already been heaped
             {
                 
                RelationalDatabase.ExecuteNonQuery(this._HeapCommand);
-                
+                this._TableState = this._TableState | Enums.DatabaseTableState.Heaped;
             }
         }
 
-        private void IndexTable()
+        internal void IndexTable()
         {
             if ((this._TableState & Enums.DatabaseTableState.Querable) != Enums.DatabaseTableState.Querable) //Check our bitwise flag of enums to make sure the table has not already been indexed
             {
                 RelationalDatabase.ExecuteNonQuery(this._IndexCommand);
+                this._TableState = this._TableState | Enums.DatabaseTableState.Querable;
             }
         }
 

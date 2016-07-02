@@ -29,7 +29,7 @@ namespace SpotifyWebAPIExample
         private static string SCC_REDIS_HOST;
         private static string SCC_REDIS_PASS;
         private static int SCC_REDIS_PORT;
-        private static SpotifyUser CurrentUser; 
+       
 
         static void Main(string[] args)
         {
@@ -49,7 +49,7 @@ namespace SpotifyWebAPIExample
                     SCC_REDIS_PORT = 6379;
                 }
             }
-            SCCManager oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
+            SCCManager oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, "http://localhost", SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
 
            
             Console.WriteLine("### SpotifyWebAPI .NET Test App");
@@ -89,8 +89,8 @@ namespace SpotifyWebAPIExample
             //auth.DoAuth();
             //oAutorizationCodeAuth.DoAuth();
 
-            UserManager oUserManger = new UserManager();
-            oUserManger.GetPlaylistsFromUsers();
+            
+         
             //oRepsonse.Code = "BQAkRvpgMZHn76lNx0rVgKM4iwwb6FmZk7MTKlkgSk_ajr60oHxBCapqOXItvgQqk1rZ6CRNckDQ6UMQWqXSgBmQu4v7-k5j9OR2xYiuRWHdXDxFsK_KW_nMK0ikP8zh_7Wf6PhN_py1KG0Gj9A9cGJ61tE9uewUrFMH4Ye8z0tjdXwZmEoPQPd4cpOs8tCiwZp-sSTUfxCGAN8jJOMBUPFsoiJrsgmBI4q7rLtipjUeobnZxJsiG5SFunxU15-9KpHCaNXHMBEsdVYLT82Ctnmu67tFUF5NYRYr0dQf8OA7bqmQmuE";
             //oRepsonse.Code = "AQBSOdyT5Uu68S954-GRWqZWo0zIuUptLQaBPuf-f9Z8xlUosnEFSGfxqzwQbC7Jv1Y_yQLLgWyhcFkB6qNExRu9LLu590nm7CY1H8L0ZIUTugcu_NmF7N8mKnrjXbXakTc";
             //oAutorizationCodeAuth_OnResponseReceivedEvent(oRepsonse);
@@ -138,7 +138,7 @@ namespace SpotifyWebAPIExample
 
             _oPrivateProfile = _oSpotifyWebApi.GetPrivateProfile();
            
-            SpotifyUser oCurrentUser = new SpotifyUser(_oPrivateProfile, response.Code, oToken);
+            
 
 
 

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace SpotifyChangeControl.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -32,6 +33,11 @@ namespace SpotifyChangeControl.Controllers
         }
 
         public ActionResult What()
+        {
+            return View();
+        }
+
+        public ActionResult How()
         {
             return View();
         }

@@ -21,7 +21,7 @@ namespace SpotifyChangeControlCMD
         private static int SCC_REDIS_PORT;
         static void Main(string[] args)
         {
-            Console.WriteLine("Started!");
+            Console.WriteLine("Started @ " + DateTime.Now);
             if (args.Length == 0)
             {
                 SCC_PRIVATE_ID = System.Environment.GetEnvironmentVariable("SCC_PRIVATE_ID");
@@ -52,10 +52,10 @@ namespace SpotifyChangeControlCMD
                     SCC_REDIS_PORT = 6379;
                 }
             }
-            SCCManager oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
+            SCCManager oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, "http://localhost", SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
 
-
-            Console.WriteLine("DONE!");
+            oSCCManager.ExecuteStateMananger();
+            Console.WriteLine("DONE at " + DateTime.Now);
             Console.ReadLine();
             //TODO:Do things with stuff
            

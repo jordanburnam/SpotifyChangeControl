@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyChangeControlLib.DataObjects
 {
-    public class SpotifyUserAuth
+    internal class SpotifyUserAuth
     {
         private string _Code;
         private DateTime _AuthDate;
