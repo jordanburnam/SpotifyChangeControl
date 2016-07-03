@@ -1,1 +1,16 @@
-﻿<p>@ViewData["RURL"]</p>
+﻿@{
+    ViewBag.Title = "Authorize";
+}
+
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+         
+            
+            <input type="button" value="Authorize" class="btn btn-default" onclick="window.location ='@ViewData["AuthUrl"]'"/>
+            
+        </section>
+    </div>
+</div>
+

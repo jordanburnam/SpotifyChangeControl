@@ -14,19 +14,27 @@ namespace SpotifyChangeControl.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
         public ActionResult Who()
         {
             return View();
         }
 
         public ActionResult What()
+        {
+            return View();
+        }
+
+        public ActionResult When()
+        {
+            return View();
+        }
+
+        public ActionResult Where()
+        {
+            return View();
+        }
+
+        public ActionResult Why()
         {
             return View();
         }
