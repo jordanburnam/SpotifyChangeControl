@@ -1,0 +1,1 @@
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Release\SpotifyChangeControlLib.csprojResolveAssemblyReference.cache

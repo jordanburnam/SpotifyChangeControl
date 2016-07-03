@@ -22,7 +22,7 @@ namespace SpotifyChangeControlLib.StorageLayer
        
 
 
-        public static void Init(string sHost, int iPort, string sPassword = null)
+        public static void Init(string sHost, int iPort, string sPassword)
         {
             CacheDatabase._Host = sHost;
             CacheDatabase._Port = iPort;

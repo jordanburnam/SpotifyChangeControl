@@ -3,13 +3,30 @@
 
 }
 <h1>How?</h1>
-<h2>It's Easy, Just three simple steps!</h2>
 
 <h3> 1. Authorize Me!</h3>
-<p>You click the "I know you are better than me" button below which will have you redirected to the spotify web page to log in. 
-    You will then be prompted by Spotify as to whether or not you would like to grant my application access to your spotify account! 
-    For more details about what information I store and what I have access to, along with your rights using the Spotify Token see my @Html.ActionLink("What", "What");  page.</p>
+<p>In order to access your spotify playlists you have to authorize my app to do so. This is a pretty simple process in which you click a button on my site and sign into Spotify.</p>
 <h3>2. Worship Me!</h3>
 <p>You then need to realize I am better than you and just accept it!</p>
 <h3>3. Await eMail</h3>
-<p>My application will notify you via email should changes happen. I have not decided on how often yet and would like to make it configurable in the future. Just wait for the email and be happy I let you exist in my universe!</p>
+<p>My application will notify you via email should changes happen. This will be scheduled no more than once a day.</p>
+
+<h3>Details...</h3>
+<h3>What is Authorization?</h3>
+<h4>This is a process by which spotify hands me a token that I can use later to access your spotify account.</h4>
+<h3>What do you have access too in regards to my Spotify Account?</h3>
+<h4>I have read-only access to playlists, tracks, and your private profile which includes your email address and unfortunately your date of birth. I don't want this nor do I store it but spotify either exposes nothing or everything.</h4>
+<h3>How much of my infomration do you store?</h3>
+<h4>Just the token and your Spotify user id. I even translate your userid to an integer and thus that is all you are to me is a number and nothing more. </h4>
+<h3>What are the risks?</h3>
+<h4>Let's be honest this whole thing is nothing more than a hobby for me so I am not spending a lot of time or resources on security or reliability. <b>You will be using this at your own risk!</b> That being said I have tried to use the best judgement I could when thinking through the ways in which this application works. I <b>DO NOT</b> have you create an account and I <b>DO NOT</b> store anything but your spotify user id and your token. I look up your email address from the spotify web api at runtime! I keep the spotify user id in a separate storage system. I also have my code on github that anyone with the technical know how can review and validate my statements. It also allows it to be vetted and verified by others, not just me.  </h4>
+<h4>Keep in mind there is still a risk. If someone were to attack me and were able to get your spotify token and they somehow managed to get my private id then they would be able to read your spotify library and more importantly your private spotify profile which includes your date of birth and your email address. I would prefer spotify expose ones email without their date of birth but that isn’t here nor there. </h4>
+<h4>You can at any time revoke my applications access to your spotify account by following the below steps: </h4>
+<h4>
+    <ol>
+        <li>Log into Spotify’s web portal.</li>
+        <li>Navigate to “Account Overview”</li>
+        <li>Click the button labeled “SIGN OUT EVERYWHERE”</li>
+    </ol>
+</h4>
+<h4><I nor any other application will be able to access your spotify account. /h4>
