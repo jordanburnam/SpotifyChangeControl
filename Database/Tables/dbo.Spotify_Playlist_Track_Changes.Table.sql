@@ -15,6 +15,6 @@ BEGIN
 	,FOREIGN KEY(ChangeTypeID) REFERENCES dbo.Spotify_Playlist_Change_Type(ID)
 	,CreatedDate DATETIME NOT NULL DEFAULT(GETDATE())
   )
-  CREATE UNIQUE CLUSTERED INDEX UCI_PLaylist_Change_Playlist_Track_ChangeType ON dbo.Spotify_Playlist_Change(CreatedDate, PlaylistID, TrackID, ChangeTypeID);
+  CREATE  UNIQUE CLUSTERED INDEX CI_PLaylist_Change_Playlist_Track_ChangeType ON dbo.Spotify_Playlist_Change(CreatedDate, PlaylistID, TrackID, Position, ChangeTypeID);
 END
 GO

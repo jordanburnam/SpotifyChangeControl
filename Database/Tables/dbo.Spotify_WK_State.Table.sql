@@ -22,9 +22,6 @@ BEGIN
   --Artist
 	,ArtistID BIGINT NOT NULL
 	,FOREIGN KEY(UserID) REFERENCES dbo.Spotify_User(UserID)
-	,FOREIGN KEY(PlaylistID) REFERENCES dbo.Spotify_Playlist(PlaylistID)
-	,FOREIGN KEY(ArtistID) REFERENCES dbo.Spotify_Artist(ArtistID)
-	,FOREIGN KEY(TrackID) REFERENCES dbo.Spotify_Track(TrackID)
   )
   CREATE CLUSTERED INDEX IX_WK_State_ID ON dbo.Spotify_WK_State(UserID, PlaylistID, ArtistID, TrackID);
 END
