@@ -139,16 +139,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/02/2016 21:41:44</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControl.dll">
-      <publishTime>07/03/2016 12:30:39</publishTime>
+      <publishTime>07/05/2016 11:17:53</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControl.pdb">
-      <publishTime>07/03/2016 12:30:39</publishTime>
+      <publishTime>07/05/2016 11:17:53</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControlLib.dll">
-      <publishTime>07/02/2016 21:41:45</publishTime>
+      <publishTime>07/04/2016 10:31:32</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControlLib.pdb">
-      <publishTime>07/02/2016 21:41:45</publishTime>
+      <publishTime>07/04/2016 10:31:32</publishTime>
     </File>
     <File Include="bin/StackExchange.Redis.dll">
       <publishTime>06/28/2016 21:34:06</publishTime>
@@ -265,10 +265,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/16/2016 09:06:05</publishTime>
     </File>
     <File Include="Views/Account/Authorize.cshtml">
-      <publishTime>07/03/2016 09:59:52</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Account/Authorized.cshtml">
-      <publishTime>07/03/2016 09:59:17</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>06/16/2016 09:06:09</publishTime>
@@ -306,6 +306,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
       <publishTime>06/16/2016 09:06:09</publishTime>
     </File>
+    <File Include="Views/Email/Changes.cshtml">
+      <publishTime>07/04/2016 09:33:38</publishTime>
+    </File>
+    <File Include="Views/Error/NotFound.cshtml">
+      <publishTime>07/03/2016 15:07:18</publishTime>
+    </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>07/03/2016 12:23:45</publishTime>
     </File>
@@ -313,25 +319,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/29/2016 08:45:57</publishTime>
     </File>
     <File Include="Views/Home/How.cshtml">
-      <publishTime>07/03/2016 12:24:35</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/03/2016 12:23:56</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Home/What.cshtml">
-      <publishTime>07/03/2016 12:24:59</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Home/When.cshtml">
-      <publishTime>07/03/2016 12:26:43</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Home/Where.cshtml">
-      <publishTime>07/03/2016 12:29:13</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Home/Who.cshtml">
-      <publishTime>07/03/2016 12:25:21</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Home/Why.cshtml">
-      <publishTime>07/03/2016 12:25:21</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>06/16/2016 09:06:09</publishTime>
@@ -352,16 +358,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/16/2016 09:06:09</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
-      <publishTime>06/16/2016 09:06:09</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Shared/Lockout.cshtml">
       <publishTime>06/16/2016 09:06:09</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/03/2016 12:22:44</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>07/03/2016 12:13:34</publishTime>
+      <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/16/2016 09:05:59</publishTime>
@@ -370,7 +376,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/16/2016 09:05:59</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/02/2016 21:41:58</publishTime>
+      <publishTime>07/05/2016 11:17:56</publishTime>
     </File>
   </ItemGroup>
 </Project>

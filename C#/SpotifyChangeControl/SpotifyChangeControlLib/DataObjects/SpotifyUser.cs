@@ -22,6 +22,7 @@ namespace SpotifyChangeControlLib.DataObjects
         protected Int64 _ID;
         protected string _SpotifyID;
         protected string _Name;
+        private string _UserGuid;
         protected SpotifyUserAuth _UserAuth;
         protected SpotifyUserRefreshToken _RefreshToken;
         protected SpotifyUserAccessToken _AccessToken;
@@ -41,6 +42,11 @@ namespace SpotifyChangeControlLib.DataObjects
         public string Name
         {
             get { return this._Name; }
+        }
+
+        public string UserGuid
+        {
+            get { return this._UserGuid; }
         }
 
         public IEnumerable<SpotifyPlaylist> Playlist
@@ -84,6 +90,7 @@ namespace SpotifyChangeControlLib.DataObjects
         {
             this._ID = Convert.ToInt64(drUser["UserID"].ToString());
             this._Name = drUser["Name"].ToString();
+            this._UserGuid = drUser["UserGuid"].ToString();
             string sAuthCode = drUser["AuthCode"].ToString();
             DateTime dtAuth = Convert.ToDateTime(drUser["AuthDate"].ToString());
             string sAccessCode = drUser["AccessTokenCode"].ToString();
