@@ -78,6 +78,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SpotifyAPI">
+      <HintPath>..\externals\SpotifyAPI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -238,10 +241,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\SpotifyAPI-NET\SpotifyAPI\SpotifyAPI.csproj">
-      <Project>{ebbe35e2-7b91-4d7d-b8fc-3a0472f5119d}</Project>
-      <Name>SpotifyAPI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SpotifyChangeControlLib\SpotifyChangeControlLib.csproj">
       <Project>{1d284265-21b2-4e01-9ea9-019dc167cf62}</Project>
       <Name>SpotifyChangeControlLib</Name>

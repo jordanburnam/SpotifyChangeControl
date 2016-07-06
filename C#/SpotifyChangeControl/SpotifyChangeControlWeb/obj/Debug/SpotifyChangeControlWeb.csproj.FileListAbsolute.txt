@@ -40,7 +40,6 @@ C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\Spo
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\WebGrease.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\StackExchange.Redis.dll
-C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\SpotifyAPI.pdb
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\SpotifyChangeControlLib.pdb
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlWeb\bin\Microsoft.AI.ServerTelemetryChannel.xml

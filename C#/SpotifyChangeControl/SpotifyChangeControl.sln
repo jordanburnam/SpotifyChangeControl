@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlWeb", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlCMD", "SpotifyChangeControlCMD\SpotifyChangeControlCMD.csproj", "{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyAPI", "..\..\..\SpotifyAPI-NET\SpotifyAPI\SpotifyAPI.csproj", "{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

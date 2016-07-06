@@ -3,7 +3,6 @@ C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\Spo
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyAPI.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\StackExchange.Redis.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyAPI.pdb
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\StackExchange.Redis.pdb
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\StackExchange.Redis.xml
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.csprojResolveAssemblyReference.cache
