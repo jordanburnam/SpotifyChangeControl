@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SpotifyAPI.SpotifyWebAPI;
-using SpotifyAPI.SpotifyWebAPI;
+using SpotifyAPI.Web;
+using SpotifyAPI.Web;
 using SpotifyChangeControlLib;
 using SpotifyChangeControlLib.DataObjects;
-using SpotifyAPI.SpotifyWebAPI.Models;
+using SpotifyAPI.Web.Models;
 
 namespace SpotifyChangeControlCMD
 {
@@ -53,7 +53,7 @@ namespace SpotifyChangeControlCMD
                 }
             }
             SCCManager oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, "http://localhost", SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
-
+            
             oSCCManager.ExecuteStateMananger();
             Console.WriteLine("DONE at " + DateTime.Now);
             Console.ReadLine();

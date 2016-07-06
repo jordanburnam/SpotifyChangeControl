@@ -1,4 +1,4 @@
-﻿using SpotifyAPI.SpotifyWebAPI.Models;
+﻿using SpotifyAPI.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

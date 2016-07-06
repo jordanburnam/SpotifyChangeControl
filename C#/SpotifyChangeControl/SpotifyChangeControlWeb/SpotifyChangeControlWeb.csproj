@@ -238,7 +238,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpotifyAPI\SpotifyAPI.csproj">
+    <ProjectReference Include="..\..\..\..\SpotifyAPI-NET\SpotifyAPI\SpotifyAPI.csproj">
       <Project>{ebbe35e2-7b91-4d7d-b8fc-3a0472f5119d}</Project>
       <Name>SpotifyAPI</Name>
     </ProjectReference>

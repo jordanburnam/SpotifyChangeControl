@@ -12,3 +12,5 @@ C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\Spo
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\obj\Debug\SpotifyChangeControlCMD.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\obj\Debug\SpotifyChangeControlCMD.exe
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\obj\Debug\SpotifyChangeControlCMD.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Debug\SpotifyAPI.xml
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Debug\Newtonsoft.Json.xml

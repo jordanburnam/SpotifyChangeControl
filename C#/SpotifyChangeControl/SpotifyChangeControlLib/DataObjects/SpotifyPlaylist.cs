@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SpotifyAPI.SpotifyWebAPI.Models;
+using SpotifyAPI.Web.Models;
 using SpotifyChangeControlLib.AccessLayer;
 
 namespace SpotifyChangeControlLib.DataObjects

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManagers\StateManager.cs" />
+    <Compile Include="DataObjects\SpotifyPlaylistChange.cs" />
     <Compile Include="DataObjects\SpotifyState.cs" />
     <Compile Include="StorageLayer\CacheDatabase.cs" />
     <Compile Include="StorageLayer\WorkTableState.cs" />
@@ -71,7 +72,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpotifyAPI\SpotifyAPI.csproj">
+    <ProjectReference Include="..\..\..\..\SpotifyAPI-NET\SpotifyAPI\SpotifyAPI.csproj">
       <Project>{ebbe35e2-7b91-4d7d-b8fc-3a0472f5119d}</Project>
       <Name>SpotifyAPI</Name>
     </ProjectReference>

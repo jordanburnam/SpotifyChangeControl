@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using SpotifyChangeControlLib.Utilities;
 using SpotifyChangeControlLib.Types.Interfaces;
 using SpotifyChangeControlLib.Types.Abstract;
-using SpotifyAPI.SpotifyWebAPI;
-using SpotifyAPI.SpotifyWebAPI.Models;
+using SpotifyAPI.Web;
+using SpotifyAPI.Web.Models;
 using SpotifyChangeControlLib.AccessLayer;
 
 
@@ -28,6 +28,12 @@ namespace SpotifyChangeControlLib.DataObjects
         protected SpotifyUserAccessToken _AccessToken;
 
         protected IEnumerable<SpotifyPlaylist> _Playlists;
+
+        protected IEnumerable<SpotifyPlaylistChange> _Changes;
+
+        private string _Email;
+
+        
 
         public Int64 ID
         {
@@ -60,9 +66,33 @@ namespace SpotifyChangeControlLib.DataObjects
                 return this._Playlists;
 
             }
-            set { this._Playlists = value; }
+           
+        }
+        public IEnumerable<SpotifyPlaylistChange> Changes
+        {
+            get
+            {
+                if (this._Changes == null)
+                {
+                    this._Changes = SpotifyAccessLayer.GetPlaylistChanges(this.UserGuid);
+                }
+                return this._Changes;
+
+            }
+          
         }
 
+        public string Email
+        {
+            get
+            {
+                if (this._Email == null)
+                {
+                    this._Email = SpotifyDatabase.GetUsersEmail(this);
+                }
+                return this._Email;
+            }
+        }
 
         public SpotifyUserAuth UserAuth
         {

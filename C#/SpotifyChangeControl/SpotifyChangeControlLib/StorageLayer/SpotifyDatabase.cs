@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SpotifyAPI.SpotifyWebAPI;
-using SpotifyAPI.SpotifyWebAPI.Models;
+using SpotifyAPI.Web;
+using SpotifyAPI.Web.Models;
 using SpotifyChangeControlLib.DataObjects;
 using SpotifyChangeControlLib.Utilities;
+using SpotifyAPI.Web.Auth;
+using SpotifyAPI.Web.Enums;
 
 namespace SpotifyChangeControlLib.AccessLayer
 {
@@ -28,9 +30,9 @@ namespace SpotifyChangeControlLib.AccessLayer
         public static IEnumerable<SpotifyPlaylist> GetUsersFollowedPlaylists(SpotifyUser oSpotifyUser)
         {
             List<SpotifyPlaylist> Playlists = new List<SpotifyPlaylist>();
-            using (SpotifyWebAPIClient oWebCLient = GetWebClient(oSpotifyUser))
+            using (SpotifyWebAPI oWebCLient = GetWebClient(oSpotifyUser))
             {
-                Paging<SimplePlaylist> oPaging = oWebCLient.GetUserPlaylists();
+                Paging<SimplePlaylist> oPaging = oWebCLient.GetUserPlaylists(oSpotifyUser.SpotifyID);
 
                 foreach (SimplePlaylist oSimplePlaylist in oPaging.Items)
                 {
@@ -56,10 +58,20 @@ namespace SpotifyChangeControlLib.AccessLayer
             return Playlists;
         }
 
+        public static string GetUsersEmail(SpotifyUser oSpotifyUser)
+        {
+            string sEmail;
+            using (SpotifyWebAPI oWebCLient = GetWebClient(oSpotifyUser))
+            {
+                PrivateProfile oPrivateProfile = oWebCLient.GetPrivateProfile();
+                sEmail = oPrivateProfile.Email;
+            }
+            return sEmail;
+        }
 
 
 
-        private static Dictionary<int, SpotifyTrack> GetTracksForPlaylist(SpotifyWebAPIClient oWebCLient, SimplePlaylist oSimplePlaylist, SpotifyUser oSpotifyUser)
+        private static Dictionary<int, SpotifyTrack> GetTracksForPlaylist(SpotifyWebAPI oWebCLient, SimplePlaylist oSimplePlaylist, SpotifyUser oSpotifyUser)
         {
             Dictionary<int, SpotifyTrack> oTracks = new Dictionary<int, SpotifyTrack>();
             Paging<PlaylistTrack> oPagingPlaylistTracks = oWebCLient.GetPlaylistTracks(oSimplePlaylist.Owner.Id, oSimplePlaylist.Id, market:"");
@@ -117,14 +129,14 @@ namespace SpotifyChangeControlLib.AccessLayer
             return oArtists;
         }
        
-        private static SpotifyWebAPIClient GetWebClient(SpotifyUser oSpotifyUser)
+        private static SpotifyWebAPI GetWebClient(SpotifyUser oSpotifyUser)
         {
 
             AutorizationCodeAuth oAuth = new AutorizationCodeAuth()
             {
                 ClientId = _ClientPublic,
                 RedirectUri= _RedirectUrl,
-                Scope = Scope.USER_READ_PRIVATE | Scope.USER_READ_EMAIL | Scope.PLAYLIST_READ_PRIVATE | Scope.USER_LIBRARAY_READ |  Scope.USER_READ_PRIVATE | Scope.USER_FOLLOW_READ
+                Scope = Scope.UserReadPrivate | Scope.UserReadPrivate | Scope.PlaylistReadPrivate | Scope.UserLibraryRead |  Scope.UserReadPrivate | Scope.UserFollowRead
             };
 
             oAuth.StartHttpServer();//Not sure if this is needed or not but what the hell why not!
@@ -143,7 +155,7 @@ namespace SpotifyChangeControlLib.AccessLayer
 
 
             oAuth.StopHttpServer();
-            SpotifyWebAPIClient oWebClient = new SpotifyWebAPIClient()
+            SpotifyWebAPI oWebClient = new SpotifyWebAPI()
             {
                 AccessToken = oSpotifyUser.AccessToken.Code,
                 TokenType = oSpotifyUser.AccessToken.TokenType,

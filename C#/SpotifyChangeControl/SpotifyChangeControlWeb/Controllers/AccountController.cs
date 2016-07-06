@@ -5,10 +5,12 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using SpotifyAPI.SpotifyWebAPI;
-using SpotifyAPI.SpotifyWebAPI.Models;
+using SpotifyAPI.Web;
+using SpotifyAPI.Web.Models;
 using SpotifyChangeControlLib;
 using System.Text;
+using SpotifyAPI.Web.Auth;
+using SpotifyAPI.Web.Enums;
 
 namespace SpotifyChangeControl.Controllers
 {
@@ -84,16 +86,16 @@ namespace SpotifyChangeControl.Controllers
                 //Set this to localhost if you want to use the built-in HTTP Server
                 RedirectUri = this.RedirectUrl,
                 //How many permissions we need?
-                Scope = Scope.USER_READ_PRIVATE | Scope.USER_READ_EMAIL | Scope.PLAYLIST_READ_PRIVATE | Scope.USER_LIBRARAY_READ | Scope.USER_READ_PRIVATE | Scope.USER_FOLLOW_READ
+                Scope = Scope.UserReadPrivate | Scope.UserReadPrivate | Scope.PlaylistReadPrivate | Scope.UserLibraryRead | Scope.UserReadPrivate | Scope.UserFollowRead
             };
             
             
             Token oToken;
             oToken = oAutorizationCodeAuth.ExchangeAuthCode(code, SCC_PRIVATE_ID);
             //oToken = oAutorizationCodeAuth.RefreshToken(response.Code, SCC_PRIVATE_ID);
-        
 
-            SpotifyWebAPIClient oSpotifyWebApi = new SpotifyWebAPIClient()
+
+            SpotifyWebAPI oSpotifyWebApi = new SpotifyWebAPI()
             {
                 AccessToken = oToken.AccessToken,
                 TokenType = oToken.TokenType,

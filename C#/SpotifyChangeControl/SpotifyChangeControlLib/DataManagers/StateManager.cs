@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
+
 
 namespace SpotifyChangeControlLib.DataManagers
 {
@@ -83,8 +85,15 @@ namespace SpotifyChangeControlLib.DataManagers
             SpotifyAccessLayer.SaveStatesToDatabase(this._SpotifyStates, this._WKState);
         }
 
+
+        public void SendNotification()
+        {
+
+        }
+
         public void Run()
         {
+
             this.TruncateWorkTables();
             this.GetStates();
             this.SaveStates();

@@ -15,6 +15,8 @@ namespace SpotifyAPI.SpotifyWebAPI.Models
         public String Country { get; set; }
         [JsonProperty("display_name")]
         public String DisplayName { get; set; }
+        [JsonProperty("email")]
+        public String Email { get; set; }
         [JsonProperty("external_urls")]
         public Dictionary<string, string> ExternalUrls { get; set; }
         [JsonProperty("followers")]
