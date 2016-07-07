@@ -146,8 +146,8 @@ namespace SpotifyChangeControlLib.DataObjects
             string sRefreshCode = oToken.RefreshToken;
             string sAccessTokenType = oToken.TokenType;
             int iAccessExpiresIn = oToken.ExpiresIn;
-            DateTime dtToken = oToken.CreateDate;
-            DateTime dtAuth = oToken.CreateDate;
+            DateTime dtToken = oToken.CreateDate.ToUniversalTime();
+            DateTime dtAuth = oToken.CreateDate.ToUniversalTime();
             this._UserAuth = new SpotifyUserAuth(sAuthCode, dtAuth);
             SaveUserAndAuthToDatabase();
             this._RefreshToken = new SpotifyUserRefreshToken(sRefreshCode, dtToken);

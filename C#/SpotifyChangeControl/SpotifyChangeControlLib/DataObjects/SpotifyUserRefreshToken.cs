@@ -32,7 +32,7 @@ namespace SpotifyChangeControlLib.DataObjects
         public SpotifyUserRefreshToken(Token oSpotifyToken)
         {
             this._Code = oSpotifyToken.RefreshToken;
-            this._TokenDate = oSpotifyToken.CreateDate;
+            this._TokenDate = oSpotifyToken.CreateDate.ToUniversalTime();
         }
 
       
