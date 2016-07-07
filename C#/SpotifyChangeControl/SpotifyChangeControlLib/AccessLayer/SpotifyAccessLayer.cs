@@ -117,59 +117,69 @@ namespace SpotifyChangeControlLib.AccessLayer
 
         }
 
-        public static void SaveArtistsToDatabase(Dictionary<Int64, string> Artists, WorkTableState oWorkTableState)
+        public static void SaveArtistsToDatabase(Dictionary<Int64, SpotifyArtist> Artists, WorkTableState oWorkTableState)
         {
             DataTable dtArtists = new DataTable();
             dtArtists.Columns.Add(new DataColumn("ArtistID", typeof(long)));
             dtArtists.Columns.Add(new DataColumn("Name", typeof(string)));
-            foreach (KeyValuePair<long, string> oKVP in Artists)
+            dtArtists.Columns.Add(new DataColumn("SpotifyID", typeof(string)));
+            foreach (KeyValuePair<long, SpotifyArtist> oKVP in Artists)
             {
                 DataRow drArtist = dtArtists.NewRow();
                 drArtist["ArtistID"] = oKVP.Key;
-                drArtist["Name"] = oKVP.Value;
+                drArtist["Name"] = oKVP.Value.Name;
+                drArtist["SpotifyID"] = oKVP.Value.SpotifyID;
                 dtArtists.Rows.Add(drArtist);
             }
             SqlBulkCopyColumnMapping cmID = new SqlBulkCopyColumnMapping("ArtistID", "ArtistID");
             SqlBulkCopyColumnMapping cmName = new SqlBulkCopyColumnMapping("Name", "Name");
+            SqlBulkCopyColumnMapping cmSpotifyID = new SqlBulkCopyColumnMapping("SpotifyID", "SpotifyID");
 
-            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName);
+            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName, cmSpotifyID);
             RelationalDatabase.ExecuteNonQuery("AddSpotifyArtists", CommandType.StoredProcedure);
         }
 
-        public static void SaveTracksToDatabase(Dictionary<Int64, string> Tracks, WorkTableState oWorkTableState)
+        public static void SaveTracksToDatabase(Dictionary<Int64, SpotifyTrack> Tracks, WorkTableState oWorkTableState)
         {
             DataTable dtArtists = new DataTable();
             dtArtists.Columns.Add(new DataColumn("TrackID", typeof(long)));
             dtArtists.Columns.Add(new DataColumn("Name", typeof(string)));
-            foreach (KeyValuePair<long, string> oKVP in Tracks)
+            dtArtists.Columns.Add(new DataColumn("SpotifyID", typeof(string)));
+            foreach (KeyValuePair<long, SpotifyTrack> oKVP in Tracks)
             {
                 DataRow drArtist = dtArtists.NewRow();
                 drArtist["TrackID"] = oKVP.Key;
-                drArtist["Name"] = oKVP.Value;
+                drArtist["Name"] = oKVP.Value.Name;
+                drArtist["SpotifyID"] = oKVP.Value.SpotifyID;
                 dtArtists.Rows.Add(drArtist);
             }
             SqlBulkCopyColumnMapping cmID = new SqlBulkCopyColumnMapping("TrackID", "TrackID");
             SqlBulkCopyColumnMapping cmName = new SqlBulkCopyColumnMapping("Name", "Name");
+            SqlBulkCopyColumnMapping cmSpotifyID = new SqlBulkCopyColumnMapping("SpotifyID", "SpotifyID");
 
-            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName);
+            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName, cmSpotifyID);
             RelationalDatabase.ExecuteNonQuery("AddSpotifyTracks", CommandType.StoredProcedure);
         }
-        public static void SavePlaylistsToDatabase(Dictionary<Int64, string> Playlists, WorkTableState oWorkTableState)
+        public static void SavePlaylistsToDatabase(Dictionary<Int64, SpotifyPlaylist> Playlists, WorkTableState oWorkTableState)
         {
             DataTable dtArtists = new DataTable();
             dtArtists.Columns.Add(new DataColumn("PlaylistID", typeof(long)));
             dtArtists.Columns.Add(new DataColumn("Name", typeof(string)));
-            foreach (KeyValuePair<long, string> oKVP in Playlists)
+            dtArtists.Columns.Add(new DataColumn("SpotifyID", typeof(string)));
+
+            foreach (KeyValuePair<long, SpotifyPlaylist> oKVP in Playlists)
             {
                 DataRow drArtist = dtArtists.NewRow();
                 drArtist["PlaylistID"] = oKVP.Key;
-                drArtist["Name"] = oKVP.Value;
+                drArtist["Name"] = oKVP.Value.Name;
+                drArtist["SpotifyID"] = oKVP.Value.SpotifyID;
                 dtArtists.Rows.Add(drArtist);
             }
             SqlBulkCopyColumnMapping cmID = new SqlBulkCopyColumnMapping("PlaylistID", "PlaylistID");
             SqlBulkCopyColumnMapping cmName = new SqlBulkCopyColumnMapping("Name", "Name");
+            SqlBulkCopyColumnMapping cmSpotifyID = new SqlBulkCopyColumnMapping("SpotifyID", "SpotifyID");
 
-            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName);
+            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName, cmSpotifyID);
             RelationalDatabase.ExecuteNonQuery("AddSpotifyPlaylists", CommandType.StoredProcedure);
         }
 
@@ -226,7 +236,11 @@ namespace SpotifyChangeControlLib.AccessLayer
                                                                 Convert.ToInt64(drLastRow["UserID"].ToString())
                                                                 , drLastRow["UserGuid"].ToString()
                                                                 , drLastRow["UserName"].ToString()
+                                                                ,Convert.ToInt64(drLastRow["PlaylistID"].ToString())
+                                                                ,drLastRow["PlaylistSpotifyID"].ToString()
                                                                 , drLastRow["PlaylistName"].ToString()
+                                                                ,Convert.ToInt64(drLastRow["TrackID"].ToString())
+                                                                ,drLastRow["TrackSpotifyID"].ToString()
                                                                 , drLastRow["TrackName"].ToString()
                                                                 , drLastRow["ChangeCode"].ToString().ToCharArray()[0]
                                                                 , Artists.ToArray()

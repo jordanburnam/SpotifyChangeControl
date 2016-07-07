@@ -139,16 +139,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/02/2016 21:41:44</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControl.dll">
-      <publishTime>07/06/2016 21:17:38</publishTime>
+      <publishTime>07/07/2016 09:14:40</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControl.pdb">
-      <publishTime>07/06/2016 21:17:38</publishTime>
+      <publishTime>07/07/2016 09:14:40</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControlLib.dll">
-      <publishTime>07/06/2016 21:17:34</publishTime>
+      <publishTime>07/07/2016 09:12:33</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControlLib.pdb">
-      <publishTime>07/06/2016 21:17:34</publishTime>
+      <publishTime>07/07/2016 09:12:33</publishTime>
     </File>
     <File Include="bin/StackExchange.Redis.dll">
       <publishTime>06/28/2016 21:34:06</publishTime>
@@ -307,7 +307,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/16/2016 09:06:09</publishTime>
     </File>
     <File Include="Views/Email/Changes.cshtml">
-      <publishTime>07/06/2016 21:17:31</publishTime>
+      <publishTime>07/07/2016 07:16:39</publishTime>
     </File>
     <File Include="Views/Error/NotFound.cshtml">
       <publishTime>07/03/2016 15:07:18</publishTime>

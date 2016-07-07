@@ -12,9 +12,9 @@ namespace SpotifyChangeControlLib.DataManagers
 {
     internal class StateManager
     {
-        private Dictionary<Int64, string> _Artists;
-        private Dictionary<Int64, string> _Tracks;
-        private Dictionary<Int64, string> _Playlists;
+        private Dictionary<Int64, SpotifyArtist> _Artists;
+        private Dictionary<Int64, SpotifyTrack> _Tracks;
+        private Dictionary<Int64, SpotifyPlaylist> _Playlists;
 
         private List<SpotifyState> _SpotifyStates;
 
@@ -27,9 +27,9 @@ namespace SpotifyChangeControlLib.DataManagers
 
         internal StateManager()
         {
-            this._Artists = new Dictionary<long, string>();
-            this._Tracks = new Dictionary<long, string>();
-            this._Playlists = new Dictionary<long, string>();
+            this._Artists = new Dictionary<long, SpotifyArtist>();
+            this._Tracks = new Dictionary<long, SpotifyTrack>();
+            this._Playlists = new Dictionary<long, SpotifyPlaylist>();
             this._SpotifyStates = new List<SpotifyState>();
             this._oUserManager = new UserManager();
             this._WKAtrtist = new WorkTableState("Spotify_WK_Artist", "dbo");
@@ -47,19 +47,19 @@ namespace SpotifyChangeControlLib.DataManagers
                     
                     if (!this._Playlists.ContainsKey(oSpotifyPlaylist.ID))
                     {
-                        this._Playlists.Add(oSpotifyPlaylist.ID, oSpotifyPlaylist.Name);
+                        this._Playlists.Add(oSpotifyPlaylist.ID, oSpotifyPlaylist);
                     }
                     foreach (KeyValuePair<int, SpotifyTrack> oKVP in oSpotifyPlaylist.Tracks)
                     {
                         if (!this._Tracks.ContainsKey(oKVP.Value.ID))
                         {
-                            this._Tracks.Add(oKVP.Value.ID, oKVP.Value.Name);
+                            this._Tracks.Add(oKVP.Value.ID, oKVP.Value);
                         }
                         foreach (SpotifyArtist oSpotifyArtist in oKVP.Value.Artists)
                         {
                             if (!this._Artists.ContainsKey(oSpotifyArtist.ID))
                             {
-                                this._Artists.Add(oSpotifyArtist.ID, oSpotifyArtist.Name);
+                                this._Artists.Add(oSpotifyArtist.ID, oSpotifyArtist);
                             }
                             this._SpotifyStates.Add(new SpotifyState(this._oUserManager.ID, oSpotifyPlaylist.ID, oKVP.Value.ID, oKVP.Key, oSpotifyArtist.ID));
                         }
