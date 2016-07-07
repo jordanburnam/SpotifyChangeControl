@@ -1,1 +1,25 @@
-﻿
+﻿@using SpotifyChangeControlLib.DataObjects
+@{ 
+    ViewBag.Title = "Changes";
+    
+}
+<h2>@ViewBag.Title</h2>
+<h3>A total of @string.Format("{0:N0}", Model.ChangeCount) changes since @ViewBag.Message!</h3>
+<h4>@string.Format("{0:N0}", Model.AddCount) Tracks Added</h4>
+<h4>@string.Format("{0:N0}", Model.DeleteCount) Tracks Deleted</h4>
+<h4>@string.Format("{0:N0}", Model.MoveCount) Tracks Moved</h4>
+<h3>Playlists Overview:</h3>
+<ul>
+    @foreach (string sPlaylistName in Model.PlaylistNames)
+    {
+        <li>@sPlaylistName</li>
+    }
+</ul>
+<h4>New Tracks:</h4>
+<ul>
+    @foreach (SpotifyPlaylistChange oSpotifyPlaylistChange in Model.GetNewTracksSortedByPlaylistName())
+    {
+        <li>@oSpotifyPlaylistChange.TrackName in @oSpotifyPlaylistChange.PlaylistName</li>
+    }
+</ul>
+

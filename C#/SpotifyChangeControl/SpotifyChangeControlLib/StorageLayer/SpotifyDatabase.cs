@@ -32,7 +32,7 @@ namespace SpotifyChangeControlLib.AccessLayer
             List<SpotifyPlaylist> Playlists = new List<SpotifyPlaylist>();
             using (SpotifyWebAPI oWebCLient = GetWebClient(oSpotifyUser))
             {
-                Paging<SimplePlaylist> oPaging = oWebCLient.GetUserPlaylists(oSpotifyUser.SpotifyID);
+                Paging<SimplePlaylist> oPaging = oWebCLient.GetUserPlaylists(oSpotifyUser.Name);
 
                 foreach (SimplePlaylist oSimplePlaylist in oPaging.Items)
                 {
@@ -139,7 +139,7 @@ namespace SpotifyChangeControlLib.AccessLayer
                 Scope = Scope.UserReadPrivate | Scope.UserReadPrivate | Scope.PlaylistReadPrivate | Scope.UserLibraryRead |  Scope.UserReadPrivate | Scope.UserFollowRead
             };
 
-            oAuth.StartHttpServer();//Not sure if this is needed or not but what the hell why not!
+            //oAuth.StartHttpServer();//Not sure if this is needed or not but what the hell why not!
            
             if (oSpotifyUser.AccessToken.AccessExpired)//The user has authorized us and was tokenized but the temp access token has expired
             {
@@ -154,7 +154,7 @@ namespace SpotifyChangeControlLib.AccessLayer
 
 
 
-            oAuth.StopHttpServer();
+            //oAuth.StopHttpServer();
             SpotifyWebAPI oWebClient = new SpotifyWebAPI()
             {
                 AccessToken = oSpotifyUser.AccessToken.Code,

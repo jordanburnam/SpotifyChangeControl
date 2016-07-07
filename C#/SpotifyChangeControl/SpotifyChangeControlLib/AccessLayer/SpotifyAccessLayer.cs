@@ -47,13 +47,27 @@ namespace SpotifyChangeControlLib.AccessLayer
             DataSet ds = RelationalDatabase.ExecuteStoredProcedure("GetSpotifyUsersAndSpotifyTokens");
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
+
                 SpotifyUser oUser = new SpotifyUser(dr);
                 oUsers.Add(oUser);
                 oUser = null;
             }
             return oUsers;
         }
+        public static SpotifyUser GetSpotifyUserForGuid(string sUserGuid)
+        {
+            SpotifyUser oSpotifyUser = null;
+            DataSet ds = RelationalDatabase.ExecuteStoredProcedure("GetSpotifyUsersAndSpotifyTokens");
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                if(dr["UserGuid"].ToString().ToUpper().Equals(sUserGuid.ToUpper()))
+                {
+                    oSpotifyUser = new SpotifyUser(dr);
+                }
 
+            }
+            return oSpotifyUser;
+        }
 
         public static void SaveAccessTokenForUserToDatabase(Int64 iUserID, SpotifyUserAccessToken oSpotifyAccessToken)
         {
@@ -216,6 +230,7 @@ namespace SpotifyChangeControlLib.AccessLayer
                                                                 , drLastRow["TrackName"].ToString()
                                                                 , drLastRow["ChangeCode"].ToString().ToCharArray()[0]
                                                                 , Artists.ToArray()
+                                                                ,Convert.ToDateTime(drLastRow["ChangedDate"].ToString())
                                                                 )
                                    );
 
@@ -241,7 +256,7 @@ namespace SpotifyChangeControlLib.AccessLayer
             return UserChanges;
         }
 
-
+        
 
     }
 }

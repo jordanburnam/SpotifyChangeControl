@@ -1,1 +1,50 @@
-﻿
+﻿@using SpotifyChangeControlLib.DataObjects
+@{ 
+    ViewBag.Title = "Changes";
+    
+}
+<h2>@ViewBag.Title</h2>
+@if (Model.ChangeCount > 0)
+{
+    <h3>A total of @string.Format("{0:N0}", Model.ChangeCount) changes since @ViewBag.Message!</h3>
+    <h4>@string.Format("{0:N0}", Model.AddCount) Tracks Added</h4>
+    <h4>@string.Format("{0:N0}", Model.DeleteCount) Tracks Deleted</h4>
+    <h4>@string.Format("{0:N0}", Model.MoveCount) Tracks Moved</h4>
+    <h3>Playlists Overview:</h3>
+    <ul>
+        @foreach (string sPlaylistName in Model.PlaylistNames)
+        {
+            <li>@sPlaylistName - @Model.GetMessageForPlaylist(sPlaylistName)</li>
+        }
+    </ul>
+
+    if (Model.AddCount > 0)
+    {
+        <h4>New Tracks:</h4>
+        <table class="table">
+            <tr>
+                <th>PlaylistName</th>
+                <th>TrackName</th>
+                <th>Artists</th>
+            </tr>
+            @foreach (SpotifyPlaylistChange oSpotifyPlaylistChange in Model.GetNewTracksSortedByPlaylistName())
+            {
+                <tr>
+                    @{
+                        string sPlaylistName = oSpotifyPlaylistChange.PlaylistName.Length > 30 ? oSpotifyPlaylistChange.PlaylistName.Substring(0, 27) + "..." : oSpotifyPlaylistChange.PlaylistName;
+                        string sTrackName = oSpotifyPlaylistChange.TrackName.Length > 30 ? oSpotifyPlaylistChange.TrackName.Substring(0, 27) + "..." : oSpotifyPlaylistChange.TrackName;
+                        string sArtistNames = string.Join(",", oSpotifyPlaylistChange.ArtistNames).Length > 30 ? string.Join(",", oSpotifyPlaylistChange.ArtistNames).Substring(0, 27) + "..." : string.Join(",", oSpotifyPlaylistChange.ArtistNames);
+                    }
+                    <td>@sPlaylistName</td>
+                    <td>@sTrackName </td>
+                    <td>@sArtistNames</td>
+                </tr>
+            }
+        </table>
+    }
+    
+}
+else
+{
+    <h3>No changes!</h3>
+}

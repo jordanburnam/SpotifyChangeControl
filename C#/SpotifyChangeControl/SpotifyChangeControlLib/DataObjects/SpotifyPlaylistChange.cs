@@ -9,13 +9,14 @@ namespace SpotifyChangeControlLib.DataObjects
 {
     public class SpotifyPlaylistChange
     {
-        private long _UserID;
-        private string _UserGuid;
-        private string _UserName;
-        private string _PlaylistName;
-        private string _TrackName;
-        private string[] _ArtistNames;
-        private char _ChangeType;
+        protected long _UserID;
+        protected string _UserGuid;
+        protected string _UserName;
+        protected string _PlaylistName;
+        protected string _TrackName;
+        protected string[] _ArtistNames;
+        protected char _ChangeType;
+        protected DateTime _ChangedDate;
 
         public long UserID
         {
@@ -46,7 +47,18 @@ namespace SpotifyChangeControlLib.DataObjects
         {
             get { return this._ChangeType; }
         }
-        public SpotifyPlaylistChange(long iUserID, string sUserGuid, string sUserName, string sPlaylistName, string sTrackName, char cChangeType, string[] ArtistsNames)
+
+        public DateTime ChangedDate
+        {
+            get { return this._ChangedDate; }
+        }
+
+        protected SpotifyPlaylistChange()
+        {
+
+        }
+
+        public SpotifyPlaylistChange(long iUserID, string sUserGuid, string sUserName, string sPlaylistName, string sTrackName, char cChangeType, string[] ArtistsNames, DateTime dtChangedDate)
         {
             //The database will return multiple rows because the only difference are the artist when there are more than one artsit on the track
             this._UserID = iUserID;
@@ -56,6 +68,7 @@ namespace SpotifyChangeControlLib.DataObjects
             this._TrackName = sTrackName;
             this._ChangeType = cChangeType;
             this._ArtistNames = ArtistsNames;
+            this._ChangedDate = dtChangedDate;
 
         }
 

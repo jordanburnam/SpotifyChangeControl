@@ -41,6 +41,22 @@ namespace SpotifyChangeControlLib
             return oSpotifyUser.ID;
         }
 
+        public SpotifyPlaylistChangeManager  GetUserForUserGuid(string sUserGuid, DateTime? dtLastSeen = null)
+        {
+
+            SpotifyPlaylistChange[] Changes = SpotifyAccessLayer.GetSpotifyUserForGuid(sUserGuid).Changes.ToArray();
+            SpotifyPlaylistChange[] ChangesFilteredWithDate;
+            if (dtLastSeen != null)
+            {
+                ChangesFilteredWithDate = (from Change in Changes where Change.ChangedDate > dtLastSeen select Change).ToArray();
+            }
+            else
+            {
+                ChangesFilteredWithDate = Changes;
+            }
+            return new SpotifyPlaylistChangeManager(ChangesFilteredWithDate);
+        }
+         
         
        
     }

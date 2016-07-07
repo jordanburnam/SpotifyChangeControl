@@ -17,19 +17,20 @@ namespace SpotifyChangeControlLib.DataObjects
 /// This class will represent the Spotify User and will be populated with
 /// data from the database tables of Spotify_User and Spotify_User_Token
 /// </summary>
-    internal class SpotifyUser 
+    public class SpotifyUser 
     {
-        protected Int64 _ID;
-        protected string _SpotifyID;
-        protected string _Name;
-        private string _UserGuid;
-        protected SpotifyUserAuth _UserAuth;
-        protected SpotifyUserRefreshToken _RefreshToken;
-        protected SpotifyUserAccessToken _AccessToken;
+        internal Int64 _ID;
+        internal string _SpotifyID;
+        internal string _Name;
+        internal string _UserGuid;
 
-        protected IEnumerable<SpotifyPlaylist> _Playlists;
+        internal SpotifyUserAuth _UserAuth;
+        internal SpotifyUserRefreshToken _RefreshToken;
+        internal SpotifyUserAccessToken _AccessToken;
 
-        protected IEnumerable<SpotifyPlaylistChange> _Changes;
+        internal IEnumerable<SpotifyPlaylist> _Playlists;
+
+        private IEnumerable<SpotifyPlaylistChange> _Changes;
 
         private string _Email;
 
@@ -55,7 +56,7 @@ namespace SpotifyChangeControlLib.DataObjects
             get { return this._UserGuid; }
         }
 
-        public IEnumerable<SpotifyPlaylist> Playlist
+        internal IEnumerable<SpotifyPlaylist> Playlist
         {
             get
             {
@@ -94,23 +95,23 @@ namespace SpotifyChangeControlLib.DataObjects
             }
         }
 
-        public SpotifyUserAuth UserAuth
+        internal SpotifyUserAuth UserAuth
         {
             get { return this._UserAuth; }
         }
 
-        public SpotifyUserRefreshToken RefreshToken
+        internal SpotifyUserRefreshToken RefreshToken
         {
             get { return this._RefreshToken; }
         }
 
-      
-        public SpotifyUserAccessToken AccessToken
+
+        internal SpotifyUserAccessToken AccessToken
         {
             get { return this._AccessToken;  }
         }
 
-        protected SpotifyUser()
+        internal SpotifyUser()
         {
             //THis is only used for the UserManger to not have to create an instance of an object unless it is needed!
         }
