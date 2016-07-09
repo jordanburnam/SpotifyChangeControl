@@ -11,57 +11,30 @@ using SpotifyChangeControlLib;
 using System.Text;
 using SpotifyAPI.Web.Auth;
 using SpotifyAPI.Web.Enums;
+using SpotifyChangeControlLib.DataObjects;
+
 
 namespace SpotifyChangeControl.Controllers
 {
-    [Authorize]
+    
     public class AccountController : Controller
     {
-        private string SCC_PRIVATE_ID;
-        private string SCC_PUBLIC_ID;
-        private string SCC_SQL_CON;
-        private string SCC_REDIS_HOST;
-        private string SCC_REDIS_PASS;
-        private int SCC_REDIS_PORT;
-        private string RedirectUrl;
-        private SCCManager oSCCManager;
-        private AutorizationCodeAuth _oAuthorizationCodeAuth;
+        private  SCCManager _oSCCManager;
 
         public AccountController()
         {
-            SCC_PRIVATE_ID = System.Environment.GetEnvironmentVariable("SCC_PRIVATE_ID");
-            SCC_PUBLIC_ID = System.Environment.GetEnvironmentVariable("SCC_PUBLIC_ID");
-
-            SCC_SQL_CON = System.Environment.GetEnvironmentVariable("SCC_SQL_CON");
-
-            SCC_REDIS_HOST = System.Environment.GetEnvironmentVariable("SCC_REDIS_HOST");
-            SCC_REDIS_PASS = System.Environment.GetEnvironmentVariable("SCC_REDIS_PASS");
-            string sPort = System.Environment.GetEnvironmentVariable("SCC_REDIS_PORT");
-            if (!int.TryParse(sPort, out SCC_REDIS_PORT))
-            {
-                SCC_REDIS_PORT = 6379;
-            }
-
-            this.RedirectUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" + System.Web.HttpContext.Current.Request.Url.Authority + "/SpotifyChangeControl/Account/Authorized";
-            oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, RedirectUrl, SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
-            
+            this._oSCCManager = new SCCManager();   
         }
-
-
-
-
-
 
         //
         // GET: /Account/Login
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult Authorize()
         {
             StringBuilder builder = new StringBuilder("https://accounts.spotify.com/authorize/?");
-            builder.Append("client_id=" + SCC_PUBLIC_ID);
+            builder.Append("client_id=" + this._oSCCManager.SCC_PUBLIC_ID);
             builder.Append("&response_type=code");
-            builder.Append("&redirect_uri=" + this.RedirectUrl);
+            builder.Append("&redirect_uri=" + this._oSCCManager.RedirectUrl);
             builder.Append("&state=" + "");
             builder.Append("&scope=" + "playlist-read-private user-read-private user-read-email user-library-read user-follow-read");
             builder.Append("&show_dialog=" + "false");
@@ -69,10 +42,18 @@ namespace SpotifyChangeControl.Controllers
             return View();
         }
 
-       
+        [HttpGet]
+        public RedirectResult Logout()
+        { 
+            if (AuthenticateUser())
+            {
+                this._oSCCManager.DeleteUserSession(this.ControllerContext.HttpContext.Request.Cookies.Get("UserGuid").Value);
+            }
+            return new RedirectResult("/SpotifyChangeControl/Home/Index");
+        }
     
-        [AllowAnonymous]
-        public ActionResult Authorized(string code, string error, string state)
+    
+        public RedirectResult Authorized(string code, string error, string state)
         {
 
             if (error != null)
@@ -82,16 +63,16 @@ namespace SpotifyChangeControl.Controllers
             AutorizationCodeAuth oAutorizationCodeAuth = new AutorizationCodeAuth()
             {
                 //Your client Id
-                ClientId = SCC_PUBLIC_ID,
+                ClientId = this._oSCCManager.SCC_PUBLIC_ID,
                 //Set this to localhost if you want to use the built-in HTTP Server
-                RedirectUri = this.RedirectUrl,
+                RedirectUri = this._oSCCManager.RedirectUrl,
                 //How many permissions we need?
                 Scope = Scope.UserReadPrivate | Scope.UserReadPrivate | Scope.PlaylistReadPrivate | Scope.UserLibraryRead | Scope.UserReadPrivate | Scope.UserFollowRead
             };
             
             
             Token oToken;
-            oToken = oAutorizationCodeAuth.ExchangeAuthCode(code, SCC_PRIVATE_ID);
+            oToken = oAutorizationCodeAuth.ExchangeAuthCode(code, this._oSCCManager.SCC_PRIVATE_ID);
             //oToken = oAutorizationCodeAuth.RefreshToken(response.Code, SCC_PRIVATE_ID);
 
 
@@ -107,11 +88,70 @@ namespace SpotifyChangeControl.Controllers
 
             
            
-            Int64 iUserID = this.oSCCManager.AddSpotifyUser(oPrivateProfile, code, oToken);
+            SpotifyUser oSpotifyUser = this._oSCCManager.AddSpotifyUser(oPrivateProfile, code, oToken);
+            // ViewBag.RedirectUrl = string.Format("/SpotifyChangeControl/Change/Index?UserGuid={0}&SessionGuid={1}", oSpotifyUser.UserGuid, oSpotifyUser.SessionGuid);
+           
+            if (!this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("UserGuid"))
+            {
+                HttpCookie hcUserGuid = new HttpCookie("UserGuid");
+                hcUserGuid.Value = oSpotifyUser.UserGuid;
+                this.ControllerContext.HttpContext.Response.Cookies.Add(hcUserGuid);
+                this.ControllerContext.HttpContext.Response.Cookies.Add(hcUserGuid);
+            }
+            else
+            {
+                this.ControllerContext.HttpContext.Request.Cookies.Get("UserGuid").Value = oSpotifyUser.UserGuid;
+            }
+
+            if (!this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("SessionGuid"))
+            {
+                HttpCookie hcSessionGuid = new HttpCookie("SessionGuid");
+                hcSessionGuid.Value = oSpotifyUser.SessionGuid;
+                this.ControllerContext.HttpContext.Response.Cookies.Add(hcSessionGuid);
+                
+            }
+            else
+            {
+                this.ControllerContext.HttpContext.Request.Cookies.Get("SessionGuid").Value = oSpotifyUser.UserGuid;
+            }
+
+                
+            return new RedirectResult(string.Format("/SpotifyChangeControl/Change/Index", oSpotifyUser.UserGuid, oSpotifyUser.SessionGuid));
+        }
 
 
-            // If we got this far, something failed, redisplay form
-            return View();
+        public bool AuthenticateUser()
+        {
+            string sUserGuid;
+            string sSessionGuid;
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("UserGuid"))
+            {
+                sUserGuid = this.ControllerContext.HttpContext.Request.Cookies.Get("UserGuid").Value;
+            }
+            else
+            {
+                return false;
+            }
+
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("SessionGuid"))
+            {
+                sSessionGuid = this.ControllerContext.HttpContext.Request.Cookies.Get("SessionGuid").Value;
+            }
+            else
+            {
+                return false;
+            }
+
+
+
+            if (sUserGuid != null && sSessionGuid != null)
+            {
+                return this._oSCCManager.AuthenticateUserSession(sUserGuid, sSessionGuid);
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

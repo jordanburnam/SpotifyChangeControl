@@ -68,6 +68,16 @@ namespace SpotifyChangeControlLib.AccessLayer
             }
             return oSpotifyUser;
         }
+        public static string GetUserGuidForUserID(long iUserID)
+        {
+            string sUserGuid = "";
+            DataSet ds = RelationalDatabase.ExecuteStoredProcedure("GetSpotifyUserGuidForUserID", new SqlParameter("iUserID", iUserID));
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+                sUserGuid = ds.Tables[0].Rows[0]["UserGuid"].ToString();
+            }
+            return sUserGuid;
+        }
 
         public static void SaveAccessTokenForUserToDatabase(Int64 iUserID, SpotifyUserAccessToken oSpotifyAccessToken)
         {
@@ -86,12 +96,14 @@ namespace SpotifyChangeControlLib.AccessLayer
         public static void SaveUserAndAuthToDatabase(SpotifyUser oSpotifyUser)
         {
             
-            RelationalDatabase.ExecuteNonQuery("AddSpotifyUser", CommandType.StoredProcedure,
+            DataSet ds = RelationalDatabase.ExecuteStoredProcedure("AddSpotifyUser",
                                                     new SqlParameter("iUserID", oSpotifyUser.ID),
                                                     new SqlParameter("sUserName", oSpotifyUser.Name),
                                                     new SqlParameter("sAuthCode", oSpotifyUser.UserAuth.Code),
                                                     new SqlParameter("dtAuth", oSpotifyUser.UserAuth.AuthDate)
                                                );
+            oSpotifyUser.SessionGuid = ds.Tables[0].Rows[0]["SessionGuid"].ToString();
+            
             
         }
 
@@ -139,6 +151,36 @@ namespace SpotifyChangeControlLib.AccessLayer
             RelationalDatabase.ExecuteNonQuery("AddSpotifyArtists", CommandType.StoredProcedure);
         }
 
+     
+     
+
+        public static void SavePlaylistsToDatabase(Dictionary<Int64, SpotifyPlaylist> Playlists, WorkTableState oWorkTableState)
+        {
+            
+            DataTable dtArtists = new DataTable();
+            dtArtists.Columns.Add(new DataColumn("PlaylistID", typeof(long)));
+            dtArtists.Columns.Add(new DataColumn("Name", typeof(string)));
+            dtArtists.Columns.Add(new DataColumn("SpotifyID", typeof(string)));
+
+            foreach (KeyValuePair<long, SpotifyPlaylist> oKVP in Playlists)
+            {
+                DataRow drArtist = dtArtists.NewRow();
+                drArtist["PlaylistID"] = oKVP.Key;
+                drArtist["Name"] = oKVP.Value.Name;
+                drArtist["SpotifyID"] = oKVP.Value.SpotifyID;
+                dtArtists.Rows.Add(drArtist);
+            }
+            SqlBulkCopyColumnMapping cmID = new SqlBulkCopyColumnMapping("PlaylistID", "PlaylistID");
+            SqlBulkCopyColumnMapping cmName = new SqlBulkCopyColumnMapping("Name", "Name");
+            SqlBulkCopyColumnMapping cmSpotifyID = new SqlBulkCopyColumnMapping("SpotifyID", "SpotifyID");
+
+            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName, cmSpotifyID);
+            RelationalDatabase.ExecuteNonQuery("AddSpotifyPlaylists", CommandType.StoredProcedure);
+       
+        }
+
+        
+
         public static void SaveTracksToDatabase(Dictionary<Int64, SpotifyTrack> Tracks, WorkTableState oWorkTableState)
         {
             DataTable dtArtists = new DataTable();
@@ -160,29 +202,6 @@ namespace SpotifyChangeControlLib.AccessLayer
             RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName, cmSpotifyID);
             RelationalDatabase.ExecuteNonQuery("AddSpotifyTracks", CommandType.StoredProcedure);
         }
-        public static void SavePlaylistsToDatabase(Dictionary<Int64, SpotifyPlaylist> Playlists, WorkTableState oWorkTableState)
-        {
-            DataTable dtArtists = new DataTable();
-            dtArtists.Columns.Add(new DataColumn("PlaylistID", typeof(long)));
-            dtArtists.Columns.Add(new DataColumn("Name", typeof(string)));
-            dtArtists.Columns.Add(new DataColumn("SpotifyID", typeof(string)));
-
-            foreach (KeyValuePair<long, SpotifyPlaylist> oKVP in Playlists)
-            {
-                DataRow drArtist = dtArtists.NewRow();
-                drArtist["PlaylistID"] = oKVP.Key;
-                drArtist["Name"] = oKVP.Value.Name;
-                drArtist["SpotifyID"] = oKVP.Value.SpotifyID;
-                dtArtists.Rows.Add(drArtist);
-            }
-            SqlBulkCopyColumnMapping cmID = new SqlBulkCopyColumnMapping("PlaylistID", "PlaylistID");
-            SqlBulkCopyColumnMapping cmName = new SqlBulkCopyColumnMapping("Name", "Name");
-            SqlBulkCopyColumnMapping cmSpotifyID = new SqlBulkCopyColumnMapping("SpotifyID", "SpotifyID");
-
-            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName, cmSpotifyID);
-            RelationalDatabase.ExecuteNonQuery("AddSpotifyPlaylists", CommandType.StoredProcedure);
-        }
-
         public static void SaveStatesToDatabase(List<SpotifyState> SpotifyStates, WorkTableState oWorkTableState)
         {
             DataTable dtArtists = new DataTable();
@@ -191,6 +210,7 @@ namespace SpotifyChangeControlLib.AccessLayer
             dtArtists.Columns.Add(new DataColumn("TrackID", typeof(long)));
             dtArtists.Columns.Add(new DataColumn("Position", typeof(long)));
             dtArtists.Columns.Add(new DataColumn("ArtistID", typeof(long)));
+
             foreach (SpotifyState oSpotifyState in SpotifyStates)
             {
                 DataRow drArtist = dtArtists.NewRow();
@@ -206,6 +226,7 @@ namespace SpotifyChangeControlLib.AccessLayer
             SqlBulkCopyColumnMapping cmTrackID = new SqlBulkCopyColumnMapping("TrackID", "TrackID");
             SqlBulkCopyColumnMapping cmPosition = new SqlBulkCopyColumnMapping("Position", "Position");
             SqlBulkCopyColumnMapping cmArtistID = new SqlBulkCopyColumnMapping("ArtistID", "ArtistID");
+
 
             RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmUserID, cmPlaylistID, cmTrackID, cmPosition, cmArtistID);
             RelationalDatabase.ExecuteNonQuery("UpsertSpotifyState", CommandType.StoredProcedure);
@@ -270,7 +291,17 @@ namespace SpotifyChangeControlLib.AccessLayer
             return UserChanges;
         }
 
-        
+        public static bool AuthenticateUserWithSession(string sUserGuid, string sSessionGuid)
+        {
+            DataSet ds = RelationalDatabase.ExecuteStoredProcedure("GetActiveSessions");
+            bool bisAuth = (ds.Tables[0].Select(string.Format("UserGuid = '{0}' AND SessionGUid = '{1}'", sUserGuid, sSessionGuid)).Count() > 0 ? true : false);
+            return bisAuth;
+        }
+
+        public static void DeleteSessionForUser(Int64 iUserID)
+        {
+            RelationalDatabase.ExecuteNonQuery("DeleteSessionsForUser", CommandType.StoredProcedure, new SqlParameter("iUserID", iUserID));
+        }
 
     }
 }

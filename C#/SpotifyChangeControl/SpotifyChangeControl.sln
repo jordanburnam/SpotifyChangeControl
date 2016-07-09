@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlLib", "SpotifyChangeControlLib\SpotifyChangeControlLib.csproj", "{1D284265-21B2-4E01-9EA9-019DC167CF62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlWeb", "SpotifyChangeControlWeb\SpotifyChangeControlWeb.csproj", "{FCACE768-788F-4092-B4F8-C43639471A60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlCMD", "SpotifyChangeControlCMD\SpotifyChangeControlCMD.csproj", "{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyAPI", "..\..\..\SpotifyAPI-NET\SpotifyAPI\SpotifyAPI.csproj", "{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Owin.Security.Spotify", "..\..\..\katana-clone\Microsoft.Owin.Security.Spotify\Microsoft.Owin.Security.Spotify.csproj", "{DF4C7897-2B30-4142-99D1-CE3EEA7F6F78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6BF765D-BA85-4042-90E0-B4A9AB5B303E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBBE35E2-7B91-4D7D-B8FC-3A0472F5119D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF4C7897-2B30-4142-99D1-CE3EEA7F6F78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4C7897-2B30-4142-99D1-CE3EEA7F6F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4C7897-2B30-4142-99D1-CE3EEA7F6F78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4C7897-2B30-4142-99D1-CE3EEA7F6F78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

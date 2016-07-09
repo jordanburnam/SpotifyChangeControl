@@ -1,5 +1,19 @@
 ﻿
+@{ 
+    bool bIsAuth = false;
+
+    
+}
+    
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Authorize", "Authorize", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+       
+        @if (bIsAuth)
+        {
+            <li>@Html.ActionLink("Logout", "Logout", "Account", routeValues: new { UserGuid = @Request.QueryString["UserGuid"], SessionGuid = @Request.QueryString["SessionGuid"] }, htmlAttributes: null)</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("Authorize", "Authorize", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        }
     </ul>
 

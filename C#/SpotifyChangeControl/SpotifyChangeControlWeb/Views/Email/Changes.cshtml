@@ -35,8 +35,8 @@
                         string sTrackName = oSpotifyPlaylistChange.TrackName.Length > 30 ? oSpotifyPlaylistChange.TrackName.Substring(0, 27) + "..." : oSpotifyPlaylistChange.TrackName;
                         string sArtistNames = string.Join(",", oSpotifyPlaylistChange.ArtistNames).Length > 30 ? string.Join(",", oSpotifyPlaylistChange.ArtistNames).Substring(0, 27) + "..." : string.Join(",", oSpotifyPlaylistChange.ArtistNames);
                     }
-                    <td>@sPlaylistName</td>
-                    <td>@sTrackName </td>
+                    <td><a href="http://play.spotify.com/playlist/@oSpotifyPlaylistChange.PlaylistSpotifyID">@sPlaylistName</a></td>
+                    <td> <a href="http://play.spotify.com/track/@oSpotifyPlaylistChange.TrackSpotifyID">@sTrackName</a></td>
                     <td>@sArtistNames</td>
                 </tr>
             }

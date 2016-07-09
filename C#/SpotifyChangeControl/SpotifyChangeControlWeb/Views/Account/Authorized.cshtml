@@ -1,4 +1,9 @@
-﻿<h2>Success!</h2>
-<h3>You have been successfully authorized! That's it.</h3>
+﻿<script>
+    window.setTimeout(function () {
+        window.location.href = '@ViewBag.RedirectUrl';
+    }, 4000);
+</script>
+<h2>Success!</h2>
+<h3>You have been successfully authorized! You will be redirect to the changes page in 4 seconds, if you don't click <a href="@ViewBag.RedirectUrl">here</a></h3>
 
 

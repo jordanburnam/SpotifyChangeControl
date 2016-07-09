@@ -52,7 +52,7 @@ namespace SpotifyChangeControlCMD
                     SCC_REDIS_PORT = 6379;
                 }
             }
-            SCCManager oSCCManager = new SCCManager(SCC_PRIVATE_ID, SCC_PUBLIC_ID, "http://localhost", SCC_SQL_CON, SCC_REDIS_HOST, SCC_REDIS_PORT, SCC_REDIS_PASS);
+            SCCManager oSCCManager = new SCCManager();
             
             oSCCManager.ExecuteStateMananger();
             Console.WriteLine("DONE at " + DateTime.Now);

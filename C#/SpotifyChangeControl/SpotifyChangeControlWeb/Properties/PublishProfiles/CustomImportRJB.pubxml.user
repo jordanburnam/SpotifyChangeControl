@@ -91,7 +91,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/24/2016 06:27:33</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>06/24/2016 06:27:34</publishTime>
+      <publishTime>07/06/2016 17:29:24</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>06/24/2016 06:27:34</publishTime>
@@ -139,16 +139,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/02/2016 21:41:44</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControl.dll">
-      <publishTime>07/07/2016 09:14:40</publishTime>
+      <publishTime>07/08/2016 16:05:52</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControl.pdb">
-      <publishTime>07/07/2016 09:14:40</publishTime>
+      <publishTime>07/08/2016 16:05:52</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControlLib.dll">
-      <publishTime>07/07/2016 09:12:33</publishTime>
+      <publishTime>07/07/2016 19:48:58</publishTime>
     </File>
     <File Include="bin/SpotifyChangeControlLib.pdb">
-      <publishTime>07/07/2016 09:12:33</publishTime>
+      <publishTime>07/07/2016 19:48:58</publishTime>
     </File>
     <File Include="bin/StackExchange.Redis.dll">
       <publishTime>06/28/2016 21:34:06</publishTime>
@@ -214,10 +214,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/16/2016 09:06:01</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>06/16/2016 09:05:59</publishTime>
+      <publishTime>07/08/2016 15:50:57</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>07/02/2016 13:51:33</publishTime>
+      <publishTime>07/07/2016 09:33:44</publishTime>
     </File>
     <File Include="Scripts/ai.0.15.0-build58334.js">
       <publishTime>06/16/2016 09:06:29</publishTime>
@@ -268,7 +268,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Account/Authorized.cshtml">
-      <publishTime>07/03/2016 15:07:18</publishTime>
+      <publishTime>07/07/2016 09:50:19</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>06/16/2016 09:06:09</publishTime>
@@ -288,6 +288,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/Login.cshtml">
       <publishTime>07/03/2016 09:34:11</publishTime>
     </File>
+    <File Include="Views/Account/Logout.cshtml">
+      <publishTime>07/07/2016 19:38:36</publishTime>
+    </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>06/16/2016 09:06:09</publishTime>
     </File>
@@ -306,8 +309,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
       <publishTime>06/16/2016 09:06:09</publishTime>
     </File>
+    <File Include="Views/Change/Index.cshtml">
+      <publishTime>07/07/2016 19:03:05</publishTime>
+    </File>
     <File Include="Views/Email/Changes.cshtml">
-      <publishTime>07/07/2016 07:16:39</publishTime>
+      <publishTime>07/07/2016 09:26:20</publishTime>
     </File>
     <File Include="Views/Error/NotFound.cshtml">
       <publishTime>07/03/2016 15:07:18</publishTime>
@@ -367,7 +373,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/03/2016 15:07:18</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>07/03/2016 15:07:18</publishTime>
+      <publishTime>07/08/2016 15:54:41</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/16/2016 09:05:59</publishTime>
@@ -376,7 +382,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/16/2016 09:05:59</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/06/2016 21:19:17</publishTime>
+      <publishTime>07/07/2016 09:54:24</publishTime>
     </File>
   </ItemGroup>
 </Project>
