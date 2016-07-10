@@ -10,6 +10,7 @@ BEGIN
 	SELECT 
 		SU.UserID
 		,SU.Name
+		,SU.UserGuid
 		,SUA.Code AS AuthCode
 		,SUA.AuthDate 
 		,SUAT.code AS AccessTokenCode

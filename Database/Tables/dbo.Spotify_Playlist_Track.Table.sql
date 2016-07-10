@@ -6,7 +6,7 @@ BEGIN
 	PlaylistID BIGINT NOT NULL 
 	,TrackID BIGINT NOT NULL
 	,Position BIGINT NOT NULL
-	,CreatedDate DATETIME NOT NULL DEFAULT(GETDATE())
+	,CreatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE())
 	,FOREIGN KEY(TrackID) REFERENCES dbo.Spotify_Track(TrackID)
 	,FOREIGN KEY(PlaylistID) REFERENCES dbo.Spotify_Playlist(PlaylistID)
   )

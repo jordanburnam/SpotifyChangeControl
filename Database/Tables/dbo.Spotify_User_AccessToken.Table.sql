@@ -7,10 +7,10 @@ BEGIN
 	,Code NVARCHAR(2000) NOT NULL
 	,TokenType NVARCHAR(100) NOT NULL
 	,ExpiresIn INT NOT NULL 
-	,AccessExpired AS CASE WHEN DATEDIFF(SECOND, TokenDate, GETDATE()) > ExpiresIn THEN 1 ELSE 0 END
+	,AccessExpired AS CASE WHEN DATEDIFF(SECOND, TokenDate, GETUTCDATE()) > ExpiresIn THEN 1 ELSE 0 END
 	,TokenDate DATETIME NOT NULL  --This is when the spotify api generated the token
-	,CreatedDate DATETIME NOT NULL DEFAULT(GETDATE())--This is the date the row was created may help in troubleshooting later problems
-	,UpdatedDate DATETIME NOT NULL DEFAULT(GETDATE()) --This is the date the row was updated may help in troubleshooting later problems
+	,CreatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE())--This is the date the row was created may help in troubleshooting later problems
+	,UpdatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE()) --This is the date the row was updated may help in troubleshooting later problems
 	,FOREIGN KEY(UserID) REFERENCES dbo.Spotify_User(UserID)
   )
 END

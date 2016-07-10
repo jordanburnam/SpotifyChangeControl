@@ -6,8 +6,8 @@ BEGIN
 	UserID BIGINT NOT NULL PRIMARY KEY
 	,Code NVARCHAR(2000) NOT NULL
 	,AuthDate DATETIME NOT NULL
-	,CreatedDate DATETIME NOT NULL DEFAULT(GETDATE()) --Shows when the row was added
-	,UpdatedDate DATETIME NOT NULL DEFAULT(GETDATE()) --Shows when the row was last updated
+	,CreatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE()) --Shows when the row was added
+	,UpdatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE()) --Shows when the row was last updated
 	,FOREIGN KEY(UserID) REFERENCES dbo.Spotify_User(UserID)
   )
 	
