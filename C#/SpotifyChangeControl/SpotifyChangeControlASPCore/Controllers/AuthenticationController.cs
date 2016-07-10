@@ -12,11 +12,25 @@ using Mvc.Client.Extensions;
 namespace Mvc.Client.Controllers {
     public class AuthenticationController : Controller {
         [HttpGet("~/signin")]
-        public IActionResult SignIn() => View("SignIn");
+        public IActionResult SignIn() => View("SignIn", HttpContext.GetExternalProviders());
 
-        [HttpPost("~/Authorize")]
-        public IActionResult Authorize() {
- 
+        [HttpPost("~/signin")]
+        public IActionResult SignIn([FromForm] string provider) {
+            // Note: the "provider" parameter corresponds to the external
+            // authentication provider choosen by the user agent.
+            if (string.IsNullOrWhiteSpace(provider))
+            {
+                return BadRequest();
+            }
+
+            if (!HttpContext.IsProviderSupported(provider))
+            {
+                return BadRequest();
+            }
+
+            // Instruct the middleware corresponding to the requested external identity
+            // provider to redirect the user agent to its own authorization endpoint.
+            // Note: the authenticationScheme parameter must match the value configured in Startup.cs
             return Challenge(new AuthenticationProperties { RedirectUri = "/" }, "Spotify");
         }
 

@@ -31,11 +31,11 @@ namespace Mvc.Client {
                 LogoutPath = new PathString("/signout")
             });
 
-            
+            SpotifyChangeControlLib.SCCManager oSCCManager = new SpotifyChangeControlLib.SCCManager();
             var Options = new AspNet.Security.OAuth.Spotify.SpotifyAuthenticationOptions()
             {
-                ClientId = "d2036a1624b343e5a0dbe93824758bc0",
-                ClientSecret = "14ff6ba40acb4f2e849f2adb9a8b42a0"
+                ClientId = oSCCManager.SCC_PUBLIC_ID,
+                ClientSecret = oSCCManager.SCC_PRIVATE_ID
 
             };
             Options.Scope.Add("playlist-read-private");

@@ -6,11 +6,14 @@
     <p class="lead text-left">Sign in using one of these external providers:</p>
     
    
-        <form action="/Authorize" method="post">
-            <input type="hidden" name="Provider" value="Spotify" />
-            <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" />
+        @foreach (var description in Model)
+        {
+            <form action="/signin" method="post">
+                <input type="hidden" name="Provider" value="@description.AuthenticationScheme" />
+                <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" />
 
-            <button class="btn btn-lg btn-success" type="submit">Connect using Spotify</button>
-        </form>
+                <button class="btn btn-lg btn-success" type="submit">Connect using @description.DisplayName</button>
+            </form>
+        }
     
 </div>

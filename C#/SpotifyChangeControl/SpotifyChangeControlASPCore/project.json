@@ -16,7 +16,7 @@
 
   "dependencies": {
     "AspNet.Security.OAuth.GitHub": "1.0.0-beta1-final",
-    "AspNet.Security.OAuth.Spotify": "1.0.0-beta2",
+    "CustomSpotifyAuth": "1.0.1",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Authentication.Google": "1.0.0",
     "Microsoft.AspNetCore.Authentication.Twitter": "1.0.0",
@@ -28,12 +28,16 @@
     "Microsoft.Extensions.Configuration.CommandLine": "1.0.0",
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "Microsoft.Extensions.Logging.Console": "1.0.0",
-    "Microsoft.Extensions.Logging.Debug": "1.0.0",
-    "SpotifyChangeControlLib": "1.0.0"
+    "Microsoft.Extensions.Logging.Debug": "1.0.0"
   },
 
   "frameworks": {
     "net451": {
+      "dependencies": {
+        "SpotifyChangeControlLib": {
+          "target": "project"
+        }
+      }
     }
   },
 

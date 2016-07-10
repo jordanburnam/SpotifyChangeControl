@@ -3,6 +3,83 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.5.1": {
+      "AspNet.Security.OAuth.GitHub/1.0.0-beta1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+        },
+        "compile": {
+          "lib/net451/AspNet.Security.OAuth.GitHub.dll": {}
+        },
+        "runtime": {
+          "lib/net451/AspNet.Security.OAuth.GitHub.dll": {}
+        }
+      },
+      "CustomSpotifyAuth/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/AspNet.Security.OAuth.Spotify.dll": {},
+          "lib/JetBrains.Annotations.dll": {},
+          "lib/Microsoft.AspNetCore.Authentication.OAuth.dll": {},
+          "lib/Microsoft.AspNetCore.Authentication.dll": {},
+          "lib/Microsoft.AspNetCore.Cryptography.Internal.dll": {},
+          "lib/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {},
+          "lib/Microsoft.AspNetCore.DataProtection.dll": {},
+          "lib/Microsoft.AspNetCore.Hosting.Abstractions.dll": {},
+          "lib/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {},
+          "lib/Microsoft.AspNetCore.Http.Abstractions.dll": {},
+          "lib/Microsoft.AspNetCore.Http.Extensions.dll": {},
+          "lib/Microsoft.AspNetCore.Http.Features.dll": {},
+          "lib/Microsoft.AspNetCore.Http.dll": {},
+          "lib/Microsoft.AspNetCore.WebUtilities.dll": {},
+          "lib/Microsoft.Extensions.Configuration.Abstractions.dll": {},
+          "lib/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {},
+          "lib/Microsoft.Extensions.FileProviders.Abstractions.dll": {},
+          "lib/Microsoft.Extensions.Logging.Abstractions.dll": {},
+          "lib/Microsoft.Extensions.ObjectPool.dll": {},
+          "lib/Microsoft.Extensions.Options.dll": {},
+          "lib/Microsoft.Extensions.Primitives.dll": {},
+          "lib/Microsoft.Extensions.WebEncoders.dll": {},
+          "lib/Microsoft.Net.Http.Headers.dll": {},
+          "lib/Newtonsoft.Json.dll": {},
+          "lib/SpotifyAPI.dll": {},
+          "lib/SpotifyChangeControlLib.dll": {},
+          "lib/StackExchange.Redis.dll": {},
+          "lib/System.Buffers.dll": {},
+          "lib/System.Text.Encodings.Web.dll": {}
+        },
+        "runtime": {
+          "lib/AspNet.Security.OAuth.Spotify.dll": {},
+          "lib/JetBrains.Annotations.dll": {},
+          "lib/Microsoft.AspNetCore.Authentication.OAuth.dll": {},
+          "lib/Microsoft.AspNetCore.Authentication.dll": {},
+          "lib/Microsoft.AspNetCore.Cryptography.Internal.dll": {},
+          "lib/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {},
+          "lib/Microsoft.AspNetCore.DataProtection.dll": {},
+          "lib/Microsoft.AspNetCore.Hosting.Abstractions.dll": {},
+          "lib/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {},
+          "lib/Microsoft.AspNetCore.Http.Abstractions.dll": {},
+          "lib/Microsoft.AspNetCore.Http.Extensions.dll": {},
+          "lib/Microsoft.AspNetCore.Http.Features.dll": {},
+          "lib/Microsoft.AspNetCore.Http.dll": {},
+          "lib/Microsoft.AspNetCore.WebUtilities.dll": {},
+          "lib/Microsoft.Extensions.Configuration.Abstractions.dll": {},
+          "lib/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {},
+          "lib/Microsoft.Extensions.FileProviders.Abstractions.dll": {},
+          "lib/Microsoft.Extensions.Logging.Abstractions.dll": {},
+          "lib/Microsoft.Extensions.ObjectPool.dll": {},
+          "lib/Microsoft.Extensions.Options.dll": {},
+          "lib/Microsoft.Extensions.Primitives.dll": {},
+          "lib/Microsoft.Extensions.WebEncoders.dll": {},
+          "lib/Microsoft.Net.Http.Headers.dll": {},
+          "lib/Newtonsoft.Json.dll": {},
+          "lib/SpotifyAPI.dll": {},
+          "lib/SpotifyChangeControlLib.dll": {},
+          "lib/StackExchange.Redis.dll": {},
+          "lib/System.Buffers.dll": {},
+          "lib/System.Text.Encodings.Web.dll": {}
+        }
+      },
       "Libuv/1.9.0": {
         "type": "package",
         "dependencies": {
@@ -1475,43 +1552,73 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
-      "AspNet.Security.OAuth.GitHub/1.0.0-beta2": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
-        },
-        "compile": {
-          "net451/AspNet.Security.OAuth.GitHub.dll": {}
-        },
-        "runtime": {
-          "net451/AspNet.Security.OAuth.GitHub.dll": {}
-        }
-      },
-      "AspNet.Security.OAuth.Spotify/1.0.0-beta2": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
-          "SpotifyAPI": "1.0.0",
-          "SpotifyChangeControlLib": "1.0.1"
-        },
-        "compile": {
-          "net451/AspNet.Security.OAuth.Spotify.dll": {}
-        },
-        "runtime": {
-          "net451/AspNet.Security.OAuth.Spotify.dll": {}
-        }
-      },
       "SpotifyAPI/1.0.0": {
         "type": "project"
       },
       "SpotifyChangeControlLib/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "dependencies": {
+          "SpotifyAPI": "1.0.0"
+        }
       }
     }
   },
   "libraries": {
+    "AspNet.Security.OAuth.GitHub/1.0.0-beta1-final": {
+      "sha512": "Awy+S2YF8NnSFuYI7Dk8pp1L1Bh6tSHEbEpka2BAQQltkqCNYD76ZUJcQWUps3ThkUHkemzJFOgvgqH22bEalQ==",
+      "type": "package",
+      "path": "AspNet.Security.OAuth.GitHub/1.0.0-beta1-final",
+      "files": [
+        "AspNet.Security.OAuth.GitHub.1.0.0-beta1-final.nupkg.sha512",
+        "AspNet.Security.OAuth.GitHub.nuspec",
+        "lib/net451/AspNet.Security.OAuth.GitHub.dll",
+        "lib/net451/AspNet.Security.OAuth.GitHub.xml",
+        "lib/netstandard1.3/AspNet.Security.OAuth.GitHub.dll",
+        "lib/netstandard1.3/AspNet.Security.OAuth.GitHub.xml"
+      ]
+    },
+    "CustomSpotifyAuth/1.0.1": {
+      "sha512": "a8ac1w3GZtqgI9cax+Kq58O9y74kI9jQytr0n6ivD7mtCQ+UD0F2IHGvmSEmaS7e0zEKeDQgtEWIu0l4NhRMLQ==",
+      "type": "package",
+      "path": "CustomSpotifyAuth/1.0.1",
+      "files": [
+        "CustomSpotifyAuth.1.0.1.nupkg.sha512",
+        "CustomSpotifyAuth.nuspec",
+        "content/AspNet.Security.OAuth.Spotify.xml",
+        "lib/AspNet.Security.OAuth.Spotify.dll",
+        "lib/AspNet.Security.OAuth.Spotify.pdb",
+        "lib/JetBrains.Annotations.dll",
+        "lib/Microsoft.AspNetCore.Authentication.OAuth.dll",
+        "lib/Microsoft.AspNetCore.Authentication.dll",
+        "lib/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/Microsoft.AspNetCore.DataProtection.Abstractions.dll",
+        "lib/Microsoft.AspNetCore.DataProtection.dll",
+        "lib/Microsoft.AspNetCore.Hosting.Abstractions.dll",
+        "lib/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll",
+        "lib/Microsoft.AspNetCore.Http.Abstractions.dll",
+        "lib/Microsoft.AspNetCore.Http.Extensions.dll",
+        "lib/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/Microsoft.AspNetCore.Http.dll",
+        "lib/Microsoft.AspNetCore.WebUtilities.dll",
+        "lib/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/Microsoft.Extensions.ObjectPool.dll",
+        "lib/Microsoft.Extensions.Options.dll",
+        "lib/Microsoft.Extensions.Primitives.dll",
+        "lib/Microsoft.Extensions.WebEncoders.dll",
+        "lib/Microsoft.Net.Http.Headers.dll",
+        "lib/Newtonsoft.Json.dll",
+        "lib/SpotifyAPI.dll",
+        "lib/SpotifyAPI.pdb",
+        "lib/SpotifyChangeControlLib.dll",
+        "lib/SpotifyChangeControlLib.pdb",
+        "lib/StackExchange.Redis.dll",
+        "lib/System.Buffers.dll",
+        "lib/System.Text.Encodings.Web.dll"
+      ]
+    },
     "Libuv/1.9.0": {
       "sha512": "/EFiuGegR/fpxRN9wCi1OH/Ewhj+Pe8ivs1T6ujDj+tJIo4F6a9QGA35nzsGwB6miGdzQ8f0oOsBmdHsEQ6dnw==",
       "type": "package",
@@ -4177,29 +4284,19 @@
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml"
       ]
     },
-    "AspNet.Security.OAuth.GitHub/1.0.0-beta2": {
-      "type": "project",
-      "path": "../../src/AspNet.Security.OAuth.GitHub/project.json",
-      "msbuildProject": "../../src/AspNet.Security.OAuth.GitHub/AspNet.Security.OAuth.GitHub.xproj"
-    },
-    "AspNet.Security.OAuth.Spotify/1.0.0-beta2": {
-      "type": "project",
-      "path": "../../src/AspNet.Security.OAuth.Spotify/project.json",
-      "msbuildProject": "../../src/AspNet.Security.OAuth.Spotify/AspNet.Security.OAuth.Spotify.xproj"
-    },
     "SpotifyAPI/1.0.0": {
       "type": "project",
-      "msbuildProject": "../../../SpotifyAPI-NET/SpotifyAPI/SpotifyAPI.csproj"
+      "msbuildProject": "../../../../SpotifyAPI-NET/SpotifyAPI/SpotifyAPI.csproj"
     },
     "SpotifyChangeControlLib/1.0.0": {
       "type": "project",
-      "msbuildProject": "../../../SpotifyChangeControl/C#/SpotifyChangeControl/SpotifyChangeControlLib/SpotifyChangeControlLib.csproj"
+      "msbuildProject": "../SpotifyChangeControlLib/SpotifyChangeControlLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "AspNet.Security.OAuth.GitHub >= 1.0.0-beta1-final",
-      "AspNet.Security.OAuth.Spotify >= 1.0.0-beta2",
+      "CustomSpotifyAuth >= 1.0.1",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.Google >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.Twitter >= 1.0.0",
@@ -4211,10 +4308,11 @@
       "Microsoft.Extensions.Configuration.CommandLine >= 1.0.0",
       "Microsoft.Extensions.Configuration.EnvironmentVariables >= 1.0.0",
       "Microsoft.Extensions.Logging.Console >= 1.0.0",
-      "Microsoft.Extensions.Logging.Debug >= 1.0.0",
-      "SpotifyChangeControlLib >= 1.0.0"
+      "Microsoft.Extensions.Logging.Debug >= 1.0.0"
     ],
-    ".NETFramework,Version=v4.5.1": []
+    ".NETFramework,Version=v4.5.1": [
+      "SpotifyChangeControlLib"
+    ]
   },
   "tools": {
     ".NETCoreApp,Version=v1.0": {
