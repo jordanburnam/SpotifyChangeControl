@@ -13,17 +13,12 @@ namespace SpotifyChangeControlLib
 {
     public class SCCManager
     {
-        private string _ClientPrivate;
-        private string _ClientPublic;
+  
         private StateManager _oStateManager;
 
         private string _SCC_PRIVATE_ID;
         private string _SCC_PUBLIC_ID;
-        private string _SCC_SQL_CON;
-        private string _SCC_REDIS_HOST;
-        private string _SCC_REDIS_PASS;
-        private int _SCC_REDIS_PORT;
-        private SCCManager _oSCCManager;
+
         private string _RedirectUrl;
 
         public string SCC_PRIVATE_ID
@@ -41,10 +36,7 @@ namespace SpotifyChangeControlLib
             get { return _RedirectUrl; }
         }
 
-        public SCCManager oSCCManager
-        {
-            get { return _oSCCManager; }
-        }
+        
 
         public SCCManager()
         {
@@ -70,7 +62,7 @@ namespace SpotifyChangeControlLib
             this._RedirectUrl = sRedirectUrl;
             SpotifyChangeControlLib.StorageLayer.CacheDatabase.Init(sHost, iPort, sPassword);
             SpotifyChangeControlLib.StorageLayer.RelationalDatabase.Init(sSQLConnection);
-            SpotifyChangeControlLib.AccessLayer.SpotifyDatabase.Init(_ClientPublic, _ClientPrivate, sRedirectUrl);
+            SpotifyChangeControlLib.AccessLayer.SpotifyDatabase.Init(_SCC_PUBLIC_ID, _SCC_PRIVATE_ID, _RedirectUrl);
            
             this._oStateManager = new StateManager();
             
@@ -87,21 +79,7 @@ namespace SpotifyChangeControlLib
             return oSpotifyUser;
         }
 
-        public SpotifyPlaylistChangeManager  GetUserForUserGuid(string sUserGuid, DateTime? dtLastSeen = null)
-        {
-
-            SpotifyPlaylistChange[] Changes = SpotifyAccessLayer.GetSpotifyUserForGuid(sUserGuid).Changes.ToArray();
-            SpotifyPlaylistChange[] ChangesFilteredWithDate;
-            if (dtLastSeen != null)
-            {
-                ChangesFilteredWithDate = (from Change in Changes where Change.ChangedDate > dtLastSeen.Value.ToUniversalTime() select Change).ToArray();
-            }
-            else
-            {
-                ChangesFilteredWithDate = Changes;
-            }
-            return new SpotifyPlaylistChangeManager(ChangesFilteredWithDate);
-        }
+ 
 
         public bool AuthenticateUserSession(string sUserGuid, string sSessionGuid)
         {
