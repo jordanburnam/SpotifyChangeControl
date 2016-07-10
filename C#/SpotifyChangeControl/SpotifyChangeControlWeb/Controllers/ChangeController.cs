@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,19 +21,19 @@ namespace SpotifyChangeControl.Controllers
         // GET: Change
         public ActionResult Index()
         {
-            if (!AuthenticateUser())
-            {
-                return new RedirectResult("/SpotifyChangeControl/Account/Authorize");
-            }
+            
             return View();
         }
 
-        public ActionResult Changes()
+        public  async Task<RedirectResult> Get()
         {
-            if (!AuthenticateUser())
-            {
-                return new RedirectResult("/SpotifyChangeControl/Account/Authorize");
-            }
+           
+            return new RedirectResult("/Change/Look");
+        }
+
+        public  ViewResult Look()
+        {
+
 
             return View();
         }

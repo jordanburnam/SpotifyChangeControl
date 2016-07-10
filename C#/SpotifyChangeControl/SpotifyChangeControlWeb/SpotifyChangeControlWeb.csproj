@@ -48,9 +48,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AspNet.Security.OAuth.GitHub, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AspNet.Security.OAuth.GitHub.1.0.0-beta1-final\lib\net451\AspNet.Security.OAuth.GitHub.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="AspNet.Security.OAuth.Spotify, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\AspNet.Security.OAuth.Providers\src\AspNet.Security.OAuth.Spotify\bin\Debug\net451\AspNet.Security.OAuth.Spotify.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -366,6 +366,8 @@
     <Content Include="Views\Email\Changes.cshtml" />
     <Content Include="Views\Change\Index.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
+    <Content Include="Views\Change\Changes.cshtml" />
+    <Content Include="Views\Change\Look.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -380,18 +382,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\katana-clone\Microsoft.Owin.Security.Spotify\Microsoft.Owin.Security.Spotify.csproj">
-      <Project>{df4c7897-2b30-4142-99d1-ce3eea7f6f78}</Project>
-      <Name>Microsoft.Owin.Security.Spotify</Name>
-    </ProjectReference>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SpotifyChangeControlLib\SpotifyChangeControlLib.csproj">
       <Project>{1d284265-21b2-4e01-9ea9-019dc167cf62}</Project>
       <Name>SpotifyChangeControlLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

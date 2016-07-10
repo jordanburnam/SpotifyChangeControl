@@ -1,5 +1,11 @@
 ﻿@{
     ViewBag.Title = "Authorize";
+
+    string sButtonClass = "btn btn-default ";
+    if (@ViewData["AuthUrl"].ToString().Length == 0)
+    {
+        sButtonClass += "disabled";
+    }
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -8,7 +14,7 @@
         <section id="loginForm">
          
             
-            <input type="button" value="Authorize" class="btn btn-default" onclick="window.location ='@ViewData["AuthUrl"]'"/>
+            <input type="button" value="Authorize" class="@sButtonClass" onclick="window.location ='@ViewData["AuthUrl"]'"/>
             
         </section>
     </div>

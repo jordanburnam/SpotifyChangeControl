@@ -15,6 +15,8 @@
 -r:"C:\Users\Admin\.nuget\packages\System.Collections\4.0.11\ref\netstandard1.3\System.Collections.dll"
 -r:"C:\Users\Admin\.nuget\packages\System.Collections.Concurrent\4.0.12\ref\netstandard1.3\System.Collections.Concurrent.dll"
 -r:"C:\Users\Admin\.nuget\packages\System.Console\4.0.0\ref\netstandard1.3\System.Console.dll"
+-r:"C:\Users\Admin\.nuget\packages\System.Data.Common\4.1.0\ref\netstandard1.2\System.Data.Common.dll"
+-r:"C:\Users\Admin\.nuget\packages\System.Data.SqlClient\4.1.0\ref\netstandard1.3\System.Data.SqlClient.dll"
 -r:"C:\Users\Admin\.nuget\packages\System.Diagnostics.Debug\4.0.11\ref\netstandard1.3\System.Diagnostics.Debug.dll"
 -r:"C:\Users\Admin\.nuget\packages\System.Diagnostics.Tools\4.0.1\ref\netstandard1.0\System.Diagnostics.Tools.dll"
 -r:"C:\Users\Admin\.nuget\packages\System.Diagnostics.Tracing\4.1.0\ref\netstandard1.5\System.Diagnostics.Tracing.dll"

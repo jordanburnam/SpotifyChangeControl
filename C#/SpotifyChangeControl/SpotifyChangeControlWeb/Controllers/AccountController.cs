@@ -31,14 +31,21 @@ namespace SpotifyChangeControl.Controllers
         [HttpGet]
         public ActionResult Authorize()
         {
-            StringBuilder builder = new StringBuilder("https://accounts.spotify.com/authorize/?");
-            builder.Append("client_id=" + this._oSCCManager.SCC_PUBLIC_ID);
-            builder.Append("&response_type=code");
-            builder.Append("&redirect_uri=" + this._oSCCManager.RedirectUrl);
-            builder.Append("&state=" + "");
-            builder.Append("&scope=" + "playlist-read-private user-read-private user-read-email user-library-read user-follow-read");
-            builder.Append("&show_dialog=" + "false");
-            ViewData["AuthUrl"] = builder.ToString();
+            if (!AuthenticateUser())
+            {
+                StringBuilder builder = new StringBuilder("https://accounts.spotify.com/authorize/?");
+                builder.Append("client_id=" + this._oSCCManager.SCC_PUBLIC_ID);
+                builder.Append("&response_type=code");
+                builder.Append("&redirect_uri=" + this._oSCCManager.RedirectUrl);
+                builder.Append("&state=" + "");
+                builder.Append("&scope=" + "playlist-read-private user-read-private user-read-email user-library-read user-follow-read");
+                builder.Append("&show_dialog=" + "false");
+                ViewData["AuthUrl"] = builder.ToString();
+            }
+            else
+            {
+                ViewData["AuthUrl"] = "";
+            }
             return View();
         }
 
@@ -112,7 +119,7 @@ namespace SpotifyChangeControl.Controllers
             }
             else
             {
-                this.ControllerContext.HttpContext.Request.Cookies.Get("SessionGuid").Value = oSpotifyUser.UserGuid;
+                this.ControllerContext.HttpContext.Request.Cookies.Get("SessionGuid").Value = oSpotifyUser.SessionGuid;
             }
 
                 

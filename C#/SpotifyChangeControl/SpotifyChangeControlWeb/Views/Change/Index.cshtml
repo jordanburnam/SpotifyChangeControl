@@ -1,1 +1,68 @@
-﻿
+﻿@{ 
+    ViewBag.Title = "Changes Home";
+}
+<script>
+    function DisplayProgressMessage(ctl, msg) {
+        $(ctl).prop("disabled", true);
+        $(ctl).text(msg);
+
+        $(".submit-progress").removeClass("hidden");
+        $("body").addClass("submit-progress-bg");
+
+        return true;
+    };
+
+</script>
+<style>
+    .submit-progress-bg {
+    background-color: lightgray;
+    opacity: .5;
+  }
+    .submit-progress {
+  position: fixed;
+  /*
+
+ 
+  */
+   top: 50%;
+  left: 50%;
+  height: 9em;
+  padding-top: 3.0em;
+  /* The following rules are the ones most likely to change */
+  width: 25em;
+  /* Set 'margin-left' to a negative number
+     that is 1/2 of 'width' */
+  margin-left: -10em;
+  padding-left: 2.1em;
+  background-color: black;
+  color: white;
+}
+</style>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Executing...</h4>
+            </div>
+            <div class="modal-body">
+                <p>Please wait while we download the entire Spotify Database into a potato...</p>
+            </div>
+            <div class="modal-footer">
+             No seriously...I have a patent pending method of move data into potatos...it
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="submit-progress hidden">
+    <label>Please wait while we download the entire Spotify Database into a potato...</label>
+</div>
+
+<h2>@ViewBag.Title</h2>
+<h3>Check For Changes</h3>
+<p><input type="button" value="Get Changes" class="btn btn-default" onclick="DisplayProgressMessage(this, 'Getting...');  window.location = '/Change/Get'" /></p>
+<h3>View Changes</h3>
+<p><input type="button" value="Get Current " class="btn btn-default" onclick="window.location = '/Change/Look'" /></p>
