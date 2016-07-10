@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNet.Security.OAuth.Imgur</name>
+    </assembly>
+    <members>
+        <member name="T:AspNet.Security.OAuth.Imgur.ImgurAuthenticationDefaults">
+            <summary>
+            Default values used by the Imgur authentication middleware.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Imgur.ImgurAuthenticationDefaults.AuthenticationScheme">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.AuthenticationScheme"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Imgur.ImgurAuthenticationDefaults.DisplayName">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.DisplayName"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Imgur.ImgurAuthenticationDefaults.Issuer">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.ClaimsIssuer"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Imgur.ImgurAuthenticationDefaults.CallbackPath">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.CallbackPath"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Imgur.ImgurAuthenticationDefaults.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Imgur.ImgurAuthenticationDefaults.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Imgur.ImgurAuthenticationDefaults.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Imgur.ImgurAuthenticationHelper">
+            <summary>
+            Contains static methods that allow to extract user's information from a <see cref="T:Newtonsoft.Json.Linq.JObject"/>
+            instance retrieved from Imgur after a successful authentication process.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Imgur.ImgurAuthenticationHelper.GetId(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the id of the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Imgur.ImgurAuthenticationHelper.GetUrl(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the url (name) of the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Imgur.ImgurAuthenticationHelper.GetBio(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the bio of the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Imgur.ImgurAuthenticationHelper.GetReputation(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the reputation of the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Imgur.ImgurAuthenticationHelper.GetCreated(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the epoch time of account creation of the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Imgur.ImgurAuthenticationHelper.GetProExpiration(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the epoch time of the expiration of the pro account of the authenticated user.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Imgur.ImgurAuthenticationOptions">
+            <summary>
+            Defines a set of options used by <see cref="T:AspNet.Security.OAuth.Imgur.ImgurAuthenticationHandler"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.ImgurAuthenticationExtensions">
+            <summary>
+            Extension methods to add Imgur authentication capabilities to an HTTP application pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.ImgurAuthenticationExtensions.UseImgurAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,AspNet.Security.OAuth.Imgur.ImgurAuthenticationOptions)">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Imgur.ImgurAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Imgur authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="options">A <see cref="T:AspNet.Security.OAuth.Imgur.ImgurAuthenticationOptions"/> that specifies options for the middleware.</param>        
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.ImgurAuthenticationExtensions.UseImgurAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{AspNet.Security.OAuth.Imgur.ImgurAuthenticationOptions})">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Imgur.ImgurAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Imgur authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="configuration">An action delegate to configure the provided <see cref="T:AspNet.Security.OAuth.Imgur.ImgurAuthenticationOptions"/>.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNet.Security.OAuth.Twitch</name>
+    </assembly>
+    <members>
+        <member name="T:AspNet.Security.OAuth.Twitch.TwitchAuthenticationDefaults">
+            <summary>
+            Default values used by the Twitch authentication middleware.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Twitch.TwitchAuthenticationDefaults.AuthenticationScheme">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.AuthenticationScheme"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Twitch.TwitchAuthenticationDefaults.DisplayName">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.DisplayName"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Twitch.TwitchAuthenticationDefaults.Issuer">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.ClaimsIssuer"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Twitch.TwitchAuthenticationDefaults.CallbackPath">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.CallbackPath"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Twitch.TwitchAuthenticationDefaults.AuthorizationEndPoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Twitch.TwitchAuthenticationDefaults.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Twitch.TwitchAuthenticationDefaults.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Twitch.TwitchAuthenticationHelper">
+            <summary>
+            Contains static methods that allow to extract user's information from a <see cref="T:Newtonsoft.Json.Linq.JObject"/>
+            instance retrieved from Twitch after a successful authentication process.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Twitch.TwitchAuthenticationHelper.GetIdentifier(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the identifier corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Twitch.TwitchAuthenticationHelper.GetName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the name corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Twitch.TwitchAuthenticationOptions">
+            <summary>
+            Defines a set of options used by <see cref="T:AspNet.Security.OAuth.Twitch.TwitchAuthenticationHandler"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.TwitchAuthenticationExtensions">
+            <summary>
+            Extension methods to add Twitch authentication capabilities to an HTTP application pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.TwitchAuthenticationExtensions.UseTwitchAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,AspNet.Security.OAuth.Twitch.TwitchAuthenticationOptions)">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Twitch.TwitchAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Twitch authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="options">A <see cref="T:AspNet.Security.OAuth.Twitch.TwitchAuthenticationOptions"/> that specifies options for the middleware.</param>        
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.TwitchAuthenticationExtensions.UseTwitchAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{AspNet.Security.OAuth.Twitch.TwitchAuthenticationOptions})">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Twitch.TwitchAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Twitch authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="configuration">An action delegate to configure the provided <see cref="T:AspNet.Security.OAuth.Twitch.TwitchAuthenticationOptions"/>.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+    </members>
+</doc>

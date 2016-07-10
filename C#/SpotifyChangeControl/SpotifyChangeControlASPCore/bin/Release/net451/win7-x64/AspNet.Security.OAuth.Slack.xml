@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNet.Security.OAuth.Slack</name>
+    </assembly>
+    <members>
+        <member name="T:AspNet.Security.OAuth.Slack.SlackAuthenticationDefaults">
+            <summary>
+            Default values used by the Slack authentication middleware.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Slack.SlackAuthenticationDefaults.AuthenticationScheme">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.AuthenticationScheme"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Slack.SlackAuthenticationDefaults.DisplayName">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.DisplayName"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Slack.SlackAuthenticationDefaults.Issuer">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.ClaimsIssuer"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Slack.SlackAuthenticationDefaults.CallbackPath">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.CallbackPath"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Slack.SlackAuthenticationDefaults.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Slack.SlackAuthenticationDefaults.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Slack.SlackAuthenticationDefaults.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/>.
+            For more info about this endpoint, see https://api.slack.com/methods/auth.test.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Slack.SlackAuthenticationHelper">
+            <summary>
+            Contains static methods that allow to extract user's information from a <see cref="T:Newtonsoft.Json.Linq.JObject"/>
+            instance retrieved from Slack after a successful authentication process.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Slack.SlackAuthenticationHelper.GetUserIdentifier(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the identifier corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Slack.SlackAuthenticationHelper.GetUserName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the login corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Slack.SlackAuthenticationHelper.GetTeamIdentifier(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the name corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Slack.SlackAuthenticationHelper.GetTeamName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the name corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Slack.SlackAuthenticationHelper.GetTeamLink(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the URL corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Slack.SlackAuthenticationOptions">
+            <summary>
+            Defines a set of options used by <see cref="T:AspNet.Security.OAuth.Slack.SlackAuthenticationHandler"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.SlackAuthenticationExtensions">
+            <summary>
+            Extension methods to add Slack authentication capabilities to an HTTP application pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.SlackAuthenticationExtensions.UseSlackAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,AspNet.Security.OAuth.Slack.SlackAuthenticationOptions)">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Slack.SlackAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Slack authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="options">A <see cref="T:AspNet.Security.OAuth.Slack.SlackAuthenticationOptions"/> that specifies options for the middleware.</param>        
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.SlackAuthenticationExtensions.UseSlackAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{AspNet.Security.OAuth.Slack.SlackAuthenticationOptions})">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Slack.SlackAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Slack authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="configuration">An action delegate to configure the provided <see cref="T:AspNet.Security.OAuth.Slack.SlackAuthenticationOptions"/>.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+    </members>
+</doc>

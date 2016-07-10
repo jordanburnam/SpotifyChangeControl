@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNet.Security.OAuth.Salesforce</name>
+    </assembly>
+    <members>
+        <member name="T:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults">
+            <summary>
+            Default values used by the Salesforce authentication middleware.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults.AuthenticationScheme">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.AuthenticationScheme"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults.DisplayName">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.DisplayName"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults.Issuer">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.ClaimsIssuer"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults.CallbackPath">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.CallbackPath"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults.Environment">
+            <summary>
+            Default value for the Salesforce environment (production or test)
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults.Production.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults.Production.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults.Test.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationDefaults.Test.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/>.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationEnvironment">
+            <summary>
+            Defines a list of environments used to determine the appropriate
+            OAuth2 endpoints when communicating with Salesforce.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationEnvironment.Production">
+            <summary>
+            Use login.salesforce.com in the OAuth2 endpoints.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationEnvironment.Test">
+            <summary>
+            Uses test.salesforce.com in the OAuth2 endpoints.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationHelper">
+            <summary>
+            Contains static methods that allow to extract user's information from a <see cref="T:Newtonsoft.Json.Linq.JObject"/>
+            instance retrieved from Salesforce after a successful authentication process.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationHelper.GetUserIdentifier(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the Salesforce ID corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationHelper.GetUserName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the user's name.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationHelper.GetEmail(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the user's email.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationHelper.GetThumbnailPhoto(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the user's thumbnail photo.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationHelper.GetUtcOffset(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the user's UTC offset, in milliseconds.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationHelper.GetRestUrl(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the REST URL returned from the identity service.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationOptions">
+            <summary>
+            Defines a set of options used by <see cref="T:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationHandler"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.SalesforceAuthenticationExtensions">
+            <summary>
+            Extension methods to add Salesforce authentication capabilities to an HTTP application pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.SalesforceAuthenticationExtensions.UseSalesforceAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationOptions)">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationMiddleware"/> middleware to the specified
+            <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Salesforce authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="options">A <see cref="T:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationOptions"/> that specifies options for the middleware.</param>        
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.SalesforceAuthenticationExtensions.UseSalesforceAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationOptions})">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationMiddleware"/> middleware to the specified
+            <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Salesforce authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="configuration">An action delegate to configure the provided <see cref="T:AspNet.Security.OAuth.Salesforce.SalesforceAuthenticationOptions"/>.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+    </members>
+</doc>

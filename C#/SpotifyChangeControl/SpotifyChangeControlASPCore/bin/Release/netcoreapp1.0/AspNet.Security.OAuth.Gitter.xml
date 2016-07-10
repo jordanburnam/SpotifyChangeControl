@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNet.Security.OAuth.Gitter</name>
+    </assembly>
+    <members>
+        <member name="T:AspNet.Security.OAuth.Gitter.GitterAuthenticationDefaults">
+            <summary>
+            Default values used by the Gitter authentication middleware.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Gitter.GitterAuthenticationDefaults.AuthenticationScheme">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.AuthenticationScheme"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Gitter.GitterAuthenticationDefaults.DisplayName">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.DisplayName"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Gitter.GitterAuthenticationDefaults.Issuer">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.ClaimsIssuer"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Gitter.GitterAuthenticationDefaults.CallbackPath">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.CallbackPath"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Gitter.GitterAuthenticationDefaults.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Gitter.GitterAuthenticationDefaults.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Gitter.GitterAuthenticationDefaults.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Gitter.GitterAuthenticationHelper">
+            <summary>
+            Contains static methods that allow to extract user's information from a <see cref="T:Newtonsoft.Json.Linq.JObject"/>
+            instance retrieved from GitHub after a successful authentication process.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Gitter.GitterAuthenticationHelper.GetUsername(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the username corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Gitter.GitterAuthenticationHelper.GetIdentifier(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the identifier corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Gitter.GitterAuthenticationHelper.GetDisplayName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the display name corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Gitter.GitterAuthenticationHelper.GetLink(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the URL corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Gitter.GitterAuthenticationHelper.GetAvatarUrlSmall(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the small url avatar corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Gitter.GitterAuthenticationHelper.GetAvatarUrlMedium(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the medium url avatar corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.GitterAuthenticationExtensions">
+            <summary>
+            Extension methods to add Gitter authentication capabilities to an HTTP application pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.GitterAuthenticationExtensions.UseGitterAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,AspNet.Security.OAuth.Gitter.GitterAuthenticationOptions)">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Gitter.GitterAuthenticationMiddleware"/> middleware to the specified
+            <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables GitHub authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="options">A <see cref="T:AspNet.Security.OAuth.Gitter.GitterAuthenticationOptions"/> that specifies options for the middleware.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.GitterAuthenticationExtensions.UseGitterAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{AspNet.Security.OAuth.Gitter.GitterAuthenticationOptions})">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Gitter.GitterAuthenticationMiddleware"/> middleware to the specified
+            <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Gitter authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="configuration">An action delegate to configure the provided <see cref="T:AspNet.Security.OAuth.Gitter.GitterAuthenticationOptions"/>.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+    </members>
+</doc>

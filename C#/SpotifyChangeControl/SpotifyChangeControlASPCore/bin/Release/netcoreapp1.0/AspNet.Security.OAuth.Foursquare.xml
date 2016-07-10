@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNet.Security.OAuth.Foursquare</name>
+    </assembly>
+    <members>
+        <member name="T:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationDefaults">
+            <summary>
+            Default values used by the Foursquare authentication middleware.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationDefaults.AuthenticationScheme">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.AuthenticationScheme"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationDefaults.DisplayName">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.DisplayName"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationDefaults.Issuer">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.ClaimsIssuer"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationDefaults.CallbackPath">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.CallbackPath"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationDefaults.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationDefaults.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationDefaults.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationDefaults.ApiVersion">
+            <summary>
+            Default value for <see cref="P:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationOptions.ApiVersion"/>.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHelper">
+            <summary>
+            Contains static methods that allow to extract user's information from a <see cref="T:Newtonsoft.Json.Linq.JObject"/>
+            instance retrieved from Foursquare after a successful authentication process.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHelper.GetIdentifier(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the identifier corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHelper.GetLastName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the last name associated with the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHelper.GetFirstName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the first name associated with the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHelper.GetUserName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the username associated with the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHelper.GetGender(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the gender associated with the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHelper.GetCanonicalUrl(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the canonical URL corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHelper.GetHomeCity(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the home city associated with the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHelper.GetContactEmail(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the email associated with the authenticated user.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationOptions">
+            <summary>
+            Defines a set of options used by <see cref="T:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationHandler"/>.
+            </summary>
+        </member>
+        <member name="P:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationOptions.ApiVersion">
+            <summary>
+            Gets or sets the API version used when communicating with Foursquare.
+            See https://developer.foursquare.com/overview/versioning for more information.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.FoursquareAuthenticationExtensions">
+            <summary>
+            Extension methods to add Foursquare authentication capabilities to an HTTP application pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.FoursquareAuthenticationExtensions.UseFoursquareAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationOptions)">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Foursquare authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="options">A <see cref="T:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationOptions"/> that specifies options for the middleware.</param>        
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.FoursquareAuthenticationExtensions.UseFoursquareAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationOptions})">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Foursquare authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="configuration">An action delegate to configure the provided <see cref="T:AspNet.Security.OAuth.Foursquare.FoursquareAuthenticationOptions"/>.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+    </members>
+</doc>

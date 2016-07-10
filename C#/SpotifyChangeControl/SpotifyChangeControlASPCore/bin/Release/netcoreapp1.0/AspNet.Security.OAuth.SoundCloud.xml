@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNet.Security.OAuth.SoundCloud</name>
+    </assembly>
+    <members>
+        <member name="T:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationDefaults">
+            <summary>
+            Default values used by the SoundCloud authentication middleware.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationDefaults.AuthenticationScheme">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.AuthenticationScheme"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationDefaults.DisplayName">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.DisplayName"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationDefaults.Issuer">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.ClaimsIssuer"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationDefaults.CallbackPath">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.CallbackPath"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationDefaults.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationDefaults.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationDefaults.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/>.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationHelper">
+            <summary>
+            Contains static methods that allow to extract user's information from a <see cref="T:Newtonsoft.Json.Linq.JObject"/>
+            instance retrieved from SoundCloud after a successful authentication process.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationHelper.GetIdentifier(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the identifier corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationHelper.GetUserName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the user name corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationHelper.GetFullName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the full name corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationHelper.GetCountry(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the country corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationHelper.GetCity(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the city corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationHelper.GetProfileUrl(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the profile url corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationOptions">
+            <summary>
+            Defines a set of options used by <see cref="T:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationHandler"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.SoundCloudAuthenticationExtensions">
+            <summary>
+            Extension methods to add Soundcloud authentication capabilities to an HTTP application pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.SoundCloudAuthenticationExtensions.UseSoundCloudAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationOptions)">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Soundcloud authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="options">A <see cref="T:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationOptions"/> that specifies options for the middleware.</param>        
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.SoundCloudAuthenticationExtensions.UseSoundCloudAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationOptions})">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Soundcloud authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="configuration">An action delegate to configure the provided <see cref="T:AspNet.Security.OAuth.SoundCloud.SoundCloudAuthenticationOptions"/>.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+    </members>
+</doc>

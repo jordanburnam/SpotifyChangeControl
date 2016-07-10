@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNet.Security.OAuth.BattleNet</name>
+    </assembly>
+    <members>
+        <member name="T:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults">
+            <summary>
+            Default values used by the Battle.net authentication middleware.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.AuthenticationScheme">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.AuthenticationScheme"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.DisplayName">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.DisplayName"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Issuer">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.AuthenticationOptions.ClaimsIssuer"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.CallbackPath">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.RemoteAuthenticationOptions.CallbackPath"/>.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.America.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/> for US servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.America.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/> for US servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.America.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/> for US servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Europe.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/> for EU servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Europe.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/> for EU servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Europe.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/> for EU servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Korea.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/> for KR servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Korea.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/> for KR servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Korea.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/> for KR servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Taiwan.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/> for TW servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Taiwan.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/> for TW servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.Taiwan.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/> for TW servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.China.AuthorizationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.AuthorizationEndpoint"/> for CN servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.China.TokenEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.TokenEndpoint"/> for CN servers.
+            </summary>
+        </member>
+        <member name="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationDefaults.China.UserInformationEndpoint">
+            <summary>
+            Default value for <see cref="P:Microsoft.AspNetCore.Builder.OAuthOptions.UserInformationEndpoint"/> for CN servers.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationHelper">
+            <summary>
+            Contains static methods that allow to extract user's information from a <see cref="T:Newtonsoft.Json.Linq.JObject"/>
+            instance retrieved from Battle.net after a successful authentication process.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationHelper.GetIdentifier(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the identifier corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="M:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationHelper.GetBattleTag(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Gets the BattleTag corresponding to the authenticated user.
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationOptions">
+            <summary>
+            Defines a set of options used by <see cref="T:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationHandler"/>.
+            </summary>
+        </member>
+        <member name="P:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationOptions.Region">
+            <summary>
+            Sets the region used to determine the appropriate API endpoints when communicating
+            with BattleNet (by default, <see cref="F:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationRegion.America"/>).
+            </summary>
+        </member>
+        <member name="T:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationRegion">
+            <summary>
+            Defines a list of regions used to determine the appropriate
+            API endpoints when communicating with BattleNet.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.BattleNetAuthenticationExtensions">
+            <summary>
+            Extension methods to add Battle.net authentication capabilities to an HTTP application pipeline.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.BattleNetAuthenticationExtensions.UseBattleNetAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationOptions)">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Battle.net authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="options">A <see cref="T:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationOptions"/> that specifies options for the middleware.</param>        
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.BattleNetAuthenticationExtensions.UseBattleNetAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationOptions})">
+            <summary>
+            Adds the <see cref="T:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationMiddleware"/> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>, which enables Battle.net authentication capabilities.
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> to add the middleware to.</param>
+            <param name="configuration">An action delegate to configure the provided <see cref="T:AspNet.Security.OAuth.BattleNet.BattleNetAuthenticationOptions"/>.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+    </members>
+</doc>
