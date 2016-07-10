@@ -28,6 +28,8 @@ BEGIN
 				,targetTable.AuthDate = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN sourceTable.AuthDate ELSE targetTable.AuthDate END
 				,targetTable.UpdatedDate = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN GETDATE() ELSE targetTable.UpdatedDate END
 				;
+
+	
 	COMMIT TRANSACTION;
 END
 GO

@@ -10,11 +10,13 @@ BEGIN
 		INSERT INTO dbo.Spotify_Playlist
 		(
 			PlaylistID,
-			Name
+			Name,
+			SpotifyID
 		)
 		SELECT 
 			SWP.PlaylistID,
-			SWP.Name
+			SWP.Name,
+			SWP.SpotifyID
 		FROM dbo.Spotify_WK_Playlist SWP 
 		LEFT JOIN dbo.Spotify_Playlist SP ON SP.PlaylistID = SWP.PlaylistID
 		WHERE (1=1)

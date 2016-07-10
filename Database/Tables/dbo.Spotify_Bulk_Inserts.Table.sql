@@ -15,6 +15,7 @@ BEGIN
   (
 	TrackID BIGINT NOT NULL 
 	,Name NVARCHAR(1000) NOT NULL
+	,SpotifyID NVARCHAR(1000) NOT NULL
   )
   CREATE CLUSTERED INDEX UCI_Track_WK_TrackID ON dbo.Spotify_WK_Track(TrackID);
 END
@@ -28,6 +29,7 @@ BEGIN
   (
 	PlaylistID BIGINT NOT NULL
 	,Name NVARCHAR(1000) NOT NULL
+	,SpotifyID NVARCHAR(1000) NOT NULL
   )
   CREATE CLUSTERED INDEX UCI_WK_Playlist_PlaylistID ON dbo.Spotify_WK_Playlist(PlaylistID);
 END
@@ -41,6 +43,7 @@ BEGIN
   (
 	ArtistID BIGINT NOT NULL
 	,Name NVARCHAR(1000) NOT NULL
+	,SpotifyID NVARCHAR(1000) NOT NULL
   )
   CREATE CLUSTERED INDEX UCI_WK_Artsit_ArtistID ON dbo.Spotify_WK_Artist(ArtistID);
 END

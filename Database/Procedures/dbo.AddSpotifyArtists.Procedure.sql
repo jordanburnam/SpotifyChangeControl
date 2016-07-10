@@ -11,10 +11,12 @@ BEGIN
 	(
 		ArtistID
 		,Name
+		,SpotifyID
 	)
 	SELECT 
 		SWA.ArtistID,
-		SWA.Name
+		SWA.Name,
+		SWA.SpotifyID
 	FROM dbo.Spotify_WK_Artist SWA
 	LEFT JOIN dbo.Spotify_Artist  SA ON SA.ArtistID = SWA.ArtistID
 	WHERE (1=1)

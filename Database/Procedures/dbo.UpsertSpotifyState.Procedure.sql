@@ -7,10 +7,26 @@ CREATE PROCEDURE dbo.UpsertSpotifyState
 AS
 BEGIN
 	/*
+		Add a verion for playlists that have changed
+	*/
+	BEGIN TRANSACTION;
+		INSERT INTO dbo.Spotify_Playlist_Version 
+		(
+			PlaylistID
+		)
+		SELECT
+			SWS.PlaylistID
+		FROM dbo.Spotify_WK_State SWS
+		WHERE (1=1)
+		GROUP BY SWS.PlaylistID
+	COMMIT TRANSACTION;
+	
+	/*
 		Insert the new tracks 
 		for artist that do not already exist
 	*/
 	BEGIN TRANSACTION;
+
 		INSERT INTO dbo.Spotify_Artist_Track
 		(
 			ArtistID
@@ -25,6 +41,9 @@ BEGIN
 			AND SAT.ArtistID IS NULL
 		GROUP BY SWS.ArtistID, SWS.TrackID --Grouping to get our records to the Artist/Track level
 	COMMIT TRANSACTION;
+	/*
+		Add the versions for playlists
+	*/
 
 	/*
 		UpSert the playlists being followed
@@ -52,6 +71,8 @@ BEGIN
 			AND SWS.PlaylistID IS NULL --The user stopped following a playlist
 
 	COMMIT TRANSACTION;
+	
+	
 	/*
 		Now for the biggie
 		Update all changes and track changes so we can analyze it later and
@@ -64,15 +85,6 @@ BEGIN
 		...shouldn't be too BIG of a deal but 
 		we will see....	
 	*/
-	DECLARE @SpotifyPlaylistUpdates TABLE
-	(
-		oldPlaylistID INT  NULL
-		,newPlaylistID INT NULL
-		,oldTrackID INT NULL
-		,newTrackID INT NULL
-		,oldPosition INT NULL
-		,newPosition INT NULL
-	);
 	BEGIN TRY
 	BEGIN TRANSACTION;
 
@@ -82,61 +94,30 @@ BEGIN
 		later on that they can then know that we didn't miss the playlist changing 
 		but the songs did get jumbled up
 	*/
-		UPDATE SPT 
-			SET SPT.Position = SWS.Position
-		OUTPUT deleted.PlaylistID, inserted.PlaylistID, deleted.TrackID, inserted.TrackID, deleted.Position, inserted.Position INTO @SpotifyPlaylistUpdates(oldPlaylistID, newPlaylistID, oldTrackID, newTrackID, oldPosition, newPosition)
-		FROM dbo.Spotify_Playlist_Track SPT
-		INNER JOIN dbo.Spotify_WK_State SWS ON SWS.PlaylistID = SPT.PlaylistID AND SWS.TrackID = SPT.TrackID
-		LEFT JOIN dbo.Spotify_WK_State UNIQUE_SWS ON UNIQUE_SWS.PlaylistID = SPT.PlaylistID AND UNIQUE_SWS.TrackID = SPT.TrackID AND UNIQUE_SWS.Position = SPT.Position
-		WHERE (1=1)
-			AND SWS.Position <> SPT.Position --Make sure the postion is different
-			AND UNIQUE_SWS.UserID IS NULL --If a track is duplicated in a playlist we make sure that there is not example of it already existing in the same place it is in
-
-		INSERT INTO dbo.Spotify_Playlist_Track
-		(
-			PlaylistID,
-			TrackID,
-			Position
-		)
-		OUTPUT inserted.PlaylistID, inserted.TrackID, inserted.Position INTO @SpotifyPlaylistUpdates(newPlaylistID, newTrackID, newPosition)
-		SELECT 
-			SWS.PlaylistID
-			,SWS.TrackID
-			,SWS.Position
-		FROM dbo.Spotify_WK_State SWS
-		LEFT JOIN dbo.Spotify_Playlist_Track SPT ON SPT.PlaylistID = SWS.PlaylistID AND SPT.TrackID = SWS.TrackID AND SPT.Position = SWS.Position
-		WHERE (1=1)
-			AND SPT.PlaylistID IS NULL -- Make sure the track does not already exist
-		GROUP BY SWS.PlaylistID, SWS.TrackID,SWS.Position
 		
-		DELETE SPT 
-		OUTPUT deleted.PlaylistID, deleted.TrackID, deleted.Position INTO @SpotifyPlaylistUpdates(oldPlaylistID, oldTrackID, oldPosition)
-		FROM dbo.Spotify_Playlist_Track SPT
-		LEFT JOIN dbo.Spotify_WK_State SWS ON SPT.PlaylistID = SWS.PlaylistID AND SPT.TrackID = SWS.TrackID AND SPT.Position = SWS.Position
-		WHERE (1=1)
-			AND SWS.PlaylistID IS NULL --The track does not exist in the state anymore....it was removed from the playlist
-
-		INSERT INTO dbo.Spotify_Playlist_Change  
+		INSERT INTO dbo.Spotify_Playlist_Track 
 		(
 			PlaylistID
 			,TrackID
 			,Position
-			,ChangeTypeID
+			,Seq
 		)
 		SELECT 
-			COALESCE(SPU.newPlaylistID,SPU.oldPlaylistID)
-			,COALESCE(SPU.newTrackID, SPU.oldTrackID)
-			,COALESCE(SPU.newPosition, SPU.oldPosition)
-			,CASE 
-				WHEN SPU.oldTrackID IS NULL AND SPU.newTrackID IS NOT NULL THEN 1 --The track was added to the playlist
-				WHEN SPU.newTrackID IS NULL AND SPU.oldTrackID IS NOT NULL THEN 3 --The track was deleted
-				WHEN SPU.oldPosition IS NOT NULL AND SPU.newPosition IS NOT NULL AND SPU.oldPosition <> SPU.newPosition AND SPU.oldTrackID IS NOT NULL AND SPU.newTrackID IS NOT NULL THEN 2 --The track was moved in the playlist
-			END AS ChangeTypeID
-		FROM @SpotifyPlaylistUpdates SPU
+			SWS.PlaylistID
+			,SWS.TrackID
+			,SWS.Position
+			,SPVS.Seq
+		FROM dbo.Spotify_WK_State SWS
+		INNER JOIN ( 
+						SELECT 
+							SPVS.PlaylistID
+							,MAX(SPVS.Seq) AS Seq
+						FROM  dbo.Spotify_Playlist_Version_Seq AS SPVS 
+						GROUP BY SPVS.PlaylistID
+					) AS SPVS ON SPVS.PlaylistID = SWS.PlaylistID 
 		WHERE (1=1)
+		GROUP BY SWS.PlaylistID, SWS.TrackID, SWS.Position, SPVS.Seq
 			
-
-		SELECT * FROM @SpotifyPlaylistUpdates;
 	COMMIT TRANSACTION;
 	END TRY
 	BEGIN CATCH

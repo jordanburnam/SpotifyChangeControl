@@ -10,11 +10,13 @@ BEGIN
 	INSERT INTO dbo.Spotify_Track 
 	(
 		TrackID,
-		Name
+		Name,
+		SpotifyID
 	)
 	SELECT 
 		SWT.TrackID,
 		SWT.Name
+		,SWT.SpotifyID
 	FROM dbo.Spotify_WK_Track SWT 
 	LEFT JOIN dbo.Spotify_Track  ST ON ST.TrackID = SWT.TrackID
 	WHERE (1=1)
