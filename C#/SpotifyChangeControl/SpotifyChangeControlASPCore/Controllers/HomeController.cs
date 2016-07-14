@@ -9,7 +9,11 @@ using Microsoft.AspNetCore.Authorization;
 namespace Mvc.Client.Controllers {
     [AllowAnonymous]
     public class HomeController : Controller {
-        [HttpGet("~/")]
+        [HttpGet]
+        [Route("Home/Index")]
         public ActionResult Index() => View();
+
+        [HttpGet("~/")]
+        public ActionResult Default() => new RedirectResult(Url.Action("Index", "Home"));
     }
 }

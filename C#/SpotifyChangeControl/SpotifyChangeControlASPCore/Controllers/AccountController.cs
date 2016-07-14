@@ -20,7 +20,7 @@ namespace Mvc.Client.Controllers {
         [HttpGet]
         public  IActionResult Login()
         {
-            return Challenge(new AuthenticationProperties { RedirectUri = "/" }, "Spotify");
+            return Challenge(new AuthenticationProperties() { RedirectUri = Url.Action("Index", "Home") }, "Spotify");
         }
 
         [Route("/Account/Logout/")]

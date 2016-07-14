@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Mvc.Client {
     public class Startup {
@@ -31,13 +33,18 @@ namespace Mvc.Client {
             );
         }
 
-        public void Configure(IApplicationBuilder app) {
+        //public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        //{
+        //    app.Map("/SpotifyChangeControl", map => Configure1(map, env, loggerFactory));
+        //}
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
 
             //Setup Routes
 
             //Setup Auth
-            
 
+            
             app.UseStaticFiles();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -53,7 +60,8 @@ namespace Mvc.Client {
             var Options = new AspNet.Security.OAuth.Spotify.SpotifyAuthenticationOptions()
             {
                 ClientId = oSCCManager.SCC_PUBLIC_ID,
-                ClientSecret = oSCCManager.SCC_PRIVATE_ID
+                ClientSecret = oSCCManager.SCC_PRIVATE_ID,
+                
             };
             
             Options.Scope.Add("playlist-read-private");
