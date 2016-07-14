@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Mvc.Client.Models.Changes
+@using SpotifyChangeControlLib.DataObjects;
+@model ResultModel
+@{
+}
+<h1>Search Resutls</h1>
+<h2>Found @Model.PlaylistChanges.Count() changes!</h2>
+<h3 class="glyphicon glyphicon-plus" ></h3>
+
+
+<div class="container">
+    <h2>Playlist Changes</h2>
+    <div class="panel-group">
+        @foreach (SpotifyPlaylistChange oSpotifyPlaylistChange in Model.PlaylistChanges)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#@oSpotifyPlaylistChange.Name.Replace(" ", "")">@oSpotifyPlaylistChange.Name</a>
+                    </h4>
+                </div>
+                <div id="@oSpotifyPlaylistChange.Name.Replace(" ", "")" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        @foreach (SpotifyTrackChange oSpotifyTrackChange in oSpotifyPlaylistChange.Changes)
+                        {
+                            <!--<div class="panel-group">-->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#@oSpotifyTrackChange.Name.Replace(" ", "")">@oSpotifyTrackChange.Name</a>
+                                        </h4>
+                                    </div>
+                                    <div id="@oSpotifyTrackChange.Name.Replace(" ", "")" class="panel-collapse collapse">
+                                        @foreach(SpotifyArtist oSpotifyArtist in oSpotifyTrackChange.Artists)
+                                        {
+                                            <div class="panel-body">@oSpotifyArtist.Name</div>
+                                            
+                                        }
+                                        
+                                    </div>
+                                </div>
+                            <!--</div>-->
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+
+
+

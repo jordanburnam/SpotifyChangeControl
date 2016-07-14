@@ -9,10 +9,11 @@ using SpotifyChangeControlLib.StorageLayer;
 using SpotifyChangeControlLib.Types.Abstract;
 using System.Data;
 using System.Data.SqlClient;
+using static SpotifyChangeControlLib.Types.Enums;
 
 namespace SpotifyChangeControlLib.AccessLayer
 {
-    internal static class SpotifyAccessLayer 
+    internal static class SpotifyAccessLayer
     {
         public static Int64 GetObjectIDForSpotifyID(string sSpotifyID)
         {
@@ -23,7 +24,7 @@ namespace SpotifyChangeControlLib.AccessLayer
         }
 
 
-        public  static void UpdateObjectIDForSpotifyObject(SpotifyObjectBase oSpotifyObject)
+        public static void UpdateObjectIDForSpotifyObject(SpotifyObjectBase oSpotifyObject)
         {
             if (oSpotifyObject.ID == 0)
             {
@@ -60,7 +61,7 @@ namespace SpotifyChangeControlLib.AccessLayer
             DataSet ds = RelationalDatabase.ExecuteStoredProcedure("GetSpotifyUsersAndSpotifyTokens");
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                if(dr["UserGuid"].ToString().ToUpper().Equals(sUserGuid.ToUpper()))
+                if (dr["UserGuid"].ToString().ToUpper().Equals(sUserGuid.ToUpper()))
                 {
                     oSpotifyUser = new SpotifyUser(dr);
                 }
@@ -95,7 +96,7 @@ namespace SpotifyChangeControlLib.AccessLayer
 
         public static void SaveUserAndAuthToDatabase(SpotifyUser oSpotifyUser)
         {
-            
+
             DataSet ds = RelationalDatabase.ExecuteStoredProcedure("AddSpotifyUser",
                                                     new SqlParameter("iUserID", oSpotifyUser.ID),
                                                     new SqlParameter("sUserName", oSpotifyUser.Name),
@@ -103,8 +104,8 @@ namespace SpotifyChangeControlLib.AccessLayer
                                                     new SqlParameter("dtAuth", oSpotifyUser.UserAuth.AuthDate)
                                                );
             oSpotifyUser.SessionGuid = ds.Tables[0].Rows[0]["SessionGuid"].ToString();
-            
-            
+
+
         }
 
         public static void SaveRefreshTokenForUserToDatabase(Int64 iUserID, SpotifyUserRefreshToken oSpotifyUserRefreshToken)
@@ -151,12 +152,12 @@ namespace SpotifyChangeControlLib.AccessLayer
             RelationalDatabase.ExecuteNonQuery("AddSpotifyArtists", CommandType.StoredProcedure);
         }
 
-     
-     
+
+
 
         public static void SavePlaylistsToDatabase(Dictionary<Int64, SpotifyPlaylist> Playlists, WorkTableState oWorkTableState)
         {
-            
+
             DataTable dtArtists = new DataTable();
             dtArtists.Columns.Add(new DataColumn("PlaylistID", typeof(long)));
             dtArtists.Columns.Add(new DataColumn("Name", typeof(string)));
@@ -176,10 +177,10 @@ namespace SpotifyChangeControlLib.AccessLayer
 
             RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName, cmSpotifyID);
             RelationalDatabase.ExecuteNonQuery("AddSpotifyPlaylists", CommandType.StoredProcedure);
-       
+
         }
 
-        
+
 
         public static void SaveTracksToDatabase(Dictionary<Int64, SpotifyTrack> Tracks, WorkTableState oWorkTableState)
         {
@@ -232,63 +233,112 @@ namespace SpotifyChangeControlLib.AccessLayer
             RelationalDatabase.ExecuteNonQuery("UpsertSpotifyState", CommandType.StoredProcedure);
         }
 
-        public static SpotifyPlaylistChange[] GetPlaylistChanges(string sUserGuid = null)
+        public static SpotifyPlaylistChange[] GetPlaylistChanges(long iUserID, DateTime dtStart, DateTime dtEnd)
         {
-            List<SpotifyPlaylistChange> Changes = new List<SpotifyPlaylistChange>();
-            DataSet ds = RelationalDatabase.ExecuteStoredProcedure("GetPlaylistChanges");
-
-            List<string> Artists = new List<string>();
+            List<SpotifyPlaylistChange> PlaylistChanges = new List<SpotifyPlaylistChange>();
+            DataSet ds = RelationalDatabase.ExecuteStoredProcedure("GetPlaylistChangesForUser"
+                                                                   , new SqlParameter("iUserID", iUserID)
+                                                                   , new SqlParameter("dtStart", dtStart)
+                                                                   , new SqlParameter("dtEnd", dtEnd)
+                                                                );
+            List<SpotifyArtist> Artists = new List<SpotifyArtist>();
+            List<SpotifyTrackChange> TrackChanges = new List<SpotifyTrackChange>();
             DataRow drLastRow = ds.Tables[0].NewRow();
-            bool bFirstTime = true;
-            for(int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                DataRow drCurrentRow = ds.Tables[0].Rows[i];
-                if (!bFirstTime)
-                {
-                    if (drLastRow["TrackName"].ToString().Equals(drCurrentRow["TrackName"].ToString()))
-                    {
-                        Artists.Add(drLastRow["ArtistName"].ToString());
-                    }
-                    else
-                    {
-                        Artists.Add(drLastRow["ArtistName"].ToString());
-                        Changes.Add(
-                                       new SpotifyPlaylistChange(
-                                                                Convert.ToInt64(drLastRow["UserID"].ToString())
-                                                                , drLastRow["UserGuid"].ToString()
-                                                                , drLastRow["UserName"].ToString()
-                                                                ,Convert.ToInt64(drLastRow["PlaylistID"].ToString())
-                                                                ,drLastRow["PlaylistSpotifyID"].ToString()
-                                                                , drLastRow["PlaylistName"].ToString()
-                                                                ,Convert.ToInt64(drLastRow["TrackID"].ToString())
-                                                                ,drLastRow["TrackSpotifyID"].ToString()
-                                                                , drLastRow["TrackName"].ToString()
-                                                                , drLastRow["ChangeCode"].ToString().ToCharArray()[0]
-                                                                , Artists.ToArray()
-                                                                ,Convert.ToDateTime(drLastRow["ChangedDate"].ToString())
-                                                                )
-                                   );
+            bool bFirstTrack = true;
 
-                        Artists = new List<string>();
-                        Artists.Add(drCurrentRow["ArtistName"].ToString());
+            string CurrentPlaylistGuid;
+            string NextPlaylistGuid;
+            long CurrentPlaylistID;
+            long NextPlaylistID;
+            string CurrentPlaylistName;
+            string NextPlaylistName;
+            for (int j = 0; j < ds.Tables[0].Rows.Count; j++)
+            {
+                
+                DataRow drCurrentRow = ds.Tables[0].Rows[j];
+                if (!bFirstTrack)
+                {
+                    if (drLastRow["TrackGuid"].ToString().Equals(drCurrentRow["TrackGuid"].ToString()) && drLastRow["PlaylistGuid"].ToString().Equals(drCurrentRow["PlaylistGuid"].ToString()))
+                        {
+                            long iLastArtistID = Convert.ToInt64(drLastRow["ArtistID"].ToString());
+                            string sLastArtistName = drLastRow["ArtistName"].ToString();
+                            string sLastArtistGuid = drLastRow["ArtistGuid"].ToString();
+                            Artists.Add(new SpotifyArtist(iLastArtistID, sLastArtistGuid, sLastArtistName));
+                        }
+                        else
+                        {
+
+                            long iLastArtistID = Convert.ToInt64(drLastRow["ArtistID"].ToString());
+                            string sLastArtistName = drLastRow["ArtistName"].ToString();
+                            string sLastArtistGuid = drLastRow["ArtistGuid"].ToString();
+                            Artists.Add(new SpotifyArtist(iLastArtistID, sLastArtistGuid, sLastArtistName));
+                            string sChangeType = drLastRow["ChangeCode"].ToString();
+                            SpotifyChangeType eSpotifyChangeType;
+                            switch (sChangeType)
+                            {
+                                case "A":
+                                    eSpotifyChangeType = SpotifyChangeType.Add;
+                                    break;
+                                case "D":
+                                    eSpotifyChangeType = SpotifyChangeType.Delete;
+                                    break;
+                                default:
+                                    eSpotifyChangeType = SpotifyChangeType.Move;
+                                    break;
+                            }
+
+                            TrackChanges.Add(
+                                                   new SpotifyTrackChange(
+                                                                            Convert.ToInt64(drLastRow["TrackID"].ToString())
+                                                                            , drLastRow["TrackGuid"].ToString()
+                                                                            , drLastRow["TrackName"].ToString()
+                                                                            , Artists.ToArray()
+                                                                            , eSpotifyChangeType
+                                                                            , Convert.ToDateTime(drLastRow["ChangedDate"].ToString())
+                                                                            )
+                                               );
+
+                            Artists = new List<SpotifyArtist>();
+                            long iCurrentArtistID = Convert.ToInt64(drCurrentRow["ArtistID"].ToString());
+                            string sCurrentArtistName = drCurrentRow["ArtistName"].ToString();
+                            string sCurrentArtistGuid = drCurrentRow["ArtistGuid"].ToString();
+                            Artists.Add(new SpotifyArtist(iCurrentArtistID, sCurrentArtistGuid, sCurrentArtistName));
+                        }
+
+
+
+                    if (!drLastRow["PlaylistGuid"].ToString().Equals(drCurrentRow["PlaylistGuid"].ToString()))
+                    {
+                        CurrentPlaylistGuid = drLastRow["PlaylistGuid"].ToString();
+                        CurrentPlaylistID = Convert.ToInt64(drLastRow["PlaylistID"].ToString());
+                        CurrentPlaylistName = drLastRow["PlaylistName"].ToString();
+                        SpotifyPlaylistChange oSpotifyPlaylistChange = new SpotifyPlaylistChange(CurrentPlaylistID, CurrentPlaylistGuid, CurrentPlaylistName, TrackChanges.ToArray());
+                        PlaylistChanges.Add(oSpotifyPlaylistChange);
+                        TrackChanges = new List<SpotifyTrackChange>();
                     }
+                    
+                       
+                    
+                    
+                    
+                    
                 }
                 else
                 {
-                    bFirstTime = false;
+                    bFirstTrack = false;
                 }
                 
 
                 drLastRow = drCurrentRow;
             }
 
-            SpotifyPlaylistChange[] UserChanges = ( 
-                                                    from Change in Changes
-                                                    where (sUserGuid == null ? true: Change.UserGuid == sUserGuid)
-                                                    select Change
-                                                 ).ToArray();
 
-            return UserChanges;
+
+
+
+
+
+            return PlaylistChanges.ToArray();
         }
 
         public static bool AuthenticateUserWithSession(string sUserGuid, string sSessionGuid)
@@ -302,6 +352,8 @@ namespace SpotifyChangeControlLib.AccessLayer
         {
             RelationalDatabase.ExecuteNonQuery("DeleteSessionsForUser", CommandType.StoredProcedure, new SqlParameter("iUserID", iUserID));
         }
+
+
 
     }
 }

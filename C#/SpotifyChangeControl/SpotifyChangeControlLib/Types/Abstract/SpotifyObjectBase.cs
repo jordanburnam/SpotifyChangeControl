@@ -52,10 +52,10 @@ namespace SpotifyChangeControlLib.Types.Abstract
             }
         }
 
-        protected SpotifyObjectBase(Int64 ID, string name)
+        protected SpotifyObjectBase(Int64 iID, string sName)
         {
-            this._ID = ID;
-            this._Name = Name;
+            this._ID = iID;
+            this._Name = sName;
         }
 
         protected SpotifyObjectBase(string sSpotifyID, string Name)

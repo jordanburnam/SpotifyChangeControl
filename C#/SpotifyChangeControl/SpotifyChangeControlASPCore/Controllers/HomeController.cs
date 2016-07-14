@@ -5,8 +5,9 @@
  */
 
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Authorization;
 namespace Mvc.Client.Controllers {
+    [AllowAnonymous]
     public class HomeController : Controller {
         [HttpGet("~/")]
         public ActionResult Index() => View();

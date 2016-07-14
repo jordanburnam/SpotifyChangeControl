@@ -18,7 +18,11 @@ namespace SpotifyChangeControlLib.DataObjects
             get { return this._Tracks; }
         }
 
-
+        public SpotifyPlaylist(long iID, string sSpotifyID, string sName, Dictionary<int, SpotifyTrack> oTracks) : base(iID, sName)
+        {
+            this.SpotifyID = sSpotifyID;
+            this._Tracks = oTracks;
+        }
 
         public SpotifyPlaylist(SimplePlaylist oSpotifySimplePlaylist, Dictionary<int, SpotifyTrack> oTracks) : base(oSpotifySimplePlaylist.Id, oSpotifySimplePlaylist.Name)
         {
