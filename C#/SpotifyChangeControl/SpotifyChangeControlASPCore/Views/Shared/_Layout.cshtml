@@ -65,6 +65,11 @@
                             <li>@Html.ActionLink("How", "How", "Home")</li>
                         </ul>
                     </li>
+                    @if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <li>@Html.ActionLink("Search", "Search", "Changes")</li>
+                    }
+                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -78,7 +83,7 @@
         @RenderBody()
         
         <div class="footer">
-            <p>&copy; Your company 2014</p>
+            <p>&copy; @DateTime.Now.Year JorDang Industries LLC</p>
         </div>
 
     </div>

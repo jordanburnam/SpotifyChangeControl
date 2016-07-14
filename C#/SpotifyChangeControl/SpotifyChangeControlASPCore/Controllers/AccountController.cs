@@ -26,21 +26,10 @@ namespace Mvc.Client.Controllers {
         [Route("/Account/Logout/")]
         [Authorize]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Logout()
         {
-            if (User?.Identity?.IsAuthenticated ?? false)
-            {
-                foreach (var a in User.Claims)
-                {
-                    
-                }
-            }
-            else
-            {
-
-            }
-
-
+            
             return View();
         }
 

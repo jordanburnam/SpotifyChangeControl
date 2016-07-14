@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Mvc.Client.Models.Changes;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 using System.Security.Claims;
+using SpotifyChangeControlLib.DataObjects;
+
 namespace Mvc.Client.Controllers
 {
     
@@ -47,7 +49,9 @@ namespace Mvc.Client.Controllers
             {
                 iUserID = this._oSCCManager.GetObjectIDForSpotifyID(oClaim.Value);
             }
-            return View("Results", new ResultModel(iUserID, oSearchModel));
+
+            IEnumerable<SpotifyPlaylistChange> oPlaylistChanges = this._oSCCManager.GetPlaylistChangesForUser(iUserID, oSearchModel.GetStart().ToUniversalTime(), oSearchModel.GetEnd().ToUniversalTime());
+            return View("Results", new ResultModel(oSearchModel, oPlaylistChanges));
         }
 
         

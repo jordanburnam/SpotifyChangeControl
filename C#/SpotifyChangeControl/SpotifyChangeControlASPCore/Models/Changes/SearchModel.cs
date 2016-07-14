@@ -8,32 +8,67 @@ namespace Mvc.Client.Models.Changes
 {
     public class SearchModel
     {
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "MM/dd/yyyy", HtmlEncode = true, NullDisplayText = "NA")]
+
         private DateTime _Start;
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true,ConvertEmptyStringToNull =true, DataFormatString = "MM/dd/yyyy", HtmlEncode = true,NullDisplayText = "NA")]
+
         private DateTime _End;
-        
 
-        public DateTime Start
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "MM/dd/yyyy", HtmlEncode = true, NullDisplayText = "")]
+        public DateTime? Start
         {
-            get { return this._Start; }
-            set {
+            get { return (this._Start == DateTime.MinValue ? (DateTime?)null : this._Start); }
+            set
+            {
 
-                    this._Start = value;
-
+                if (value == null)
+                {
+                    this._Start = DateTime.MinValue;
                 }
+                else
+                {
+                    this._Start = (DateTime)value;
+                }
+            }
+
         }
 
-        public DateTime End
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "MM/dd/yyyy", HtmlEncode = true, NullDisplayText = "")]
+        public DateTime? End
         {
-            get { return this._End; }
-            set { this._End = value; }
+            get { return (this._End == DateTime.MaxValue ? (DateTime?)null : this._End); }
+            set
+            {
+
+                if (value == null)
+                {
+                    this._End = DateTime.MaxValue;
+                }
+                else
+                {
+                    this._End = (DateTime)value;
+                }
+            }
         }
         public SearchModel()
         {
-            
+            this._Start = DateTime.MinValue;
+            this._End = DateTime.MaxValue;
         }
+
+
+        public DateTime GetStart()
+        {
+            return this._Start;
+        }
+
+        public DateTime GetEnd()
+        {
+            return this._End;
+        }
+
     }
 }

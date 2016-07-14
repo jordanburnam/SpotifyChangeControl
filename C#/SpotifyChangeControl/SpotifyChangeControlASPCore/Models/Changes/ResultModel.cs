@@ -21,11 +21,11 @@ namespace Mvc.Client.Models.Changes
 
        
 
-        public ResultModel(long iUserID, SearchModel oSearchModel)
+        public ResultModel(SearchModel oSearchModel, IEnumerable<SpotifyPlaylistChange> oPlaylistChanges)
         {
             this._oSearchModel = oSearchModel;
-            SpotifyChangeControlLib.SCCManager oSSCManager = new SpotifyChangeControlLib.SCCManager();
-            this._PlaylistChanges = oSSCManager.GetPlaylistChangesForUser(1, oSearchModel.Start, oSearchModel.End);
+            this._PlaylistChanges = oPlaylistChanges;
+           
         }
 
     }
