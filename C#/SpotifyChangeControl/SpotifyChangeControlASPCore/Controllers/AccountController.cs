@@ -11,9 +11,21 @@ using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using AspNet.Security.OAuth.Spotify;
 using System.Security.Claims;
+using Mvc.Client.Models.Account;
+using System.Collections.Generic;
+using System;
 
 namespace Mvc.Client.Controllers {
     public class AccountController : Controller {
+
+
+        private SpotifyChangeControlLib.SCCManager _oSCCManager;
+        public AccountController()
+        {
+            this._oSCCManager = new SpotifyChangeControlLib.SCCManager();
+        }
+
+
 
         [Route("/Account/Login/")]
         [AllowAnonymous]
@@ -39,6 +51,27 @@ namespace Mvc.Client.Controllers {
         public IActionResult Forbidden()
         {
             return View();
+        }
+
+        [Route("Account/Info")]
+        [HttpGet]
+        public IActionResult Info()
+        {
+            UserInfoModel o = new UserInfoModel();
+            IEnumerable<Claim> oClaims = User.FindAll("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
+            long iUserID = 0;
+            string sSpotifyID = "";
+            foreach (Claim oClaim in oClaims)
+            {
+                iUserID = this._oSCCManager.GetObjectIDForSpotifyID(oClaim.Value);
+                sSpotifyID = oClaim.Value;
+            }
+            o.UserID = iUserID;
+            o.SpotifyID = sSpotifyID;
+            DateTime dt = DateTime.Now;
+            o.TestDate_Local = dt.ToLocalTime();
+            o.TestDate_UT = dt.ToUniversalTime();
+            return View(o);
         }
 
 
