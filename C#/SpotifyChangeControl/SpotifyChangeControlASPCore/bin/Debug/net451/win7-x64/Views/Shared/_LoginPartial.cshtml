@@ -1,0 +1,15 @@
+﻿
+    
+   <ul class="nav navbar-nav navbar-right">
+       
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        {
+          
+            <li>@Html.ActionLink("Logout", "Logout", "Account", routeValues:null, htmlAttributes: null)</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("Authorize", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        }
+    </ul>
+

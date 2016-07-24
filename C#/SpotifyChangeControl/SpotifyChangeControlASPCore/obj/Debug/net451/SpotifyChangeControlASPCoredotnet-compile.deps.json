@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETFramework,Version=v4.5.1/",
-    "signature": "3a3021671382d0a92131c4dcb3fa90f3b0e1380f"
+    "signature": "70d738093013edc486b2d1fa79b01cd4c2aa2192"
   },
   "compilationOptions": {
     "defines": [
@@ -19,9 +19,8 @@
     ".NETFramework,Version=v4.5.1": {
       "SpotifyChangeControlASPCore/1.0.0": {
         "dependencies": {
-          "SpotifyChangeControlLib": "1.0.0",
-          "AspNet.Security.OAuth.GitHub": "1.0.0-beta1-final",
-          "CustomSpotifyAuth": "1.0.1",
+          "AspNet.Security.OAuth.GitHub": "1.0.0-beta2",
+          "AspNet.Security.OAuth.Spotify": "1.0.0-beta2",
           "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
           "Microsoft.AspNetCore.Authentication.Google": "1.0.0",
           "Microsoft.AspNetCore.Authentication.Twitter": "1.0.0",
@@ -32,52 +31,12 @@
           "Microsoft.AspNetCore.StaticFiles": "1.0.0",
           "Microsoft.Extensions.Configuration.CommandLine": "1.0.0",
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+          "Microsoft.Extensions.Configuration.Json": "1.0.0",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
           "Microsoft.Extensions.Logging.Debug": "1.0.0"
         },
         "compile": {
           "SpotifyChangeControlASPCore.exe": {}
-        }
-      },
-      "AspNet.Security.OAuth.GitHub/1.0.0-beta1-final": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
-        },
-        "compile": {
-          "lib/net451/AspNet.Security.OAuth.GitHub.dll": {}
-        }
-      },
-      "CustomSpotifyAuth/1.0.1": {
-        "compile": {
-          "lib/AspNet.Security.OAuth.Spotify.dll": {},
-          "lib/JetBrains.Annotations.dll": {},
-          "lib/Microsoft.AspNetCore.Authentication.OAuth.dll": {},
-          "lib/Microsoft.AspNetCore.Authentication.dll": {},
-          "lib/Microsoft.AspNetCore.Cryptography.Internal.dll": {},
-          "lib/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {},
-          "lib/Microsoft.AspNetCore.DataProtection.dll": {},
-          "lib/Microsoft.AspNetCore.Hosting.Abstractions.dll": {},
-          "lib/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {},
-          "lib/Microsoft.AspNetCore.Http.Abstractions.dll": {},
-          "lib/Microsoft.AspNetCore.Http.Extensions.dll": {},
-          "lib/Microsoft.AspNetCore.Http.Features.dll": {},
-          "lib/Microsoft.AspNetCore.Http.dll": {},
-          "lib/Microsoft.AspNetCore.WebUtilities.dll": {},
-          "lib/Microsoft.Extensions.Configuration.Abstractions.dll": {},
-          "lib/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {},
-          "lib/Microsoft.Extensions.FileProviders.Abstractions.dll": {},
-          "lib/Microsoft.Extensions.Logging.Abstractions.dll": {},
-          "lib/Microsoft.Extensions.ObjectPool.dll": {},
-          "lib/Microsoft.Extensions.Options.dll": {},
-          "lib/Microsoft.Extensions.Primitives.dll": {},
-          "lib/Microsoft.Extensions.WebEncoders.dll": {},
-          "lib/Microsoft.Net.Http.Headers.dll": {},
-          "lib/Newtonsoft.Json.dll": {},
-          "lib/SpotifyAPI.dll": {},
-          "lib/SpotifyChangeControlLib.dll": {},
-          "lib/StackExchange.Redis.dll": {},
-          "lib/System.Buffers.dll": {},
-          "lib/System.Text.Encodings.Web.dll": {}
         }
       },
       "Libuv/1.9.0": {
@@ -105,6 +64,9 @@
           "Microsoft.Extensions.Options": "1.0.0",
           "Microsoft.Extensions.WebEncoders": "1.0.0",
           "System.Net.Http": "4.0.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.Authentication.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authentication.Cookies/1.0.0": {
@@ -129,6 +91,9 @@
         "dependencies": {
           "Microsoft.AspNetCore.Authentication": "1.0.0",
           "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.Authentication.OAuth.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authentication.Twitter/1.0.0": {
@@ -160,7 +125,11 @@
           "lib/net451/Microsoft.AspNetCore.Cors.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Cryptography.Internal/1.0.0": {},
+      "Microsoft.AspNetCore.Cryptography.Internal/1.0.0": {
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.DataProtection/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Cryptography.Internal": "1.0.0",
@@ -172,9 +141,16 @@
           "System.Security": "4.0.0.0",
           "System.Xml": "4.0.0.0",
           "System.Xml.Linq": "4.0.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.DataProtection.dll": {}
         }
       },
-      "Microsoft.AspNetCore.DataProtection.Abstractions/1.0.0": {},
+      "Microsoft.AspNetCore.DataProtection.Abstractions/1.0.0": {
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Diagnostics.Abstractions/1.0.0": {
         "dependencies": {
           "System.Resources.ResourceManager": "4.0.0.0"
@@ -212,12 +188,18 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
           "Microsoft.Extensions.FileProviders.Abstractions": "1.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "1.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.Hosting.Abstractions.dll": {}
         }
       },
       "Microsoft.AspNetCore.Hosting.Server.Abstractions/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "1.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/1.0.0": {
@@ -238,12 +220,18 @@
           "Microsoft.Extensions.Options": "1.0.0",
           "Microsoft.Net.Http.Headers": "1.0.0",
           "System.Buffers": "4.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.Http.dll": {}
         }
       },
       "Microsoft.AspNetCore.Http.Abstractions/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "1.0.0",
           "System.Text.Encodings.Web": "4.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.Http.Abstractions.dll": {}
         }
       },
       "Microsoft.AspNetCore.Http.Extensions/1.0.0": {
@@ -252,11 +240,17 @@
           "Microsoft.Extensions.FileProviders.Abstractions": "1.0.0",
           "Microsoft.Net.Http.Headers": "1.0.0",
           "System.Buffers": "4.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.Http.Extensions.dll": {}
         }
       },
       "Microsoft.AspNetCore.Http.Features/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "1.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.Http.Features.dll": {}
         }
       },
       "Microsoft.AspNetCore.HttpOverrides/1.0.0": {
@@ -518,6 +512,9 @@
           "Microsoft.Extensions.Primitives": "1.0.0",
           "System.Buffers": "4.0.0",
           "System.Text.Encodings.Web": "4.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
@@ -593,6 +590,9 @@
         "dependencies": {
           "Microsoft.Extensions.Primitives": "1.0.0",
           "System.Linq": "4.0.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration.CommandLine/1.0.0": {
@@ -609,6 +609,25 @@
         },
         "compile": {
           "lib/net451/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.FileExtensions/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "1.0.0",
+          "Microsoft.Extensions.FileProviders.Physical": "1.0.0"
+        },
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Configuration.FileExtensions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Json/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "1.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Configuration.Json.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection/1.0.0": {
@@ -633,6 +652,9 @@
           "System.Linq.Expressions": "4.0.0.0",
           "System.Reflection": "4.0.0.0",
           "System.Resources.ResourceManager": "4.0.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyModel/1.0.0": {
@@ -649,6 +671,9 @@
           "Microsoft.Extensions.Primitives": "1.0.0",
           "System.IO": "4.0.0.0",
           "System.Resources.ResourceManager": "4.0.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.FileProviders.Composite/1.0.0": {
@@ -725,6 +750,9 @@
           "System.Resources.ResourceManager": "4.0.0.0",
           "System.Runtime.Extensions": "4.0.0.0",
           "System.Runtime.InteropServices": "4.0.10.0"
+        },
+        "compile": {
+          "lib/netstandard1.1/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.Logging.Console/1.0.0": {
@@ -745,7 +773,11 @@
           "lib/net451/Microsoft.Extensions.Logging.Debug.dll": {}
         }
       },
-      "Microsoft.Extensions.ObjectPool/1.0.0": {},
+      "Microsoft.Extensions.ObjectPool/1.0.0": {
+        "compile": {
+          "lib/net451/Microsoft.Extensions.ObjectPool.dll": {}
+        }
+      },
       "Microsoft.Extensions.Options/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
@@ -759,6 +791,9 @@
           "System.Resources.ResourceManager": "4.0.0.0",
           "System.Runtime.Extensions": "4.0.0.0",
           "System.Threading": "4.0.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/Microsoft.Extensions.Options.dll": {}
         }
       },
       "Microsoft.Extensions.PlatformAbstractions/1.0.0": {
@@ -770,6 +805,9 @@
         "dependencies": {
           "System.Resources.ResourceManager": "4.0.0.0",
           "System.Runtime": "4.0.10.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
       "Microsoft.Extensions.WebEncoders/1.0.0": {
@@ -777,6 +815,9 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
           "Microsoft.Extensions.Options": "1.0.0",
           "System.Text.Encodings.Web": "4.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/Microsoft.Extensions.WebEncoders.dll": {}
         }
       },
       "Microsoft.Net.Http.Headers/1.0.0": {
@@ -789,11 +830,22 @@
           "System.Resources.ResourceManager": "4.0.0.0",
           "System.Runtime.Extensions": "4.0.0.0",
           "System.Text.Encoding": "4.0.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.1/Microsoft.Net.Http.Headers.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {},
-      "Newtonsoft.Json/9.0.1": {},
-      "System.Buffers/4.0.0": {},
+      "Newtonsoft.Json/9.0.1": {
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.Buffers/4.0.0": {
+        "compile": {
+          "lib/netstandard1.1/System.Buffers.dll": {}
+        }
+      },
       "System.Collections/4.0.0.0": {
         "compile": {
           ".NETFramework/v4.5.1/Facades/System.Collections.dll": {}
@@ -931,7 +983,11 @@
           ".NETFramework/v4.5.1/Facades/System.Text.Encoding.Extensions.dll": {}
         }
       },
-      "System.Text.Encodings.Web/4.0.0": {},
+      "System.Text.Encodings.Web/4.0.0": {
+        "compile": {
+          "lib/netstandard1.0/System.Text.Encodings.Web.dll": {}
+        }
+      },
       "System.Threading/4.0.0.0": {
         "compile": {
           ".NETFramework/v4.5.1/Facades/System.Threading.dll": {}
@@ -947,10 +1003,34 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
-      "SpotifyAPI/1.0.0": {},
+      "AspNet.Security.OAuth.GitHub/1.0.0-beta2": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+        },
+        "compile": {
+          "AspNet.Security.OAuth.GitHub.dll": {}
+        }
+      },
+      "AspNet.Security.OAuth.Spotify/1.0.0-beta2": {
+        "dependencies": {
+          "SpotifyChangeControlLib": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+        },
+        "compile": {
+          "AspNet.Security.OAuth.Spotify.dll": {}
+        }
+      },
+      "SpotifyAPI/1.0.0": {
+        "compile": {
+          "bin/Debug/SpotifyAPI.dll": {}
+        }
+      },
       "SpotifyChangeControlLib/1.0.0": {
         "dependencies": {
           "SpotifyAPI": "1.0.0"
+        },
+        "compile": {
+          "bin/Debug/SpotifyChangeControlLib.dll": {}
         }
       },
       "mscorlib/4.0.0.0": {
@@ -1007,9 +1087,8 @@
     ".NETFramework,Version=v4.5.1/": {
       "SpotifyChangeControlASPCore/1.0.0": {
         "dependencies": {
-          "SpotifyChangeControlLib": "1.0.0",
-          "AspNet.Security.OAuth.GitHub": "1.0.0-beta1-final",
-          "CustomSpotifyAuth": "1.0.1",
+          "AspNet.Security.OAuth.GitHub": "1.0.0-beta2",
+          "AspNet.Security.OAuth.Spotify": "1.0.0-beta2",
           "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
           "Microsoft.AspNetCore.Authentication.Google": "1.0.0",
           "Microsoft.AspNetCore.Authentication.Twitter": "1.0.0",
@@ -1020,52 +1099,12 @@
           "Microsoft.AspNetCore.StaticFiles": "1.0.0",
           "Microsoft.Extensions.Configuration.CommandLine": "1.0.0",
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+          "Microsoft.Extensions.Configuration.Json": "1.0.0",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
           "Microsoft.Extensions.Logging.Debug": "1.0.0"
         },
         "runtime": {
           "SpotifyChangeControlASPCore.exe": {}
-        }
-      },
-      "AspNet.Security.OAuth.GitHub/1.0.0-beta1-final": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
-        },
-        "runtime": {
-          "lib/net451/AspNet.Security.OAuth.GitHub.dll": {}
-        }
-      },
-      "CustomSpotifyAuth/1.0.1": {
-        "runtime": {
-          "lib/AspNet.Security.OAuth.Spotify.dll": {},
-          "lib/JetBrains.Annotations.dll": {},
-          "lib/Microsoft.AspNetCore.Authentication.OAuth.dll": {},
-          "lib/Microsoft.AspNetCore.Authentication.dll": {},
-          "lib/Microsoft.AspNetCore.Cryptography.Internal.dll": {},
-          "lib/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {},
-          "lib/Microsoft.AspNetCore.DataProtection.dll": {},
-          "lib/Microsoft.AspNetCore.Hosting.Abstractions.dll": {},
-          "lib/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {},
-          "lib/Microsoft.AspNetCore.Http.Abstractions.dll": {},
-          "lib/Microsoft.AspNetCore.Http.Extensions.dll": {},
-          "lib/Microsoft.AspNetCore.Http.Features.dll": {},
-          "lib/Microsoft.AspNetCore.Http.dll": {},
-          "lib/Microsoft.AspNetCore.WebUtilities.dll": {},
-          "lib/Microsoft.Extensions.Configuration.Abstractions.dll": {},
-          "lib/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {},
-          "lib/Microsoft.Extensions.FileProviders.Abstractions.dll": {},
-          "lib/Microsoft.Extensions.Logging.Abstractions.dll": {},
-          "lib/Microsoft.Extensions.ObjectPool.dll": {},
-          "lib/Microsoft.Extensions.Options.dll": {},
-          "lib/Microsoft.Extensions.Primitives.dll": {},
-          "lib/Microsoft.Extensions.WebEncoders.dll": {},
-          "lib/Microsoft.Net.Http.Headers.dll": {},
-          "lib/Newtonsoft.Json.dll": {},
-          "lib/SpotifyAPI.dll": {},
-          "lib/SpotifyChangeControlLib.dll": {},
-          "lib/StackExchange.Redis.dll": {},
-          "lib/System.Buffers.dll": {},
-          "lib/System.Text.Encodings.Web.dll": {}
         }
       },
       "Libuv/1.9.0": {
@@ -1636,6 +1675,25 @@
           "lib/net451/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {}
         }
       },
+      "Microsoft.Extensions.Configuration.FileExtensions/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "1.0.0",
+          "Microsoft.Extensions.FileProviders.Physical": "1.0.0"
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Configuration.FileExtensions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Json/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "1.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Configuration.Json.dll": {}
+        }
+      },
       "Microsoft.Extensions.DependencyInjection/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
@@ -1929,6 +1987,23 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "AspNet.Security.OAuth.GitHub/1.0.0-beta2": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+        },
+        "runtime": {
+          "AspNet.Security.OAuth.GitHub.dll": {}
+        }
+      },
+      "AspNet.Security.OAuth.Spotify/1.0.0-beta2": {
+        "dependencies": {
+          "SpotifyChangeControlLib": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+        },
+        "runtime": {
+          "AspNet.Security.OAuth.Spotify.dll": {}
+        }
+      },
       "SpotifyAPI/1.0.0": {
         "runtime": {
           "../../SpotifyChangeControl/C#/SpotifyChangeControl/packages/Newtonsoft.Json.9.0.1/lib/net45/Newtonsoft.Json.dll": {},
@@ -1961,16 +2036,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "AspNet.Security.OAuth.GitHub/1.0.0-beta1-final": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Awy+S2YF8NnSFuYI7Dk8pp1L1Bh6tSHEbEpka2BAQQltkqCNYD76ZUJcQWUps3ThkUHkemzJFOgvgqH22bEalQ=="
-    },
-    "CustomSpotifyAuth/1.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-a8ac1w3GZtqgI9cax+Kq58O9y74kI9jQytr0n6ivD7mtCQ+UD0F2IHGvmSEmaS7e0zEKeDQgtEWIu0l4NhRMLQ=="
     },
     "Libuv/1.9.0": {
       "type": "package",
@@ -2247,6 +2312,16 @@
       "serviceable": true,
       "sha512": "sha512-A0yqS98VtPNlFkFI7YBlwkAekUHE/9mMeNc+K4RmgTjCrskuk6pX3LGhDU7aD5CPYc9Px7M2To/2u4xDSnRikg=="
     },
+    "Microsoft.Extensions.Configuration.FileExtensions/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MO7XtmLiqnpgVTX34uzFPvIS7jPmBUGLN0MP5MsYu6CqYTIs90ULjtrV5TegH5mTqKTXWjZRGXL26R6apTyc4w=="
+    },
+    "Microsoft.Extensions.Configuration.Json/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KRyEOe5/Xi3qyDMdEVh++e2pQRsI6C3wzINVExOcu9lOsFmXK/k4qOf244fyo59rnn6s5xKnIW3WbhxWS1hu2w=="
+    },
     "Microsoft.Extensions.DependencyInjection/1.0.0": {
       "type": "package",
       "serviceable": true,
@@ -2506,6 +2581,16 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-q1GIQOpF9rPupPf73clS1gQbv0f2rEIWVrhltZGn2ePxks6sXChlKb6qEV/Jr+j+fNIRvA619EfQXEaH6DIcQQ=="
+    },
+    "AspNet.Security.OAuth.GitHub/1.0.0-beta2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AspNet.Security.OAuth.Spotify/1.0.0-beta2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "SpotifyAPI/1.0.0": {
       "type": "msbuildproject",

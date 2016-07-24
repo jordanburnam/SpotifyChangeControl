@@ -20,7 +20,11 @@ namespace SpotifyChangeControlLib.DataObjects
         }
 
 
-
+        protected SpotifyTrack(long iID, string sSpotifyID, string sName, IEnumerable<SpotifyArtist> oArtists) :base(iID, sName)
+        {
+            this.SpotifyID = sSpotifyID;
+            this._Artists = oArtists;
+        }
         public SpotifyTrack(PlaylistTrack oPlaylistTrack, IEnumerable<SpotifyArtist> oArtists):base(oPlaylistTrack.Track.Id, oPlaylistTrack.Track.Name)
         {
             this._Artists = oArtists;

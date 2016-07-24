@@ -4,17 +4,11 @@
     @if (User?.Identity?.IsAuthenticated ?? false) {
         <h1>Welcome, @User.Identity.Name</h1>
 
-        <p>
-            @foreach (var claim in Context.User.Claims) {
-                <div>@claim.Type: <b>@claim.Value</b></div>
-            }
-        </p>
-        
-        <a class="btn btn-lg btn-danger" href="/signout?returnUrl=%2F">Sign out</a>
+                <p>Click on the search link at the top to see what has changed! If this is your first time authorizing my app I won't have anything until tomorrow. :(</p>
     }
 
     else {
         <h1>Welcome, anonymous</h1>
-        <a class="btn btn-lg btn-success" href="/signin?returnUrl=%2F">Sign in</a>
+        <p>Click the Authorize button in the top right in order to login and/or authorize my app to do dirty things with your spotify playlists!</p>
     }
 </div>

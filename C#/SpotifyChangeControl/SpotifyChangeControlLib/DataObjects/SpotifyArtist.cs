@@ -10,7 +10,11 @@ namespace SpotifyChangeControlLib.DataObjects
 {
     public class SpotifyArtist : SpotifyObjectBase
     {
-        
+
+        public SpotifyArtist(long iID, string sSpotifyID, string sName) : base(iID, sName)
+        {
+            this.SpotifyID = sSpotifyID;
+        }
         public SpotifyArtist(SimpleArtist oSpotifySimpleArtist) : base(oSpotifySimpleArtist.Id, oSpotifySimpleArtist.Name)
         {
 

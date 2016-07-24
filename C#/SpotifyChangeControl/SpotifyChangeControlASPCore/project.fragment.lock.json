@@ -1,24 +1,6 @@
 {
   "version": 2,
   "exports": {
-    "SpotifyChangeControlLib/1.0.0": {
-      "type": "project",
-      "framework": ".NETFramework,Version=v4.5.1",
-      "compile": {
-        "bin/Debug/SpotifyChangeControlLib.dll": {}
-      },
-      "runtime": {
-        "../packages/StackExchange.Redis.1.1.603/lib/net45/StackExchange.Redis.dll": {},
-        "bin/Debug/SpotifyChangeControlLib.dll": {}
-      },
-      "contentFiles": {
-        "bin/Debug/SpotifyChangeControlLib.pdb": {
-          "buildAction": "None",
-          "codeLanguage": "any",
-          "copyToOutput": true
-        }
-      }
-    },
     "SpotifyAPI/1.0.0": {
       "type": "project",
       "framework": ".NETFramework,Version=v4.5.1",
@@ -31,6 +13,24 @@
       },
       "contentFiles": {
         "bin/Debug/SpotifyAPI.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "SpotifyChangeControlLib/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5.1",
+      "compile": {
+        "bin/Debug/SpotifyChangeControlLib.dll": {}
+      },
+      "runtime": {
+        "../packages/StackExchange.Redis.1.1.603/lib/net45/StackExchange.Redis.dll": {},
+        "bin/Debug/SpotifyChangeControlLib.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/SpotifyChangeControlLib.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

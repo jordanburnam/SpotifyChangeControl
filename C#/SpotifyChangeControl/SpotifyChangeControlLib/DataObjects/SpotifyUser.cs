@@ -30,8 +30,6 @@ namespace SpotifyChangeControlLib.DataObjects
 
         internal IEnumerable<SpotifyPlaylist> _Playlists;
 
-        private IEnumerable<SpotifyPlaylistChange> _Changes;
-
         private string _Email;
 
         
@@ -75,19 +73,7 @@ namespace SpotifyChangeControlLib.DataObjects
             }
            
         }
-        public IEnumerable<SpotifyPlaylistChange> Changes
-        {
-            get
-            {
-                if (this._Changes == null)
-                {
-                    this._Changes = SpotifyAccessLayer.GetPlaylistChanges(this.UserGuid);
-                }
-                return this._Changes;
-
-            }
-          
-        }
+       
 
         public string Email
         {

@@ -48,6 +48,7 @@
     <Compile Include="DataManagers\StateManager.cs" />
     <Compile Include="DataObjects\SpotifyPlaylistChange.cs" />
     <Compile Include="DataObjects\SpotifyState.cs" />
+    <Compile Include="DataObjects\SpotifyTrackChange.cs" />
     <Compile Include="StorageLayer\CacheDatabase.cs" />
     <Compile Include="StorageLayer\WorkTableState.cs" />
     <Compile Include="AccessLayer\SpotifyAccessLayer.cs" />

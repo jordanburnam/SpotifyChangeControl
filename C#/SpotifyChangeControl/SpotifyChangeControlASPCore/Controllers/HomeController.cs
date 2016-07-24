@@ -5,10 +5,56 @@
  */
 
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Authorization;
 namespace Mvc.Client.Controllers {
+    [AllowAnonymous]
     public class HomeController : Controller {
-        [HttpGet("~/")]
+        [HttpGet]
+        [Route("Home/Index")]
         public ActionResult Index() => View();
+
+        [HttpGet("~/")]
+        public ActionResult Default() => new RedirectResult(Url.Action("Index", "Home"));
+
+
+        [HttpGet]
+        [Route("Home/Who")]
+        public ActionResult Who()
+        {
+            return View();
+        }
+        [HttpGet]
+        [Route("Home/What")]
+        public ActionResult What()
+        {
+            return View();
+        }
+        [HttpGet]
+        [Route("Home/When")]
+        public ActionResult When()
+        {
+            return View();
+        }
+        [HttpGet]
+        [Route("Home/Where")]
+        public ActionResult Where()
+        {
+            return View();
+        }
+        [HttpGet]
+        [Route("Home/Why")]
+        public ActionResult Why()
+        {
+            return View();
+        }
+        [HttpGet]
+        [Route("Home/How")]
+        public ActionResult How()
+        {
+            return View();
+        }
+
+
+
     }
 }

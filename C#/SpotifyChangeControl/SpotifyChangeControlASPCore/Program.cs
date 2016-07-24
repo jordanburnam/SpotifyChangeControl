@@ -7,6 +7,7 @@ namespace Mvc.Client {
         public static void Main(string[] args) {
             var configuration = new ConfigurationBuilder()
                 .AddEnvironmentVariables()
+                .AddJsonFile("hosting.json", optional: true)
                 .AddCommandLine(args)
                 .Build();
 

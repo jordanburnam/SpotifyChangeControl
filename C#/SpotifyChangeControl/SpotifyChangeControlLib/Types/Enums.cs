@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyChangeControlLib.Types
 {
-    internal class Enums
+    public class Enums
     {
         /*
             I would like to take this oppurtunity to 
@@ -25,6 +25,13 @@ namespace SpotifyChangeControlLib.Types
             Whoops8 =   0x08,
             Querable =  0x10,
             Unknown =   0x20
+        }
+
+        public enum SpotifyChangeType
+        {
+            Add,
+            Delete,
+            Move
         }
     }
 }

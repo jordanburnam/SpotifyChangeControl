@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+    
+*@
+@{
+    ViewBag.Title = "Logout";
+}
+<title></title>
+<h2>@ViewBag.Title</h2>
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <h3>Logout...</h3>
+    <p>Unfortunatley I never thought anyone would want to use this feature so I didn't code for it...Seriously who would want to leave this amazing site I made?</p>
+}
+else
+{
+    <h3>Logout?</h3>
+    <p>You aren't logged in stupid!</p> 
+}

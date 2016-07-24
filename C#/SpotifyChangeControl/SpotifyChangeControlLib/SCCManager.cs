@@ -73,6 +73,12 @@ namespace SpotifyChangeControlLib
             this._oStateManager.Run(); //They will notice we are running we are we are out of breath but we will still claim our innoncence!
         }
 
+        public SpotifyUser AddSpotifyUser(string sProfileID, string sAuthCode, string sAccessCode, string sRefreshCode, string sAccessTokenType, int iExpiresIn, DateTime dtToken, DateTime dtAuth)
+        {
+            SpotifyUser oSpotifyUser = new SpotifyUser(sProfileID, sAuthCode, sAccessCode, sRefreshCode, sAccessTokenType, iExpiresIn, dtToken, dtAuth);
+            return oSpotifyUser;
+        }
+
         public SpotifyUser AddSpotifyUser(PrivateProfile oPrivateProfile, string sAuthCode, Token oToken)
         {
             SpotifyUser oSpotifyUser = new SpotifyUser(oPrivateProfile, sAuthCode, oToken);
@@ -90,6 +96,16 @@ namespace SpotifyChangeControlLib
         {
             long iUserID = SpotifyAccessLayer.GetSpotifyUserForGuid(sUserGuid).ID;
             SpotifyAccessLayer.DeleteSessionForUser(iUserID);
+        }
+
+        public long GetObjectIDForSpotifyID(string sSpotifyID)
+        {
+            return SpotifyAccessLayer.GetObjectIDForSpotifyID(sSpotifyID);
+        }
+
+        public IEnumerable<SpotifyPlaylistChange> GetPlaylistChangesForUser(long iUserID, DateTime dtStart, DateTime dtEnd)
+        {
+            return SpotifyAccessLayer.GetPlaylistChanges(iUserID, dtStart, dtEnd);
         }
 
     }
