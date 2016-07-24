@@ -60,14 +60,14 @@ namespace Mvc.Client.Models.Changes
         }
 
 
-        public DateTime GetStart()
+        public DateTime GetStartUTC()
         {
-            return this._Start;
+            return this._Start.ToUniversalTime();
         }
 
-        public DateTime GetEnd()
+        public DateTime GetEndUTC()
         {
-            return this._End;
+            return this._End.ToUniversalTime();
         }
 
     }

@@ -54,6 +54,12 @@ namespace Mvc.Client.Controllers {
             return View();
         }
 
+        [HttpGet]
+        [Route("Home/FAQ")]
+        public ActionResult FAQ()
+        {
+            return View();
+        }
 
 
     }

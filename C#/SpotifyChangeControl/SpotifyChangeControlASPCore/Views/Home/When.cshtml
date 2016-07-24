@@ -4,5 +4,8 @@
 }
 <h2>@ViewBag.Title</h2>
 <h3>Now stupid!</h3>
-
+<ul class="pager">
+    <li class="previous">@Html.ActionLink("« Where", "Where", "Home")</li>
+    <li class="next">@Html.ActionLink("How »", "How", "Home")</li>
+</ul>
 

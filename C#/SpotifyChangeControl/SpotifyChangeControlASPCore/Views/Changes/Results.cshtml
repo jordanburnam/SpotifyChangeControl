@@ -7,6 +7,10 @@
 @{
     string sUniquePlaylistName;
     string sUniqueTrackName;
+    string sColor;
+    IEnumerable<SpotifyTrackChange> Adds;
+    IEnumerable<SpotifyTrackChange> Moves;
+    IEnumerable<SpotifyTrackChange> Deletes;
 }
 <h1>Search Resutls</h1>
 <h2>@Model.PlaylistChanges.Count() playlists have changed!</h2>
@@ -19,11 +23,31 @@
         {
             {
                 sUniquePlaylistName = Model.PlaylistChanges.ToArray()[i].SpotifyID + i.ToString();
+                Adds = (from Change in Model.PlaylistChanges.ToArray()[i].Changes where Change.ChangeType == SpotifyChangeControlLib.Types.Enums.SpotifyChangeType.Add select Change);
+                Moves = (from Change in Model.PlaylistChanges.ToArray()[i].Changes where Change.ChangeType == SpotifyChangeControlLib.Types.Enums.SpotifyChangeType.Move select Change);
+                Deletes = (from Change in Model.PlaylistChanges.ToArray()[i].Changes where Change.ChangeType == SpotifyChangeControlLib.Types.Enums.SpotifyChangeType.Delete select Change);
             }
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#@sUniquePlaylistName">@Model.PlaylistChanges.ToArray()[i].Name</a>
+                        <a data-toggle="collapse" href="#@sUniquePlaylistName">@Model.PlaylistChanges.ToArray()[i].Name</a> 
+                        @if (Adds.Count() > 0)
+                        {
+                            <span class="badge" style="background-color:lightgreen">@Adds.Count()<span class="glyphicon-plus"></span></span>
+                        }
+
+                        @if (Deletes.Count() > 0)
+                        {
+                            <span class="badge" style="background-color:lightcoral">@Deletes.Count() <span class="glyphicon-minus"></span></span>
+                        }
+
+                        @*@if (Moves.Count() > 0)
+                        {
+                            <span class="glyphicon-move"></span>
+                            <span class="badge">@Moves.Count() <span class="glyphicon glyphicon-sort"></span></span>
+                        }*@
+                        @*<a class="glyphicon glyphicon-eye-open pull-right" href="http://play.spotify.com/user/spotify/playlist/@Model.PlaylistChanges.ToArray()[i].SpotifyID"></a>*@
+                       
                     </h4>
                 </div>
                 <div id="@sUniquePlaylistName" class="panel-collapse collapse">
@@ -32,11 +56,13 @@
                         {
                             {
                                 sUniqueTrackName = Model.PlaylistChanges.ToArray()[i].Changes.ToArray()[j].SpotifyID + j.ToString();
+                                sColor = Model.PlaylistChanges.ToArray()[i].Changes.ToArray()[j].ChangeType == SpotifyChangeControlLib.Types.Enums.SpotifyChangeType.Add ? "lightgreen" : "lightcoral";
                             }
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">
+                                    <div class="panel-heading"style="background-color:@sColor">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" href="#@sUniqueTrackName">@Model.PlaylistChanges.ToArray()[i].Changes.ToArray()[j].Name</a>
+                                            <a data-toggle="collapse" href="#@sUniqueTrackName"  >@Model.PlaylistChanges.ToArray()[i].Changes.ToArray()[j].Name</a>
+                                            <a class="glyphicon glyphicon-eye-open pull-right" href="http://play.spotify.com/track/@Model.PlaylistChanges.ToArray()[i].Changes.ToArray()[j].SpotifyID"></a>
                                         </h4>
                                     </div>
                                     <div id="@sUniqueTrackName" class="panel-collapse collapse">
@@ -46,7 +72,8 @@
                                         
                                         @for(int K = 0; K < Artists.Length; K++ )
                                         {
-                                            <div class="panel-body">@Artists[K]</div>
+                                            <div class="panel-body" style="background-color:@sColor">@Artists[K] <a class="glyphicon glyphicon-eye-open pull-right"  href="http://play.spotify.com/artist/@Model.PlaylistChanges.ToArray()[i].Changes.ToArray()[j].Artists.ToArray()[K].SpotifyID"></a></div>
+                                            
 
                                         }
                                         

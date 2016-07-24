@@ -40,13 +40,13 @@ namespace SpotifyChangeControlCMD
             else
             {
                 SCC_PRIVATE_ID = GetParameterValueByNameFromArgs("PRV", args);
-                SCC_PUBLIC_ID = GetParameterValueByNameFromArgs("PUB", args); ;
+                SCC_PUBLIC_ID = GetParameterValueByNameFromArgs("PUB", args); 
 
-                SCC_SQL_CON = GetParameterValueByNameFromArgs("SSC", args); ;
+                SCC_SQL_CON = GetParameterValueByNameFromArgs("SSC", args); 
 
-                SCC_REDIS_HOST = GetParameterValueByNameFromArgs("SRH", args); ;
-                SCC_REDIS_PASS = GetParameterValueByNameFromArgs("SRP", args); ;
-                string sPort = GetParameterValueByNameFromArgs("P", args); ;
+                SCC_REDIS_HOST = GetParameterValueByNameFromArgs("SRH", args); 
+                SCC_REDIS_PASS = GetParameterValueByNameFromArgs("SRP", args); 
+                string sPort = GetParameterValueByNameFromArgs("P", args);
                 if (!int.TryParse(sPort, out SCC_REDIS_PORT))
                 {
                     SCC_REDIS_PORT = 6379;
@@ -56,7 +56,7 @@ namespace SpotifyChangeControlCMD
             
             oSCCManager.ExecuteStateMananger();
             Console.WriteLine("DONE at " + DateTime.Now);
-            Console.ReadLine();
+            //Console.ReadLine();
             //TODO:Do things with stuff
            
 

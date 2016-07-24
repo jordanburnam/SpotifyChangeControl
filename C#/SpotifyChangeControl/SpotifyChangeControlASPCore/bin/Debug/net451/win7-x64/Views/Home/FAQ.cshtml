@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "FAQ";
+
+}
+<h2>@ViewBag.Title </h2>
+<div class="panel-group">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#AuthDefine">What is Authorization?</a>
+                </h4>
+            </div>
+            <div id="AuthDefine" class="panel-collapse collapse">
+                <p>This is a process by which spotify hands me a token that I can use later to access your spotify account.</p>
+            </div>
+        </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#AccessDefine">What do you have access to in regards to my Spotify Account?</a>
+            </h4>
+        </div>
+        <div id="AccessDefine" class="panel-collapse collapse">
+            <p>I have read-only access to playlists, tracks, and your private profile which includes your email address and unfortunately your date of birth. I don't want this nor do I store it but spotify either exposes nothing or everything.</p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#StorageDefine">How much of my infomration do you store?</a>
+            </h4>
+        </div>
+        <div id="StorageDefine" class="panel-collapse collapse">
+            <p>Just the token and your Spotify user id. In full disclosure I am storing the playlists you follow and the tracks they contain which is the mecahnism by which I can tell what has changed.</p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#RiskDefine">What are the risks?</a>
+            </h4>
+        </div>
+        <div id="RiskDefine" class="panel-collapse collapse">
+            <p>
+                Let's be honest this whole thing is nothing more than a hobby for me so I am not spending a lot of time or resources on security or reliability. <b>You will be using this at your own risk!</b> That being said I have tried to use the best judgement I could when thinking through the ways in which this application works. I <b>DO NOT</b> have you create an account and I <b>DO NOT</b> store anything but your spotify user id and your token. I look up your email address from the spotify web api at runtime! I keep the spotify user id in a separate storage system. I also have my code on github that anyone with the technical know how can review and validate my statements. It also allows it to be vetted and verified by others, not just me.
+                Keep in mind there is still a risk. If someone were to attack me and were able to get your spotify token and they somehow managed to get my private id then they would be able to read your spotify library and more importantly your private spotify profile which includes your date of birth and your email address. I would prefer spotify expose ones email without their date of birth but that isn’t here nor there.
+            </p>
+        </div>
+    </div>
+
+</div>
+<ul class="pager">
+    <li class="previous">@Html.ActionLink("« How", "How", "Home")</li>
+    <li class="next">@Html.ActionLink("Done »", "Index", "Home")</li>
+</ul>
+
+
+
+
+
+
