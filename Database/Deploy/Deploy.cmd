@@ -64,13 +64,4 @@ echo. >> %DeployFile%
 
 
 
-REM BEGIN DATA
-echo  /* >> %DeployFile%
-echo  BEGIN DATA >> %DeployFile%
-echo  */ >> %DeployFile%
-type %ParentDir%\Data\*.Table.sql >> %DeployFile%
-REM END DATA
-echo  /* >> %DeployFile%
-echo  END DATA >> %DeployFile%
-echo  */ >> %DeployFile%
 
