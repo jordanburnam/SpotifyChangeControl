@@ -26,7 +26,7 @@ BEGIN
 		UPDATE 
 			SET targetTable.Code = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate AND sourceTable.Code IS NOT NULL THEN sourceTable.Code ELSE targetTable.Code END
 				,targetTable.TokenDate = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate  AND sourceTable.Code IS NOT NULL  THEN sourceTable.TokenDate ELSE targetTable.TokenDate END
-				,targetTable.UpdatedDate = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate  AND sourceTable.Code IS NOT NULL  THEN GETDATE() ELSE targetTable.UpdatedDate END
+				,targetTable.UpdatedDate = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate  AND sourceTable.Code IS NOT NULL  THEN GETUTCDATE() ELSE targetTable.UpdatedDate END
 				;
 	COMMIT TRANSACTION;
 END

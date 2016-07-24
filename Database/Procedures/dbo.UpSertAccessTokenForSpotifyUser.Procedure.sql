@@ -32,7 +32,7 @@ BEGIN
 				,targetTable.TokenType = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate THEN  sourceTable.TokenType ELSE targetTable.TokenType END
 				,targetTable.ExpiresIn = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate THEN  sourceTable.ExpiresIn ELSE targetTable.ExpiresIn END
 				,targetTable.TokenDate = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate THEN sourceTable.TokenDate ELSE targetTable.TokenDate END
-				,targetTable.UpdatedDate = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate THEN GETDATE() ELSE targetTable.UpdatedDate END
+				,targetTable.UpdatedDate = CASE WHEN sourceTable.TokenDate > targetTable.TokenDate THEN GETUTCDATE() ELSE targetTable.UpdatedDate END
 				;
 	COMMIT TRANSACTION;
 

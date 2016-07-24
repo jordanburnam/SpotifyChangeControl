@@ -26,7 +26,7 @@ BEGIN
 		UPDATE 
 			SET targetTable.Code = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN sourceTable.Code ELSE targetTable.Code END
 				,targetTable.AuthDate = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN sourceTable.AuthDate ELSE targetTable.AuthDate END
-				,targetTable.UpdatedDate = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN GETDATE() ELSE targetTable.UpdatedDate END
+				,targetTable.UpdatedDate = CASE WHEN sourceTable.AuthDate > targetTable.AuthDate THEN GETUTCDATE() ELSE targetTable.UpdatedDate END
 				;
 
 	

@@ -5,26 +5,12 @@ END
 GO
 CREATE PROCEDURE dbo.GetPlaylistChangesForUser (
 	@iUserID BIGINT,
-	@dtStart DATETIME = NULL
-	,@dtEnd DATETIME = NULL
+	@dtStart DATETIME 
+	,@dtEnd DATETIME 
 )
 AS
 BEGIN
 
-IF @dtStart IS NULL
-BEGIN 
-	SELECT 
-		@dtStart = MAX(CreatedDate) 
-	FROM dbo.Spotify_User_Session SUS
-	WHERE (1=1)
-		AND SUS.UserID = @iUserID
-		AND SUS.Expired = 0
-	GROUP BY UserID
-END
-IF @dtEnd IS NULL 
-BEGIN 
-	SET @dtEnd = GETUTCDATE() + 1
-END
 
 SELECT 
 	SPT.PlaylistID
@@ -68,7 +54,6 @@ INNER JOIN (
 				,MIN(SPVS.Seq) AS Seq
 			 FROM dbo.Spotify_Playlist_Version_Seq SPVS 
 			 WHERE (1=1)
-				AND SPVS.CreatedDate BETWEEN @dtStart AND @dtEnd 
 			 GROUP BY SPVS.PlaylistID
 			) AS MinSeq ON MinSeq.PlaylistID = SPT.PlaylistID AND SPT.newSeq > MinSeq.Seq --When everything is loaded the first time it is given a seq of 1 so lets not include those...it looks like the tracks were added but in reality thats just the first time we grabbed them
 WHERE (1=1)
@@ -104,7 +89,6 @@ INNER JOIN (
 				,MAX(SPVS.Seq) AS Seq
 			 FROM dbo.Spotify_Playlist_Version_Seq SPVS 
 			 WHERE (1=1)
-				AND SPVS.CreatedDate BETWEEN @dtStart AND @dtEnd 
 			 GROUP BY SPVS.PlaylistID
 			) AS MaxSeq ON MaxSeq.PlaylistID = SPT.PlaylistID AND SPT.oldSeq < MaxSeq.Seq  --Make sure that just because the most recent seq does not think they were deleted because there is no other seq for them yet
 WHERE (1=1)
@@ -141,7 +125,6 @@ WHERE (1=1)
 --				,MIN(SPVS.Seq) AS Seq
 --			 FROM dbo.Spotify_Playlist_Version_Seq SPVS 
 --			 WHERE (1=1)
---				--AND SPVS.CreatedDate BETWEEN @dtStart AND @dtEnd 
 --			 GROUP BY SPVS.PlaylistID
 --			) AS MinSeq ON MinSeq.PlaylistID = SPT.PlaylistID AND SPT.newSeq > MinSeq.Seq --When everything is loaded the first time it is given a seq of 1 so lets not include those...it looks like the tracks were added but in reality thats just the first time we grabbed them
 --WHERE (1=1)
@@ -153,7 +136,7 @@ INNER JOIN dbo.Spotify_Playlist SP ON SP.PlaylistID = SPT.PlaylistID
 INNER JOIN dbo.Spotify_Track ST ON ST.TrackID = SPT.TrackID
 INNER JOIN dbo.Spotify_Artist_Track SAT ON SAT.TrackID = ST.TrackID
 INNER JOIN dbo.Spotify_Artist SA ON SA.ArtistID = SAT.ArtistID
-ORDER BY SPT.PlaylistID, SPT.TrackID, SAT.ArtistID
+ORDER BY SPT.PlaylistID, SPT.ChangeCode, SPT.TrackID, SAT.ArtistID
 END
 GO
 
