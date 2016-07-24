@@ -8,6 +8,7 @@
     string sUniquePlaylistName;
     string sUniqueTrackName;
     string sColor;
+    string sHrefPlaylist = "http://play.spotify.com/user/{0}/playlist/{1}";
     IEnumerable<SpotifyTrackChange> Adds;
     IEnumerable<SpotifyTrackChange> Moves;
     IEnumerable<SpotifyTrackChange> Deletes;
@@ -46,7 +47,8 @@
                             <span class="glyphicon-move"></span>
                             <span class="badge">@Moves.Count() <span class="glyphicon glyphicon-sort"></span></span>
                         }*@
-                        @*<a class="glyphicon glyphicon-eye-open pull-right" href="http://play.spotify.com/user/spotify/playlist/@Model.PlaylistChanges.ToArray()[i].SpotifyID"></a>*@
+                        
+                        <a class="glyphicon glyphicon-eye-open pull-right" href="@string.Format(sHrefPlaylist, Model.PlaylistChanges.ToArray()[i].Owner, Model.PlaylistChanges.ToArray()[i].SpotifyID)"></a>
                        
                     </h4>
                 </div>

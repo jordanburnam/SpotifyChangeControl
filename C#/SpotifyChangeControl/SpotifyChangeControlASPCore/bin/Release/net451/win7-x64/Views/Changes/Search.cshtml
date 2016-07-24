@@ -1,0 +1,16 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Mvc.Client.Models.Changes
+@model SearchModel
+@{
+   
+    ViewBag.Title = "Search";
+}
+<h2 class="h2">@ViewBag.Title</h2>
+<form action="Results" method="get">
+    <p>Start:@Html.EditorFor(model => model.Start)</p>
+    <p>End: @Html.EditorFor(model => model.End)</p>
+     <p><button class="btn btn-lg btn-success" type="submit">Search</button></p>
+  
+</form>

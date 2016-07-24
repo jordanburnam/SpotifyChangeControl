@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyAPI", "..\..\..\Spot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlLib", "SpotifyChangeControlLib\SpotifyChangeControlLib.csproj", "{1D284265-21B2-4E01-9EA9-019DC167CF62}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SpotifyChangeControlMVC", "SpotifyChangeControlASPCore\SpotifyChangeControlMVC.xproj", "{68631868-902A-46FB-9A44-BACF1812FBDE}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PlaylistManagerMVC", "SpotifyChangeControlASPCore\PlaylistManagerMVC.xproj", "{68631868-902A-46FB-9A44-BACF1812FBDE}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNet.Security.OAuth.Spotify", "..\..\..\AspNet.Security.OAuth.Providers\src\AspNet.Security.OAuth.Spotify\AspNet.Security.OAuth.Spotify.xproj", "{535CD0A4-2117-4576-8552-4188D7E8E3D4}"
 EndProject

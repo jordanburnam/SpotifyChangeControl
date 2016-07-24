@@ -10,17 +10,23 @@ namespace SpotifyChangeControlLib.DataObjects
 {
     public class SpotifyPlaylistChange : SpotifyObjectBase
     {
-        protected IEnumerable<SpotifyTrackChange> _Changes;
+        private string _Owner;
+        private IEnumerable<SpotifyTrackChange> _Changes;
 
         public IEnumerable<SpotifyTrackChange> Changes
         {
             get { return this._Changes; }
         }
 
-        public SpotifyPlaylistChange(long iID, string sSpotifyID, string sName, IEnumerable<SpotifyTrackChange> oTracks) : base(iID, sName)
+        public string Owner
+        {
+            get { return this._Owner; }
+        }
+        public SpotifyPlaylistChange(long iID, string sSpotifyID, string sName, string sOwner, IEnumerable<SpotifyTrackChange> oTracks) : base(iID, sName)
         {
             this.SpotifyID = sSpotifyID;
             this._Changes = oTracks;
+            this._Owner = sOwner;
         }
     }
 }

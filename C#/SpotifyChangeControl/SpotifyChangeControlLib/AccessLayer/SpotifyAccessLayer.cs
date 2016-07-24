@@ -162,6 +162,7 @@ namespace SpotifyChangeControlLib.AccessLayer
             dtArtists.Columns.Add(new DataColumn("PlaylistID", typeof(long)));
             dtArtists.Columns.Add(new DataColumn("Name", typeof(string)));
             dtArtists.Columns.Add(new DataColumn("SpotifyID", typeof(string)));
+            dtArtists.Columns.Add(new DataColumn("PlaylistOwner", typeof(string)));
 
             foreach (KeyValuePair<long, SpotifyPlaylist> oKVP in Playlists)
             {
@@ -169,13 +170,15 @@ namespace SpotifyChangeControlLib.AccessLayer
                 drArtist["PlaylistID"] = oKVP.Key;
                 drArtist["Name"] = oKVP.Value.Name;
                 drArtist["SpotifyID"] = oKVP.Value.SpotifyID;
+                drArtist["PlaylistOwner"] = oKVP.Value.Owner;
                 dtArtists.Rows.Add(drArtist);
             }
             SqlBulkCopyColumnMapping cmID = new SqlBulkCopyColumnMapping("PlaylistID", "PlaylistID");
             SqlBulkCopyColumnMapping cmName = new SqlBulkCopyColumnMapping("Name", "Name");
             SqlBulkCopyColumnMapping cmSpotifyID = new SqlBulkCopyColumnMapping("SpotifyID", "SpotifyID");
+            SqlBulkCopyColumnMapping cmPlaylistOwner = new SqlBulkCopyColumnMapping("PlaylistOwner", "PlaylistOwner");
 
-            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName, cmSpotifyID);
+            RelationalDatabase.BulkInsert(dtArtists, oWorkTableState, cmID, cmName, cmSpotifyID, cmPlaylistOwner);
             RelationalDatabase.ExecuteNonQuery("AddSpotifyPlaylists", CommandType.StoredProcedure);
 
         }
@@ -251,6 +254,7 @@ namespace SpotifyChangeControlLib.AccessLayer
             long CurrentPlaylistID;
             long NextPlaylistID;
             string CurrentPlaylistName;
+            string CurrentPlaylistOwner;
             string NextPlaylistName;
             for (int j = 0; j < ds.Tables[0].Rows.Count; j++)
             {
@@ -312,7 +316,8 @@ namespace SpotifyChangeControlLib.AccessLayer
                         CurrentPlaylistGuid = drLastRow["PlaylistGuid"].ToString();
                         CurrentPlaylistID = Convert.ToInt64(drLastRow["PlaylistID"].ToString());
                         CurrentPlaylistName = drLastRow["PlaylistName"].ToString();
-                        SpotifyPlaylistChange oSpotifyPlaylistChange = new SpotifyPlaylistChange(CurrentPlaylistID, CurrentPlaylistGuid, CurrentPlaylistName, TrackChanges.ToArray());
+                        CurrentPlaylistOwner = drLastRow["PlaylistOwner"].ToString();
+                        SpotifyPlaylistChange oSpotifyPlaylistChange = new SpotifyPlaylistChange(CurrentPlaylistID, CurrentPlaylistGuid, CurrentPlaylistName, CurrentPlaylistOwner, TrackChanges.ToArray());
                         PlaylistChanges.Add(oSpotifyPlaylistChange);
                         TrackChanges = new List<SpotifyTrackChange>();
                     }
