@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<script>
+
+    $(document).ready(function () {
+        $('.Sent').hide(); $('.NotSent').show();
+    });
+
+</script>
+
+
+<h2>404</h2>
+<h3>The page you requested is not here right now. Would you like to leave a message?</h3>
+<div  class="Sent"><h4>Your message has been saved and I value everyone's' feedback. I take your comments and opinions very seriously. In fact I personally review every comment you post. Trust me <b>this</b> <b>was</b> in no way <b>a waste of your time</b> and <b>I</b> certainly <b>did</b> not <b>create a pointless form in order to pander to your human emotions and sensitivities.</b> Please feel good knowing <b>your voice and opinions were not</b> only <b>heard</b> but understood at the most deepest level. </h4></div>
+
+<div class="form-group NotSent">
+    <label for="comment">Comment:</label>
+    <textarea class="form-control" rows="5" id="comment"></textarea>
+    <input type="button" value="Submit" onclick="$('.Sent').show(); $('.NotSent').hide();" />
+</div>
+   

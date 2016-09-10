@@ -8,6 +8,7 @@ using Mvc.Client.Models.Changes;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 using System.Security.Claims;
 using SpotifyChangeControlLib.DataObjects;
+using System.Web;
 
 namespace Mvc.Client.Controllers
 {
@@ -40,18 +41,25 @@ namespace Mvc.Client.Controllers
         [HttpGet]
         public IActionResult Results([Bind]SearchModel oSearchModel)
         {
-            //ResultModel oResultModel = new ResultModel();
-            //oResultModel.Start = oSearchModel.Start;
-            //oResultModel.End = oSearchModel.End;
-            IEnumerable<Claim> oClaims = User.FindAll("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
-            long iUserID = 0;
-            foreach (Claim oClaim in oClaims)
+            try
             {
-                iUserID = this._oSCCManager.GetObjectIDForSpotifyID(oClaim.Value);
-            }
+                //ResultModel oResultModel = new ResultModel();
+                //oResultModel.Start = oSearchModel.Start;
+                //oResultModel.End = oSearchModel.End;
+                IEnumerable<Claim> oClaims = User.FindAll("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
+                long iUserID = 0;
+                foreach (Claim oClaim in oClaims)
+                {
+                    iUserID = this._oSCCManager.GetObjectIDForSpotifyID(oClaim.Value);
+                }
 
-            IEnumerable<SpotifyPlaylistChange> oPlaylistChanges = this._oSCCManager.GetPlaylistChangesForUser(iUserID, oSearchModel.GetStartUTC(), oSearchModel.GetEndUTC());
-            return View("Results", new ResultModel(oSearchModel, oPlaylistChanges));
+                IEnumerable<SpotifyPlaylistChange> oPlaylistChanges = this._oSCCManager.GetPlaylistChangesForUser(iUserID, oSearchModel.GetStartUTC(), oSearchModel.GetEndUTC());
+                return View("Results", new ResultModel(oSearchModel, oPlaylistChanges));
+            }
+            catch (Exception)
+            {
+                return new RedirectResult("~/Errors/GetCustomErrorPageToMakeTheStupidHumanFeelGoodAboutThereTecnicalAbilitiesAndReassureThemItsNotTheirFault?sHttpStatus=500");
+            }
         }
 
         

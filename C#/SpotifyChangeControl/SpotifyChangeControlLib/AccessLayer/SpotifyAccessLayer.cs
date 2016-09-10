@@ -250,12 +250,12 @@ namespace SpotifyChangeControlLib.AccessLayer
             bool bFirstTrack = true;
 
             string CurrentPlaylistGuid;
-            string NextPlaylistGuid;
+            //string NextPlaylistGuid;
             long CurrentPlaylistID;
-            long NextPlaylistID;
+            //long NextPlaylistID;
             string CurrentPlaylistName;
-            string CurrentPlaylistOwner;
-            string NextPlaylistName;
+            //string CurrentPlaylistOwner;
+            //string NextPlaylistName;
             for (int j = 0; j < ds.Tables[0].Rows.Count; j++)
             {
                 
@@ -316,8 +316,8 @@ namespace SpotifyChangeControlLib.AccessLayer
                         CurrentPlaylistGuid = drLastRow["PlaylistGuid"].ToString();
                         CurrentPlaylistID = Convert.ToInt64(drLastRow["PlaylistID"].ToString());
                         CurrentPlaylistName = drLastRow["PlaylistName"].ToString();
-                        CurrentPlaylistOwner = drLastRow["PlaylistOwner"].ToString();
-                        SpotifyPlaylistChange oSpotifyPlaylistChange = new SpotifyPlaylistChange(CurrentPlaylistID, CurrentPlaylistGuid, CurrentPlaylistName, CurrentPlaylistOwner, TrackChanges.ToArray());
+                        //CurrentPlaylistOwner = drLastRow["PlaylistOwner"].ToString();
+                        SpotifyPlaylistChange oSpotifyPlaylistChange = new SpotifyPlaylistChange(CurrentPlaylistID, CurrentPlaylistGuid, CurrentPlaylistName, "", TrackChanges.ToArray());
                         PlaylistChanges.Add(oSpotifyPlaylistChange);
                         TrackChanges = new List<SpotifyTrackChange>();
                     }

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace Mvc.Client {
     public class Startup {
@@ -43,10 +44,21 @@ namespace Mvc.Client {
             //Setup Routes
 
             //Setup Auth
-
-            
+            //BEGIN RJB 9/10/2016
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage(); //ADDED THIS TO HAVE EXCEPTION PAGES INT MY APP WHEN IT IS IN DEBUG MODE ONLY
+            }
+            else //WHEN NOT IN DEBUG THEN HAVE SOMETHING COOLER
+            {
+                app.UseExceptionHandler("/Errors");
+               app.UseStatusCodePagesWithRedirects("~/Errors/GetCustomErrorPageToMakeTheStupidHumanFeelGoodAboutThereTecnicalAbilitiesAndReassureThemItsNotTheirFault?sHttpStatus={0}");
+               //app.UseStatusCodePagesWithReExecute("/Errors/GetCustomErrorPageToMakeTheStupidHumanFeelGoodAboutThereTecnicalAbilitiesAndReassureThemItsNotTheirFault?sHttpStatus={0}");
+            }
+            //END RJB 9/10/2016
+           
             app.UseStaticFiles();
-
+            
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AutomaticAuthenticate = true,

@@ -1,0 +1,15 @@
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\SpotifyChangeControlCMD.exe.config
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\SpotifyChangeControlCMD.exe
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\SpotifyChangeControlCMD.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\SpotifyAPI.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\SpotifyChangeControlLib.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\StackExchange.Redis.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\SpotifyChangeControlLib.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\SpotifyAPI.xml
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\StackExchange.Redis.pdb
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\StackExchange.Redis.xml
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\bin\Release\Newtonsoft.Json.xml
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\obj\Release\SpotifyChangeControlCMD.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\obj\Release\SpotifyChangeControlCMD.exe
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlCMD\obj\Release\SpotifyChangeControlCMD.pdb
