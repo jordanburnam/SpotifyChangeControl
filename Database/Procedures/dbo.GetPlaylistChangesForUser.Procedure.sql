@@ -49,7 +49,7 @@ FROM (
 	INNER JOIN dbo.Spotify_User_Playlist SUP ON SUP.PlaylistID =  SPT.PlaylistID
 	WHERE (1=1)
 		AND SUP.UserId = @iUserID
-		AND SPT.CreatedDate BETWEEN @dtStart AND @dtEnd --RJB ADDED ON 9/10/2016 BECAUSE THIS SEEMS TO WORK TO ME
+		--AND SPT.CreatedDate BETWEEN @dtStart AND @dtEnd --RJB ADDED ON 9/10/2016 BECAUSE THIS SEEMS TO WORK TO ME
 		
 ) SPT
 INNER JOIN (
