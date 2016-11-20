@@ -34,7 +34,7 @@ namespace Mvc.Client.Models.Changes
 
         }
 
-        [Required]
+       
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "MM/dd/yyyy", HtmlEncode = true, NullDisplayText = "")]
         public DateTime? End
@@ -45,7 +45,7 @@ namespace Mvc.Client.Models.Changes
 
                 if (value == null)
                 {
-                    this._End = DateTime.MaxValue;
+                    this._End = DateTime.Parse(this.Start.Value.ToShortDateString().Trim() + " 23:59:59"); ;
                 }
                 else
                 {

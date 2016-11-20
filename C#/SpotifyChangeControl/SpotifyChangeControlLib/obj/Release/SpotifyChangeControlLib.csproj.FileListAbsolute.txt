@@ -1,13 +1,13 @@
-C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Release\SpotifyChangeControlLib.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\SpotifyChangeControlLib.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\SpotifyChangeControlLib.pdb
-C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\Newtonsoft.Json.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\SpotifyAPI.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\StackExchange.Redis.dll
-C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\Newtonsoft.Json.xml
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\SpotifyAPI.pdb
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\SpotifyAPI.xml
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\StackExchange.Redis.pdb
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\StackExchange.Redis.xml
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\Newtonsoft.Json.xml
+C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Release\SpotifyChangeControlLib.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Release\SpotifyChangeControlLib.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Release\SpotifyChangeControlLib.pdb
-C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Release\SpotifyAPI.pdb

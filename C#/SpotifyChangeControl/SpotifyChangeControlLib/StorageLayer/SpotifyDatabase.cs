@@ -165,6 +165,12 @@ namespace SpotifyChangeControlLib.AccessLayer
             return oWebClient;
         }
 
-        
+        private static List<DateTime> GetDaysOfChanges(SpotifyWebAPI oWebCLient, SpotifyUser oSpotifyUser)
+        {
+            List<DateTime> oDates = new List<DateTime>();
+
+            return oDates; 
+        }
+
     }
 }

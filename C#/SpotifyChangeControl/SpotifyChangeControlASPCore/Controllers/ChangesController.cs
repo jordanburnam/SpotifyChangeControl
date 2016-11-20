@@ -53,7 +53,7 @@ namespace Mvc.Client.Controllers
                     iUserID = this._oSCCManager.GetObjectIDForSpotifyID(oClaim.Value);
                 }
 
-                IEnumerable<SpotifyPlaylistChange> oPlaylistChanges = this._oSCCManager.GetPlaylistChangesForUser(iUserID, oSearchModel.GetStartUTC(), oSearchModel.GetEndUTC());
+                IEnumerable<SpotifyPlaylistChange> oPlaylistChanges = this._oSCCManager.GetPlaylistChangesForUser(iUserID, oSearchModel.Start.Value, oSearchModel.End.Value);
                 return View("Results", new ResultModel(oSearchModel, oPlaylistChanges));
             }
             catch (Exception)
