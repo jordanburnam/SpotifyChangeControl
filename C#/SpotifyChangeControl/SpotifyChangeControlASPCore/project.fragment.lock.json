@@ -5,14 +5,14 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.5.1",
       "compile": {
-        "bin/Release/SpotifyAPI.dll": {}
+        "bin/Debug/SpotifyAPI.dll": {}
       },
       "runtime": {
         "../../SpotifyChangeControl/C#/SpotifyChangeControl/packages/Newtonsoft.Json.9.0.1/lib/net45/Newtonsoft.Json.dll": {},
-        "bin/Release/SpotifyAPI.dll": {}
+        "bin/Debug/SpotifyAPI.dll": {}
       },
       "contentFiles": {
-        "bin/Release/SpotifyAPI.pdb": {
+        "bin/Debug/SpotifyAPI.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -23,14 +23,14 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.5.1",
       "compile": {
-        "bin/Release/SpotifyChangeControlLib.dll": {}
+        "bin/Debug/SpotifyChangeControlLib.dll": {}
       },
       "runtime": {
         "../packages/StackExchange.Redis.1.1.603/lib/net45/StackExchange.Redis.dll": {},
-        "bin/Release/SpotifyChangeControlLib.dll": {}
+        "bin/Debug/SpotifyChangeControlLib.dll": {}
       },
       "contentFiles": {
-        "bin/Release/SpotifyChangeControlLib.pdb": {
+        "bin/Debug/SpotifyChangeControlLib.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
