@@ -1,0 +1,46 @@
+CREATE TABLE dbo.Spotify_Playlist
+  (
+	PlaylistID BIGINT NOT NULL PRIMARY KEY
+	,Name NVARCHAR(1000) NOT NULL
+	,SpotifyID NVARCHAR(1000) NOT NULL
+	,CreatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE())
+  );
+  CREATE TABLE Spotify_Artist
+  (
+	ArtistID BIGINT NOT NULL PRIMARY KEY
+	,Name NVARCHAR(1000) NOT NULL
+	,SpotifyID NVARCHAR(1000) NOT NULL
+  );
+    CREATE TABLE Spotify_Track
+  (
+	TrackID BIGINT NOT NULL PRIMARY KEY
+	,Name NVARCHAR(1000) NOT NULL
+	,SpotifyID NVARCHAR(1000) NOT NULL
+	,CreatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE())
+  );
+  CREATE TABLE dbo.Spotify_User
+  (
+	UserID BIGINT NOT NULL PRIMARY KEY
+	,Name NVARCHAR(1000) NOT NULL
+	,UserGuid UNIQUEIDENTIFIER NOT NULL DEFAULT(NEWID())
+	,LastLoginDate DATETIME NOT NULL DEFAULT(GETUTCDATE())
+	,CreatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE())
+  );
+  
+  
+  
+  
+  
+  
+  CREATE TABLE Spotify_User_AccessToken
+  (
+	UserID BIGINT NOT NULL PRIMARY KEY
+	,Code NVARCHAR(2000) NOT NULL
+	,TokenType NVARCHAR(100) NOT NULL
+	,ExpiresIn INT NOT NULL 
+	,AccessExpired AS CASE WHEN DATEDIFF(SECOND, TokenDate, GETUTCDATE()) > ExpiresIn THEN 1 ELSE 0 END
+	,TokenDate DATETIME NOT NULL  --This is when the spotify api generated the token
+	,CreatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE())--This is the date the row was created may help in troubleshooting later problems
+	,UpdatedDate DATETIME NOT NULL DEFAULT(GETUTCDATE()) --This is the date the row was updated may help in troubleshooting later problems
+	,FOREIGN KEY(UserID) REFERENCES dbo.Spotify_User(UserID)
+  );

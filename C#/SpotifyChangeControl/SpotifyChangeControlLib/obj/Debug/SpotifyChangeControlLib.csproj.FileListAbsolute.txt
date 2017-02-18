@@ -11,3 +11,16 @@ C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\Spo
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.dll
 C:\Users\Admin\Documents\GitHub\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.pdb
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.dll
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.pdb
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyChangeControlLib.dll
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyChangeControlLib.pdb
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyAPI.dll
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\StackExchange.Redis.dll
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyAPI.xml
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\StackExchange.Redis.pdb
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\StackExchange.Redis.xml
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyChangeControlLib.dll.config
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\obj\Debug\SpotifyChangeControlLib.csprojResolveAssemblyReference.cache

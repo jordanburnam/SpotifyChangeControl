@@ -1,0 +1,75 @@
+--temp-output:C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\AspNet.Security.OAuth.Spotify\obj\Debug\net451\
+--out:C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\AspNet.Security.OAuth.Spotify\bin\Debug\net451\AspNet.Security.OAuth.Spotify.dll
+--define:DEBUG
+--define:TRACE
+--define:NET451
+--suppress-warning:CS1591
+--suppress-warning:CS1701
+--suppress-warning:CS1702
+--suppress-warning:CS1705
+--warnings-as-errors:True
+--optimize:False
+--generate-xml-documentation:True
+--output-name:AspNet.Security.OAuth.Spotify
+--description:ASP.NET Core security middleware enabling Spotify authentication.
+--file-version:1.0.0.0
+--version:1.0.0.0
+--informational-version:1.0.0-beta2
+--target-framework:.NETFramework,Version=v4.5.1
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\AspNet.Security.OAuth.Extensions\ClaimsExtensions.cs
+--reference:C:\Users\Admin\.nuget\packages\JetBrains.Annotations\10.1.4\lib\net20\JetBrains.Annotations.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.Authentication\1.0.0\lib\net451\Microsoft.AspNetCore.Authentication.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.Authentication.OAuth\1.0.0\lib\net451\Microsoft.AspNetCore.Authentication.OAuth.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.Cryptography.Internal\1.0.0\lib\net451\Microsoft.AspNetCore.Cryptography.Internal.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.DataProtection\1.0.0\lib\net451\Microsoft.AspNetCore.DataProtection.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.DataProtection.Abstractions\1.0.0\lib\net451\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.Hosting.Abstractions\1.0.0\lib\net451\Microsoft.AspNetCore.Hosting.Abstractions.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.Hosting.Server.Abstractions\1.0.0\lib\net451\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.Http\1.0.0\lib\net451\Microsoft.AspNetCore.Http.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.Http.Abstractions\1.0.0\lib\net451\Microsoft.AspNetCore.Http.Abstractions.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.Http.Extensions\1.0.0\lib\net451\Microsoft.AspNetCore.Http.Extensions.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.Http.Features\1.0.0\lib\net451\Microsoft.AspNetCore.Http.Features.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.AspNetCore.WebUtilities\1.0.0\lib\net451\Microsoft.AspNetCore.WebUtilities.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.Extensions.Configuration.Abstractions\1.0.0\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.Extensions.DependencyInjection.Abstractions\1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.Extensions.FileProviders.Abstractions\1.0.0\lib\netstandard1.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.Extensions.Logging.Abstractions\1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.Extensions.ObjectPool\1.0.0\lib\net451\Microsoft.Extensions.ObjectPool.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.Extensions.Options\1.0.0\lib\netstandard1.0\Microsoft.Extensions.Options.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.Extensions.Primitives\1.0.0\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.Extensions.WebEncoders\1.0.0\lib\netstandard1.0\Microsoft.Extensions.WebEncoders.dll
+--reference:C:\Users\Admin\.nuget\packages\Microsoft.Net.Http.Headers\1.0.0\lib\netstandard1.1\Microsoft.Net.Http.Headers.dll
+--reference:C:\Users\Admin\.nuget\packages\Newtonsoft.Json\9.0.1\lib\net45\Newtonsoft.Json.dll
+--reference:C:\Users\Admin\.nuget\packages\System.Buffers\4.0.0\lib\netstandard1.1\System.Buffers.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Collections.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Collections.Concurrent.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.ComponentModel.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Diagnostics.Contracts.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Diagnostics.Debug.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Globalization.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.IO.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Linq.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Linq.Expressions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Reflection.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Resources.ResourceManager.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Runtime.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Runtime.Extensions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Runtime.InteropServices.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Text.Encoding.dll
+--reference:C:\Users\Admin\.nuget\packages\System.Text.Encodings.Web\4.0.0\lib\netstandard1.0\System.Text.Encodings.Web.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Threading.dll
+--reference:C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\SpotifyChangeControlLib\bin\Debug\SpotifyChangeControlLib.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\mscorlib.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Core.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Microsoft.CSharp.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Net.Http.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Security.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Xml.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Xml.Linq.dll
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\AspNet.Security.OAuth.Spotify\SpotifyAuthenticationDefaults.cs
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\AspNet.Security.OAuth.Spotify\SpotifyAuthenticationExtensions.cs
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\AspNet.Security.OAuth.Spotify\SpotifyAuthenticationHandler.cs
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\AspNet.Security.OAuth.Spotify\SpotifyAuthenticationHelper.cs
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\AspNet.Security.OAuth.Spotify\SpotifyAuthenticationMiddleware.cs
+C:\Users\Admin\Documents\SourceTreeApp\SpotifyChangeControl\C#\SpotifyChangeControl\AspNet.Security.OAuth.Spotify\SpotifyAuthenticationOptions.cs

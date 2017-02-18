@@ -11,16 +11,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyChangeControlLib", "
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PlaylistManagerMVC", "SpotifyChangeControlASPCore\PlaylistManagerMVC.xproj", "{68631868-902A-46FB-9A44-BACF1812FBDE}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNet.Security.OAuth.Spotify", "..\..\..\AspNet.Security.OAuth.Providers\src\AspNet.Security.OAuth.Spotify\AspNet.Security.OAuth.Spotify.xproj", "{535CD0A4-2117-4576-8552-4188D7E8E3D4}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNet.Security.OAuth.Extensions", "..\..\..\AspNet.Security.OAuth.Providers\src\AspNet.Security.OAuth.Extensions\AspNet.Security.OAuth.Extensions.xproj", "{FE52A431-57AD-45FA-AA59-C63CB6EA3F31}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02717C82-0FB2-488B-ACF9-49B59CA14A0F}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNet.Security.OAuth.GitHub", "..\..\..\AspNet.Security.OAuth.Providers\src\AspNet.Security.OAuth.GitHub\AspNet.Security.OAuth.GitHub.xproj", "{9DFEE19E-C170-4F20-93F3-EC952B1532F2}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNet.Security.OAuth.Extensions", "AspNet.Security.OAuth.Extensions\AspNet.Security.OAuth.Extensions.xproj", "{FE52A431-57AD-45FA-AA59-C63CB6EA3F31}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNet.Security.OAuth.GitHub", "AspNet.Security.OAuth.GitHub\AspNet.Security.OAuth.GitHub.xproj", "{9DFEE19E-C170-4F20-93F3-EC952B1532F2}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNet.Security.OAuth.Spotify", "AspNet.Security.OAuth.Spotify\AspNet.Security.OAuth.Spotify.xproj", "{535CD0A4-2117-4576-8552-4188D7E8E3D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,10 +44,6 @@ Global
 		{68631868-902A-46FB-9A44-BACF1812FBDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68631868-902A-46FB-9A44-BACF1812FBDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68631868-902A-46FB-9A44-BACF1812FBDE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{535CD0A4-2117-4576-8552-4188D7E8E3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{535CD0A4-2117-4576-8552-4188D7E8E3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{535CD0A4-2117-4576-8552-4188D7E8E3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{535CD0A4-2117-4576-8552-4188D7E8E3D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE52A431-57AD-45FA-AA59-C63CB6EA3F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE52A431-57AD-45FA-AA59-C63CB6EA3F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE52A431-57AD-45FA-AA59-C63CB6EA3F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,6 +52,10 @@ Global
 		{9DFEE19E-C170-4F20-93F3-EC952B1532F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DFEE19E-C170-4F20-93F3-EC952B1532F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DFEE19E-C170-4F20-93F3-EC952B1532F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{535CD0A4-2117-4576-8552-4188D7E8E3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535CD0A4-2117-4576-8552-4188D7E8E3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535CD0A4-2117-4576-8552-4188D7E8E3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535CD0A4-2117-4576-8552-4188D7E8E3D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,6 +3,20 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.5.1": {
+      "EntityFramework/6.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        }
+      },
       "Libuv/1.9.0": {
         "type": "package",
         "dependencies": {
@@ -1268,6 +1282,44 @@
           "lib/net45/System.ComponentModel.TypeConverter.dll": {}
         }
       },
+      "System.Data.SQLite/1.0.104": {
+        "type": "package",
+        "dependencies": {
+          "System.Data.SQLite.Core": "1.0.104",
+          "System.Data.SQLite.EF6": "1.0.104",
+          "System.Data.SQLite.Linq": "1.0.104"
+        }
+      },
+      "System.Data.SQLite.Core/1.0.104": {
+        "type": "package",
+        "compile": {
+          "lib/net451/System.Data.SQLite.dll": {}
+        },
+        "runtime": {
+          "lib/net451/System.Data.SQLite.dll": {}
+        }
+      },
+      "System.Data.SQLite.EF6/1.0.104": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "6.0.0"
+        },
+        "compile": {
+          "lib/net451/System.Data.SQLite.EF6.dll": {}
+        },
+        "runtime": {
+          "lib/net451/System.Data.SQLite.EF6.dll": {}
+        }
+      },
+      "System.Data.SQLite.Linq/1.0.104": {
+        "type": "package",
+        "compile": {
+          "lib/net451/System.Data.SQLite.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/net451/System.Data.SQLite.Linq.dll": {}
+        }
+      },
       "System.Diagnostics.Contracts/4.0.1": {
         "type": "package",
         "compile": {
@@ -1526,7 +1578,8 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
           "net451/AspNet.Security.OAuth.GitHub.dll": {}
@@ -1540,6 +1593,7 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
+          "Newtonsoft.Json": "9.0.1",
           "SpotifyChangeControlLib": "1.0.0"
         },
         "compile": {
@@ -1549,18 +1603,39 @@
           "net451/AspNet.Security.OAuth.Spotify.dll": {}
         }
       },
-      "SpotifyAPI/1.0.0": {
-        "type": "project"
-      },
       "SpotifyChangeControlLib/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "SpotifyAPI": "1.0.0"
-        }
+        "type": "project"
       }
     }
   },
   "libraries": {
+    "EntityFramework/6.0.0": {
+      "sha512": "y6lX/VMghGBV6TvgQS4Q2WK6kAcOoyD+TQxObN9utd0JsMMdMxyqARxKbvgi7KEIbQ8osZ4ZvImaly7l3NDFDw==",
+      "type": "package",
+      "path": "EntityFramework/6.0.0",
+      "files": [
+        "Content/App.config.transform",
+        "Content/Web.config.transform",
+        "EntityFramework.6.0.0.nupkg.sha512",
+        "EntityFramework.nuspec",
+        "lib/net40/EntityFramework.SqlServer.dll",
+        "lib/net40/EntityFramework.SqlServer.xml",
+        "lib/net40/EntityFramework.dll",
+        "lib/net40/EntityFramework.xml",
+        "lib/net45/EntityFramework.SqlServer.dll",
+        "lib/net45/EntityFramework.SqlServer.xml",
+        "lib/net45/EntityFramework.dll",
+        "lib/net45/EntityFramework.xml",
+        "tools/EntityFramework.PowerShell.Utility.dll",
+        "tools/EntityFramework.PowerShell.dll",
+        "tools/EntityFramework.psd1",
+        "tools/EntityFramework.psm1",
+        "tools/about_EntityFramework.help.txt",
+        "tools/init.ps1",
+        "tools/install.ps1",
+        "tools/migrate.exe"
+      ]
+    },
     "Libuv/1.9.0": {
       "sha512": "/EFiuGegR/fpxRN9wCi1OH/Ewhj+Pe8ivs1T6ujDj+tJIo4F6a9QGA35nzsGwB6miGdzQ8f0oOsBmdHsEQ6dnw==",
       "type": "package",
@@ -2933,6 +3008,111 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
+    "System.Data.SQLite/1.0.104": {
+      "sha512": "mZ5bxfsk3xS19XweIV/UQZpvrRq+XhjYOzgBViZPEvp2dWS20Xfi0xzG9LtNUXl3V7JfXSDkgjuVd9y6zWXbEg==",
+      "type": "package",
+      "path": "System.Data.SQLite/1.0.104",
+      "files": [
+        "System.Data.SQLite.1.0.104.nupkg.sha512",
+        "System.Data.SQLite.nuspec"
+      ]
+    },
+    "System.Data.SQLite.Core/1.0.104": {
+      "sha512": "PHOHhdY7vLy7J3GaNgFr6C42O3v4iKygp3On/7D1zO1TV9ag48rN0D2zYCtPc+gDpFEGXm28vA2OXsFbplFTVg==",
+      "type": "package",
+      "path": "System.Data.SQLite.Core/1.0.104",
+      "files": [
+        "System.Data.SQLite.Core.1.0.104.nupkg.sha512",
+        "System.Data.SQLite.Core.nuspec",
+        "build/net20/System.Data.SQLite.Core.targets",
+        "build/net20/x64/SQLite.Interop.dll",
+        "build/net20/x86/SQLite.Interop.dll",
+        "build/net40/System.Data.SQLite.Core.targets",
+        "build/net40/x64/SQLite.Interop.dll",
+        "build/net40/x86/SQLite.Interop.dll",
+        "build/net45/System.Data.SQLite.Core.targets",
+        "build/net45/x64/SQLite.Interop.dll",
+        "build/net45/x86/SQLite.Interop.dll",
+        "build/net451/System.Data.SQLite.Core.targets",
+        "build/net451/x64/SQLite.Interop.dll",
+        "build/net451/x86/SQLite.Interop.dll",
+        "build/net46/System.Data.SQLite.Core.targets",
+        "build/net46/x64/SQLite.Interop.dll",
+        "build/net46/x86/SQLite.Interop.dll",
+        "lib/net20/System.Data.SQLite.dll",
+        "lib/net20/System.Data.SQLite.dll.config",
+        "lib/net20/System.Data.SQLite.xml",
+        "lib/net40/System.Data.SQLite.dll",
+        "lib/net40/System.Data.SQLite.dll.config",
+        "lib/net40/System.Data.SQLite.xml",
+        "lib/net45/System.Data.SQLite.dll",
+        "lib/net45/System.Data.SQLite.dll.config",
+        "lib/net45/System.Data.SQLite.xml",
+        "lib/net451/System.Data.SQLite.dll",
+        "lib/net451/System.Data.SQLite.dll.config",
+        "lib/net451/System.Data.SQLite.xml",
+        "lib/net46/System.Data.SQLite.dll",
+        "lib/net46/System.Data.SQLite.dll.config",
+        "lib/net46/System.Data.SQLite.xml"
+      ]
+    },
+    "System.Data.SQLite.EF6/1.0.104": {
+      "sha512": "bkvSjZeatt37iyuEXWVy9IZDgCS8R+EBfnuVXFxynXC08YFBBnvyB/0ayR3htTtSOr7aUkD95U6U3R6bOP8RMA==",
+      "type": "package",
+      "path": "System.Data.SQLite.EF6/1.0.104",
+      "files": [
+        "System.Data.SQLite.EF6.1.0.104.nupkg.sha512",
+        "System.Data.SQLite.EF6.nuspec",
+        "content/net40/app.config.install.xdt",
+        "content/net40/app.config.transform",
+        "content/net40/web.config.install.xdt",
+        "content/net40/web.config.transform",
+        "content/net45/app.config.install.xdt",
+        "content/net45/app.config.transform",
+        "content/net45/web.config.install.xdt",
+        "content/net45/web.config.transform",
+        "content/net451/app.config.install.xdt",
+        "content/net451/app.config.transform",
+        "content/net451/web.config.install.xdt",
+        "content/net451/web.config.transform",
+        "content/net46/app.config.install.xdt",
+        "content/net46/app.config.transform",
+        "content/net46/web.config.install.xdt",
+        "content/net46/web.config.transform",
+        "lib/net40/System.Data.SQLite.EF6.dll",
+        "lib/net45/System.Data.SQLite.EF6.dll",
+        "lib/net451/System.Data.SQLite.EF6.dll",
+        "lib/net46/System.Data.SQLite.EF6.dll",
+        "tools/net40/install.ps1",
+        "tools/net45/install.ps1",
+        "tools/net451/install.ps1",
+        "tools/net46/install.ps1"
+      ]
+    },
+    "System.Data.SQLite.Linq/1.0.104": {
+      "sha512": "9wpO7gWXOAVCHBfLkRXpyzc4ny4/OXmhlWoZfpzwZ/l/s18Uw6EtrMqbJaZrlg5qKkRr0Ts0uqcLx1tS2/VkKQ==",
+      "type": "package",
+      "path": "System.Data.SQLite.Linq/1.0.104",
+      "files": [
+        "System.Data.SQLite.Linq.1.0.104.nupkg.sha512",
+        "System.Data.SQLite.Linq.nuspec",
+        "content/net20/app.config.transform",
+        "content/net20/web.config.transform",
+        "content/net40/app.config.transform",
+        "content/net40/web.config.transform",
+        "content/net45/app.config.transform",
+        "content/net45/web.config.transform",
+        "content/net451/app.config.transform",
+        "content/net451/web.config.transform",
+        "content/net46/app.config.transform",
+        "content/net46/web.config.transform",
+        "lib/net20/System.Data.SQLite.Linq.dll",
+        "lib/net40/System.Data.SQLite.Linq.dll",
+        "lib/net45/System.Data.SQLite.Linq.dll",
+        "lib/net451/System.Data.SQLite.Linq.dll",
+        "lib/net46/System.Data.SQLite.Linq.dll"
+      ]
+    },
     "System.Diagnostics.Contracts/4.0.1": {
       "sha512": "HvQQjy712vnlpPxaloZYkuE78Gn353L0SJLJVeLcNASeg9c4qla2a1Xq8I7B3jZoDzKPtHTkyVO7AZ5tpeQGuA==",
       "type": "package",
@@ -4267,17 +4447,13 @@
     },
     "AspNet.Security.OAuth.GitHub/1.0.0-beta2": {
       "type": "project",
-      "path": "../../../../AspNet.Security.OAuth.Providers/src/AspNet.Security.OAuth.GitHub/project.json",
-      "msbuildProject": "../../../../AspNet.Security.OAuth.Providers/src/AspNet.Security.OAuth.GitHub/AspNet.Security.OAuth.GitHub.xproj"
+      "path": "../AspNet.Security.OAuth.GitHub/project.json",
+      "msbuildProject": "../AspNet.Security.OAuth.GitHub/AspNet.Security.OAuth.GitHub.xproj"
     },
     "AspNet.Security.OAuth.Spotify/1.0.0-beta2": {
       "type": "project",
-      "path": "../../../../AspNet.Security.OAuth.Providers/src/AspNet.Security.OAuth.Spotify/project.json",
-      "msbuildProject": "../../../../AspNet.Security.OAuth.Providers/src/AspNet.Security.OAuth.Spotify/AspNet.Security.OAuth.Spotify.xproj"
-    },
-    "SpotifyAPI/1.0.0": {
-      "type": "project",
-      "msbuildProject": "../../../../SpotifyAPI-NET/SpotifyAPI/SpotifyAPI.csproj"
+      "path": "../AspNet.Security.OAuth.Spotify/project.json",
+      "msbuildProject": "../AspNet.Security.OAuth.Spotify/AspNet.Security.OAuth.Spotify.xproj"
     },
     "SpotifyChangeControlLib/1.0.0": {
       "type": "project",
@@ -4301,9 +4477,12 @@
       "Microsoft.Extensions.Configuration.EnvironmentVariables >= 1.0.0",
       "Microsoft.Extensions.Configuration.Json >= 1.0.0",
       "Microsoft.Extensions.Logging.Console >= 1.0.0",
-      "Microsoft.Extensions.Logging.Debug >= 1.0.0"
+      "Microsoft.Extensions.Logging.Debug >= 1.0.0",
+      "Newtonsoft.Json >= 9.0.1",
+      "System.Data.SQLite >= 1.0.104"
     ],
     ".NETFramework,Version=v4.5.1": [
+      "SpotifyChangeControlLib",
       "System.Web >= 4.0.0"
     ]
   },

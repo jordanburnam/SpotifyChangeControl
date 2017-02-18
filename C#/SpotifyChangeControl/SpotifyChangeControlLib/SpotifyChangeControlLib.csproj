@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SpotifyAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpotifyAPI-NET.2.12.0\lib\SpotifyAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="StackExchange.Redis, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.1.1.603\lib\net45\StackExchange.Redis.dll</HintPath>
       <Private>True</Private>
@@ -70,13 +78,8 @@
     <Compile Include="Utilities\HashSlingingSlasher.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\SpotifyAPI-NET\SpotifyAPI\SpotifyAPI.csproj">
-      <Project>{ebbe35e2-7b91-4d7d-b8fc-3a0472f5119d}</Project>
-      <Name>SpotifyAPI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

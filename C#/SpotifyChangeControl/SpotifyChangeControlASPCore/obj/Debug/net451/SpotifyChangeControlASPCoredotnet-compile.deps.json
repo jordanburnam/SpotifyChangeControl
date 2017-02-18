@@ -19,6 +19,7 @@
     ".NETFramework,Version=v4.5.1": {
       "SpotifyChangeControlASPCore/1.0.0": {
         "dependencies": {
+          "SpotifyChangeControlLib": "1.0.0",
           "System.Web": "4.0.0.0",
           "AspNet.Security.OAuth.GitHub": "1.0.0-beta2",
           "AspNet.Security.OAuth.Spotify": "1.0.0-beta2",
@@ -35,7 +36,8 @@
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
           "Microsoft.Extensions.Configuration.Json": "1.0.0",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
-          "Microsoft.Extensions.Logging.Debug": "1.0.0"
+          "Microsoft.Extensions.Logging.Debug": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
           "SpotifyChangeControlASPCore.exe": {}
@@ -1023,7 +1025,8 @@
       },
       "AspNet.Security.OAuth.GitHub/1.0.0-beta2": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
           "AspNet.Security.OAuth.GitHub.dll": {}
@@ -1032,21 +1035,14 @@
       "AspNet.Security.OAuth.Spotify/1.0.0-beta2": {
         "dependencies": {
           "SpotifyChangeControlLib": "1.0.0",
-          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
           "AspNet.Security.OAuth.Spotify.dll": {}
         }
       },
-      "SpotifyAPI/1.0.0": {
-        "compile": {
-          "bin/Debug/SpotifyAPI.dll": {}
-        }
-      },
       "SpotifyChangeControlLib/1.0.0": {
-        "dependencies": {
-          "SpotifyAPI": "1.0.0"
-        },
         "compile": {
           "bin/Debug/SpotifyChangeControlLib.dll": {}
         }
@@ -1110,6 +1106,7 @@
     ".NETFramework,Version=v4.5.1/": {
       "SpotifyChangeControlASPCore/1.0.0": {
         "dependencies": {
+          "SpotifyChangeControlLib": "1.0.0",
           "System.Web": "4.0.0.0",
           "AspNet.Security.OAuth.GitHub": "1.0.0-beta2",
           "AspNet.Security.OAuth.Spotify": "1.0.0-beta2",
@@ -1126,7 +1123,8 @@
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
           "Microsoft.Extensions.Configuration.Json": "1.0.0",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
-          "Microsoft.Extensions.Logging.Debug": "1.0.0"
+          "Microsoft.Extensions.Logging.Debug": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
         },
         "runtime": {
           "SpotifyChangeControlASPCore.exe": {}
@@ -2030,7 +2028,8 @@
       },
       "AspNet.Security.OAuth.GitHub/1.0.0-beta2": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
         },
         "runtime": {
           "AspNet.Security.OAuth.GitHub.dll": {}
@@ -2039,23 +2038,17 @@
       "AspNet.Security.OAuth.Spotify/1.0.0-beta2": {
         "dependencies": {
           "SpotifyChangeControlLib": "1.0.0",
-          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
         },
         "runtime": {
           "AspNet.Security.OAuth.Spotify.dll": {}
         }
       },
-      "SpotifyAPI/1.0.0": {
-        "runtime": {
-          "../../SpotifyChangeControl/C#/SpotifyChangeControl/packages/Newtonsoft.Json.9.0.1/lib/net45/Newtonsoft.Json.dll": {},
-          "bin/Debug/SpotifyAPI.dll": {}
-        }
-      },
       "SpotifyChangeControlLib/1.0.0": {
-        "dependencies": {
-          "SpotifyAPI": "1.0.0"
-        },
         "runtime": {
+          "../packages/Newtonsoft.Json.9.0.1/lib/net45/Newtonsoft.Json.dll": {},
+          "../packages/SpotifyAPI-NET.2.12.0/lib/SpotifyAPI.dll": {},
           "../packages/StackExchange.Redis.1.1.603/lib/net45/StackExchange.Redis.dll": {},
           "bin/Debug/SpotifyChangeControlLib.dll": {}
         }
@@ -2636,11 +2629,6 @@
     },
     "AspNet.Security.OAuth.Spotify/1.0.0-beta2": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SpotifyAPI/1.0.0": {
-      "type": "msbuildproject",
       "serviceable": false,
       "sha512": ""
     },

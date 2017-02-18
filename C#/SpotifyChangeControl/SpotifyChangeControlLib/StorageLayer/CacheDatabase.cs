@@ -27,32 +27,32 @@ namespace SpotifyChangeControlLib.StorageLayer
         {
             try
             {
-                CacheDatabase._Host = sHost;
-                CacheDatabase._Port = iPort;
-                CacheDatabase._Password = sPassword;
-                if (CacheDatabase._Password.Length > 0)
-                {
-                    CacheDatabase._AuthRequired = true;
-                }
-                else
-                {
-                    CacheDatabase._AuthRequired = false;
-                }
+                //CacheDatabase._Host = sHost;
+                //CacheDatabase._Port = iPort;
+                //CacheDatabase._Password = sPassword;
+                //if (CacheDatabase._Password.Length > 0)
+                //{
+                //    CacheDatabase._AuthRequired = true;
+                //}
+                //else
+                //{
+                //    CacheDatabase._AuthRequired = false;
+                //}
 
-                _oConectionOptions = new ConfigurationOptions();
-                if (CacheDatabase._AuthRequired)
-                {
-                    CacheDatabase._oConectionOptions.Password = CacheDatabase._Password;
-                }
+                //_oConectionOptions = new ConfigurationOptions();
+                //if (CacheDatabase._AuthRequired)
+                //{
+                //    CacheDatabase._oConectionOptions.Password = CacheDatabase._Password;
+                //}
 
-                CacheDatabase._oConectionOptions.EndPoints.Add(CacheDatabase._Host + ":" + CacheDatabase._Port.ToString());
-                CacheDatabase._oCacheConnection = ConnectionMultiplexer.Connect(CacheDatabase._oConectionOptions);
-                CacheDatabase._oCommand = CacheDatabase._oCacheConnection.GetDatabase();
-                //Check to make sure the Key Exists and if not then set it to 0
-                if (!_oCommand.KeyExists(CacheDatabase._ObjectCounterKeyName))
-                {
-                    CacheDatabase._oCommand.StringSet(CacheDatabase._ObjectCounterKeyName, 0);
-                }
+                //CacheDatabase._oConectionOptions.EndPoints.Add(CacheDatabase._Host + ":" + CacheDatabase._Port.ToString());
+                //CacheDatabase._oCacheConnection = ConnectionMultiplexer.Connect(CacheDatabase._oConectionOptions);
+                //CacheDatabase._oCommand = CacheDatabase._oCacheConnection.GetDatabase();
+                ////Check to make sure the Key Exists and if not then set it to 0
+                //if (!_oCommand.KeyExists(CacheDatabase._ObjectCounterKeyName))
+                //{
+                //    CacheDatabase._oCommand.StringSet(CacheDatabase._ObjectCounterKeyName, 0);
+                //}
             }
             catch (Exception ex)
             {
